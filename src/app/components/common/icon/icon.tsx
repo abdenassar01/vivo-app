@@ -2,17 +2,12 @@ import React from 'react';
 import {ImageIcon} from './icon.style';
 
 type Props = {
-  name: string;
+  uri: string;
   size?: number;
 };
 
-const icon = ({name, size = 24}: Props) => {
-  return (
-    <ImageIcon
-      size={size}
-      source={require(`../../../../assets/icons/${name}.png`)}
-    />
-  );
+const Icon = ({uri, size = 24}: Props) => {
+  return <ImageIcon size={size} source={{uri: uri}} />;
 };
 
-export default icon;
+export default Icon;
