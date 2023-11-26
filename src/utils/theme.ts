@@ -8,22 +8,30 @@ export type ThemeType = {
   secondary: string;
   tertiary: string;
   text: string;
+  secondaryText: string;
   helperText: string;
+  secondaryBtnText: string;
+  stepsIndicator: string;
+  border: string;
 };
 
 const appColors = {
-  primary: '#3878FE',
-  secondary: '#27AC6D',
-  tertiary: '#00A179',
-  white: '#F2F9F9',
-  black: '#01191A',
+  primary: '#80BD0A',
+  secondary: '#20A9E3',
+  tertiary: '#E92220',
+  white: '#FFFFFF',
+  black: '#1F1F39',
+  secondaryText: '#858597',
+  helperText: '#BFBFBF',
+  secondaryBtnText: '#6E6F72',
+  stepsIndicator: '#E7E7E7',
+  border: '#B8B8D2',
 };
 
 export const light: ThemeType = {
-  background: '#E4E6EB',
+  background: appColors.white,
   secondaryBackground: '#FAF8FB',
   text: appColors.black,
-  helperText: '#B6B6B6',
   ...appColors,
 };
 
@@ -31,7 +39,6 @@ export const dark: ThemeType = {
   background: '#242526',
   secondaryBackground: '#18191A',
   text: appColors.white,
-  helperText: '#B6B6B6',
   ...appColors,
 };
 
