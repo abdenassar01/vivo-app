@@ -7,7 +7,7 @@ import {
   HeaderWrapper,
   ScreenTitleInverted,
 } from './header.style';
-import Icon from 'react-native-vector-icons/Ionicons';
+// import Icon from 'react-native-vector-icons/Ionicons';
 
 type Props = {
   title: string;
@@ -20,7 +20,7 @@ const HeaderInverted = ({title}: Props) => {
   return (
     <HeaderWrapper>
       <GoBackWrapper onPress={goBack}>
-        <Icon color={theme.primary} name="arrow-back" size={24} />
+        {/* <Icon color={theme.primary} name="arrow-back" size={24} /> */}
       </GoBackWrapper>
       <ScreenTitleInverted>{title}</ScreenTitleInverted>
     </HeaderWrapper>
