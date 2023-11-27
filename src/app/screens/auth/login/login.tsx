@@ -48,7 +48,7 @@ const Login = () => {
 
   return (
     <AppWrapper>
-      <Scrollable>
+      <Scrollable showsVerticalScrollIndicator={false}>
         <LoginScreenWrapper>
           <Header />
           <Illustration
@@ -63,7 +63,6 @@ const Login = () => {
               control={control}
               label="Email"
               name="email"
-              // icon="mail"
               placeholder="yassine@exemple.com"
             />
             <PasswordWrapper>
@@ -71,7 +70,6 @@ const Login = () => {
                 control={control}
                 label="Mot de passe"
                 name="password"
-                // icon="lock-closed"
                 placeholder="Mot de passe"
                 type="password"
               />
