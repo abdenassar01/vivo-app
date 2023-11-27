@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 import {ThemeType} from '../../../utils/theme';
 import {MainText, SecondaryHeading} from '../../components/common/text';
+import {Dimensions} from 'react-native';
 
 export const Illustration = styled.Image`
   width: 221px;
@@ -42,11 +43,19 @@ export const FormWrapper = styled.View<{theme: ThemeType}>`
   gap: 16px;
   width: 100%;
   justify-content: space-between;
-  height: 50%;
 `;
 
 export const BottomScreenWrapper = styled.View`
   gap: 15px;
+  /* position: absolute;
+  left: 0;
+  top: ${Dimensions.get('screen').height - 400}px;
+  width: ${Dimensions.get('screen').width - 48}px; */
+`;
+
+export const ResetStep = styled.View`
+  height: ${Dimensions.get('screen').height - 170}px;
+  justify-content: space-between;
 `;
 
 export const PasswordWrapper = styled.View``;
@@ -70,8 +79,10 @@ export const ForgotPasswordSection = styled.View`
 `;
 
 export const CentredView = styled.View`
-  width: 100%;
+  width: ${Dimensions.get('screen').width - 48}px;
+  gap: 25px;
   align-items: center;
+  justify-content: center;
 `;
 
 export const LinkWrapper = styled.TouchableOpacity`

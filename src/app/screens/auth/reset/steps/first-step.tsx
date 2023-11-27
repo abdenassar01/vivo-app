@@ -5,6 +5,7 @@ import {
   GreetingText,
   HelperText,
   HeroText,
+  ResetStep,
   SwitchScreensLabel,
   SwitchScreensLink,
   SwitchScreensLinkText,
@@ -48,39 +49,39 @@ const ResetFirstStep = ({handleButton}: Props) => {
   };
 
   return (
-    <>
-      <HeroText>
-        <GreetingText>Mot de Passe Oublié? </GreetingText>
-        <GreetingText>Pas de Problème!</GreetingText>
-        <HelperText>
-          Pour réinitialiser votre mot de passe, veuillez entrer l'adresse
-          e-mail associée à votre compte. Nous vous enverrons un lien de
-          réinitialisation.
-        </HelperText>
-      </HeroText>
+    <ResetStep>
       <FormWrapper>
+        <HeroText>
+          <GreetingText>Mot de Passe Oublié? </GreetingText>
+          <GreetingText>Pas de Problème!</GreetingText>
+          <HelperText>
+            Pour réinitialiser votre mot de passe, veuillez entrer l'adresse
+            e-mail associée à votre compte. Nous vous enverrons un lien de
+            réinitialisation.
+          </HelperText>
+        </HeroText>
         <TextInput
           control={control}
           label="Numéro de téléphone"
           name="phone"
           placeholder="06 00 00 00 00"
         />
-        <BottomScreenWrapper>
-          <Button
-            width="100%"
-            loading={loading}
-            text="Réinitialiser le Mot de Passe"
-            onPress={handleSubmit(onSubmit)}
-          />
-          <SwitchScreensWrapper>
-            <SwitchScreensLabel>Vous n’avez pas un compte ?</SwitchScreensLabel>
-            <SwitchScreensLink onPress={() => navigate('SignUp')}>
-              <SwitchScreensLinkText>S’inscrire</SwitchScreensLinkText>
-            </SwitchScreensLink>
-          </SwitchScreensWrapper>
-        </BottomScreenWrapper>
       </FormWrapper>
-    </>
+      <BottomScreenWrapper>
+        <Button
+          width="100%"
+          loading={loading}
+          text="Réinitialiser le Mot de Passe"
+          onPress={handleSubmit(onSubmit)}
+        />
+        <SwitchScreensWrapper>
+          <SwitchScreensLabel>Vous n’avez pas un compte ?</SwitchScreensLabel>
+          <SwitchScreensLink onPress={() => navigate('SignUp')}>
+            <SwitchScreensLinkText>S’inscrire</SwitchScreensLinkText>
+          </SwitchScreensLink>
+        </SwitchScreensWrapper>
+      </BottomScreenWrapper>
+    </ResetStep>
   );
 };
 
