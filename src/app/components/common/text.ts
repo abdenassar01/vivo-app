@@ -19,7 +19,7 @@ export const InputsLabel = styled(MainText)<{theme: ThemeType}>`
 `;
 
 export const SecondaryHeading = styled(Text)<{theme: ThemeType}>`
-  font-family: 'Nunito-Bold';
+  font-family: 'Poppins-SemiBold';
   font-size: 16px;
-  color: ${({theme}) => theme.secondary};
+  color: ${({theme}) => theme.text};
 `;
