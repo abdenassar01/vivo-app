@@ -2,6 +2,7 @@ import React from 'react';
 import {ActionButton, ButtonText} from './button.style';
 import {GestureResponderEvent} from 'react-native';
 import {Swing} from 'react-native-animated-spinkit';
+import {useTheme} from 'styled-components';
 
 type Props = {
   onPress: ((event: GestureResponderEvent) => void) | undefined;
@@ -18,6 +19,8 @@ const Button = ({
   loading,
   btnTheme = 'primary',
 }: Props) => {
+  const {primary, background} = useTheme();
+
   return loading ? (
     <ActionButton
       btnTheme={btnTheme}
