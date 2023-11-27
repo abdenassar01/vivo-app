@@ -43,7 +43,7 @@ const ResetThirdStep = ({handleButton}: Props) => {
     <ResetStep>
       <FormWrapper>
         <HeroText>
-          <GreetingText>Entrez le nouveaumot de passe</GreetingText>
+          <GreetingText>Entrez le nouveau mot de passe</GreetingText>
         </HeroText>
         <TextInput
           control={control}
