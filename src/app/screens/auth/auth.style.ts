@@ -47,15 +47,20 @@ export const FormWrapper = styled.View<{theme: ThemeType}>`
 
 export const BottomScreenWrapper = styled.View`
   gap: 15px;
-  /* position: absolute;
-  left: 0;
-  top: ${Dimensions.get('screen').height - 400}px;
-  width: ${Dimensions.get('screen').width - 48}px; */
 `;
 
 export const ResetStep = styled.View`
   height: ${Dimensions.get('screen').height - 170}px;
   justify-content: space-between;
+`;
+
+export const SignUpStep = styled.View`
+  height: ${Dimensions.get('screen').height - 280}px;
+  justify-content: space-between;
+`;
+
+export const ContentWrapper = styled.View`
+  gap: 16px;
 `;
 
 export const PasswordWrapper = styled.View``;
