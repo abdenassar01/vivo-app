@@ -1,13 +1,13 @@
 import styled from 'styled-components/native';
 import {ThemeType} from '../../../../../utils/theme';
-import {MainText, SecondaryHeading} from '../../text';
+import {MainText} from '../../text';
 
 export const FieldWrapper = styled.View`
-  gap: 5px;
+  gap: 1px;
   width: 100%;
 `;
 
-export const Label = styled(SecondaryHeading)<{theme: ThemeType}>`
+export const Label = styled(MainText)<{theme: ThemeType}>`
   color: ${({theme}) => theme.helperText};
 `;
 
@@ -32,25 +32,28 @@ export const PasswordIcon = styled.TouchableOpacity`
 export const InputWrapper = styled.View<{theme: ThemeType}>`
   flex-direction: row;
   align-items: center;
-  padding: 5px;
-  border-radius: 10px;
-  background-color: ${({theme}) => theme.secondaryBackground};
+  padding: 5px 20px;
+  border-radius: 12px;
+  background-color: ${({theme}) => theme.background};
+  border-width: 0.5px;
+  border-color: ${({theme}) => theme.border};
   position: relative;
 `;
 
-export const FieldText = styled.TextInput.attrs(({theme, icon}) => ({
+export const FieldText = styled.TextInput.attrs(({theme}) => ({
   placeholderTextColor: theme.helperText,
-  width: icon ? '90%' : '100%',
 }))`
-  padding-left: 5px;
+  width: 100%;
   color: ${({theme}) => theme.text};
 `;
 
+export const EyeIcon = styled.Image`
+  height: 24px;
+  width: 24px;
+`;
+
 export const ValueText = styled(MainText)<{theme: ThemeType}>`
-  font-size: 16px;
-  height: 40px;
-  width: 40px;
-  padding-top: 8px;
+  font-size: 14px;
   text-align: center;
   border-radius: 50px;
   color: ${({theme}) => theme.background};
