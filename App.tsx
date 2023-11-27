@@ -1,26 +1,32 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useEffect} from 'react';
-import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
+import {StatusBar} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Home from './src/app/screens/home';
+import {ThemeProvider} from 'styled-components/native';
+import {light} from './src/utils/theme';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import Toast from 'react-native-toast-message';
+import {NavigationContainer} from '@react-navigation/native';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+
+const queryClient = new QueryClient();
 
 function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   useEffect(() => SplashScreen.hide(), []);
 
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <Home />
-    </SafeAreaView>
+    <ThemeProvider theme={light}>
+      <GestureHandlerRootView style={{flex: 1}}>
+        <NavigationContainer>
+          <QueryClientProvider client={queryClient}>
+            <StatusBar backgroundColor={light.primary} />
+            <Home />
+          </QueryClientProvider>
+        </NavigationContainer>
+        <Toast visibilityTime={5000} />
+      </GestureHandlerRootView>
+    </ThemeProvider>
   );
 }
 
