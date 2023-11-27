@@ -16,11 +16,11 @@ export const HeroText = styled.View`
 export const GreetingText = styled(SecondaryHeading)<{theme: ThemeType}>`
   font-size: 24px;
   text-align: justify;
-  color: ${({theme}) => theme.text};
+  color: ${({theme}) => theme.secondaryBtnText};
 `;
 
 export const HelperText = styled(MainText)<{theme: ThemeType}>`
-  color: ${({theme}) => theme.helperText};
+  color: ${({theme}) => theme.text};
   text-align: justify;
 `;
 
@@ -41,6 +41,8 @@ export const LoginScreenWrapper = styled.View`
 export const FormWrapper = styled.View<{theme: ThemeType}>`
   gap: 16px;
   width: 100%;
+  justify-content: space-between;
+  height: 50%;
 `;
 
 export const BottomScreenWrapper = styled.View`
