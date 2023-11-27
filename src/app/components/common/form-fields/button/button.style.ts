@@ -7,7 +7,7 @@ export const ActionButton = styled.TouchableOpacity<{
   width: string | number;
   btnTheme: 'primary' | 'secondary' | 'error' | 'warning';
 }>`
-  border-radius: 5px;
+  border-radius: 12px;
   padding: 10px 32px;
   flex-direction: row;
   gap: 5px;
