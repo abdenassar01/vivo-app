@@ -40,7 +40,7 @@ export const LoginScreenWrapper = styled.View`
 `;
 
 export const FormWrapper = styled.View<{theme: ThemeType}>`
-  gap: 16px;
+  gap: 8px;
   width: 100%;
   justify-content: space-between;
 `;
@@ -55,7 +55,7 @@ export const ResetStep = styled.View`
 `;
 
 export const SignUpStep = styled.View`
-  height: ${Dimensions.get('screen').height - 280}px;
+  height: ${Dimensions.get('screen').height - 290}px;
   justify-content: space-between;
 `;
 
