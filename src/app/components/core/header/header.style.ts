@@ -1,3 +1,4 @@
+import FastImage from 'react-native-fast-image';
 import styled from 'styled-components/native';
 
 export const HeaderWrapper = styled.View`
@@ -5,9 +6,20 @@ export const HeaderWrapper = styled.View`
   padding: 30px 0;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
 export const CentredLogo = styled.Image`
   width: 115.85px;
   height: 28.22px;
+`;
+
+export const OpenDrawerIcon = styled(FastImage)`
+  width: 24px;
+  aspect-ratio: 1/1;
+`;
+
+export const Clickable = styled.TouchableOpacity`
+  position: absolute;
+  left: 24px;
 `;
