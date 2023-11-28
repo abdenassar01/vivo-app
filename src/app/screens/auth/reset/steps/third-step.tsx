@@ -15,6 +15,7 @@ import Button from '../../../../components/common/form-fields/button/button';
 import {useForm} from 'react-hook-form';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {t} from 'i18next';
 // import {zodResolver} from '@hookform/resolvers/zod';
 
 // import Toast from 'react-native-toast-message';
@@ -43,20 +44,20 @@ const ResetThirdStep = ({handleButton}: Props) => {
     <ResetStep>
       <FormWrapper>
         <HeroText>
-          <GreetingText>Entrez le nouveau mot de passe</GreetingText>
+          <GreetingText>{t('reset-new-password-header')}</GreetingText>
         </HeroText>
         <TextInput
           control={control}
-          label="Mot de passe"
+          label={t('password-input-text')}
           name="password"
-          placeholder="Mot de passe"
+          placeholder={t('password-input-text')}
           type="password"
         />
         <TextInput
           control={control}
-          label="Confirm Mot de passe "
+          label={t('confirm-password-input-text')}
           name="repassword"
-          placeholder="Confirm Mot de passe"
+          placeholder={t('confirm-password-input-text')}
           type="password"
         />
       </FormWrapper>
@@ -64,13 +65,15 @@ const ResetThirdStep = ({handleButton}: Props) => {
         <Button
           width="100%"
           loading={loading}
-          text="Valider"
+          text={t('button-validate-text')}
           onPress={handleSubmit(onSubmit)}
         />
         <SwitchScreensWrapper>
-          <SwitchScreensLabel>Vous n’avez pas un compte ?</SwitchScreensLabel>
+          <SwitchScreensLabel>{t('dont-have-account')}</SwitchScreensLabel>
           <SwitchScreensLink onPress={() => navigate('SignUp')}>
-            <SwitchScreensLinkText>S’inscrire</SwitchScreensLinkText>
+            <SwitchScreensLinkText>
+              {t('register-action-button-text')}
+            </SwitchScreensLinkText>
           </SwitchScreensLink>
         </SwitchScreensWrapper>
       </BottomScreenWrapper>

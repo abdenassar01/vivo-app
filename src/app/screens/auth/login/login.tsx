@@ -76,7 +76,7 @@ const Login = () => {
               />
               <ForgotPasswordSection>
                 <LinkWrapper onPress={() => navigate('ResetPassword')}>
-                  <LinkText>{t('reset-header-text1')}</LinkText>
+                  <LinkText>{t('forget-password-text')}</LinkText>
                 </LinkWrapper>
               </ForgotPasswordSection>
             </PasswordWrapper>

@@ -21,6 +21,7 @@ import {useForm} from 'react-hook-form';
 import Toast from 'react-native-toast-message';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {t} from 'i18next';
 
 type Props = {
   handleButton: () => void;
@@ -52,32 +53,30 @@ const ResetFirstStep = ({handleButton}: Props) => {
     <ResetStep>
       <FormWrapper>
         <HeroText>
-          <GreetingText>Mot de Passe Oublié? </GreetingText>
-          <GreetingText>Pas de Problème!</GreetingText>
-          <HelperText>
-            Pour réinitialiser votre mot de passe, veuillez entrer l'adresse
-            e-mail associée à votre compte. Nous vous enverrons un lien de
-            réinitialisation.
-          </HelperText>
+          <GreetingText>{t('reset-header-text1')} </GreetingText>
+          <GreetingText>{t('reset-header-text2')}</GreetingText>
+          <HelperText>{t('reset-main-text')}</HelperText>
         </HeroText>
         <TextInput
           control={control}
-          label="Numéro de téléphone"
+          label={t('phone-input-text')}
           name="phone"
-          placeholder="06 00 00 00 00"
+          placeholder={t('phone-input-placeholder')}
         />
       </FormWrapper>
       <BottomScreenWrapper>
         <Button
           width="100%"
           loading={loading}
-          text="Réinitialiser le Mot de Passe"
+          text={t('button-reset-text')}
           onPress={handleSubmit(onSubmit)}
         />
         <SwitchScreensWrapper>
-          <SwitchScreensLabel>Vous n’avez pas un compte ?</SwitchScreensLabel>
+          <SwitchScreensLabel>{t('dont-have-account')}</SwitchScreensLabel>
           <SwitchScreensLink onPress={() => navigate('SignUp')}>
-            <SwitchScreensLinkText>S’inscrire</SwitchScreensLinkText>
+            <SwitchScreensLinkText>
+              {t('register-action-button-text')}
+            </SwitchScreensLinkText>
           </SwitchScreensLink>
         </SwitchScreensWrapper>
       </BottomScreenWrapper>

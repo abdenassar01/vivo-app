@@ -26,7 +26,7 @@ const ResetPassword = () => {
           <ResetThirdStep handleButton={() => navigate('Home')} />
         )}
 
-        <BottomSpacer />
+        <BottomSpacer size={10} />
       </LoginScreenWrapper>
     </AppWrapper>
   );
