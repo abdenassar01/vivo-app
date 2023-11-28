@@ -4,20 +4,24 @@ import {StatusBar} from 'react-native';
 import 'react-native-gesture-handler';
 import SplashScreen from 'react-native-splash-screen';
 import {ThemeProvider} from 'styled-components/native';
-import {light} from './src/utils/theme';
+import {dark, light} from './src/utils/theme';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import Toast from 'react-native-toast-message';
 import {NavigationContainer} from '@react-navigation/native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import Router from './src/app/navigators/router';
 import './src/i18/i18n';
+import {useThemeStore} from './src/stores/theme';
 const queryClient = new QueryClient();
 
 function App(): JSX.Element {
-  useEffect(() => SplashScreen.hide(), []);
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+  const {currentTheme} = useThemeStore();
 
   return (
-    <ThemeProvider theme={light}>
+    <ThemeProvider theme={currentTheme === 'light' ? light : dark}>
       <GestureHandlerRootView style={{flex: 1}}>
         <NavigationContainer>
           <QueryClientProvider client={queryClient}>
