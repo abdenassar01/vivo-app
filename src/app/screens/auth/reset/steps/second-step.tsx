@@ -18,6 +18,7 @@ import Button from '../../../../components/common/form-fields/button/button';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
+import {t} from 'i18next';
 
 type Props = {
   handleButton: () => void;
@@ -32,11 +33,11 @@ const ResetSecondStep = ({handleButton}: Props) => {
     <ResetStep>
       <FormWrapper>
         <HeroText>
-          <GreetingText>Entrez le code reçu par SMS</GreetingText>
+          <GreetingText>{t('otp-header-text')}</GreetingText>
         </HeroText>
         <CentredView>
           {loading ? (
-            <Swing size={45} color={theme.primary} />
+            <Swing size={60} color={theme.primary} />
           ) : (
             <OTPInputView
               style={{
@@ -73,13 +74,15 @@ const ResetSecondStep = ({handleButton}: Props) => {
         <Button
           width="100%"
           loading={loading}
-          text="Réinitialiser le Mot de Passe"
+          text={t('button-reset-text')}
           onPress={() => handleButton()}
         />
         <SwitchScreensWrapper>
-          <SwitchScreensLabel>Vous n’avez pas un compte ?</SwitchScreensLabel>
+          <SwitchScreensLabel>{t('dont-have-account')}</SwitchScreensLabel>
           <SwitchScreensLink onPress={() => navigate('SignUp')}>
-            <SwitchScreensLinkText>S’inscrire</SwitchScreensLinkText>
+            <SwitchScreensLinkText>
+              {t('register-action-button-text')}
+            </SwitchScreensLinkText>
           </SwitchScreensLink>
         </SwitchScreensWrapper>
       </BottomScreenWrapper>
