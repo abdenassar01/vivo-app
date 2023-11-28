@@ -5,8 +5,8 @@ import ar from './languages/ar.json';
 
 i18n.use(AsyncStoragePlugin()).init({
   compatibilityJSON: 'v3',
-  lng: 'ar',
-  fallbackLng: 'ar',
+  lng: 'fr',
+  fallbackLng: 'fr',
   resources: {
     fr: fr,
     ar: ar,
