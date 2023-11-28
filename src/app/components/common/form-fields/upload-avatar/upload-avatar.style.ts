@@ -7,8 +7,14 @@ export const UploadPressableWrapper = styled.TouchableOpacity`
 
 export const UploadImageWrapper = styled.View<{theme: ThemeType}>`
   border-radius: 50px;
-  border-color: ${({theme}) => theme.helperText};
-  border-width: 2px;
+`;
+
+export const Icon = styled.Image`
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  right: -2%;
+  bottom: -2%;
 `;
 
 export const UploadWrapper = styled.ImageBackground`
@@ -16,15 +22,4 @@ export const UploadWrapper = styled.ImageBackground`
   height: 90px;
 
   position: relative;
-`;
-
-export const UploadIconWrapper = styled.View<{theme: ThemeType}>`
-  border-radius: 50px;
-  padding: 2px;
-  border-color: ${({theme}) => theme.helperText};
-  border-width: 1px;
-  background-color: white;
-  position: absolute;
-  right: -2%;
-  bottom: -2%;
 `;

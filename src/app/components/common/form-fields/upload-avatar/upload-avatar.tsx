@@ -1,18 +1,17 @@
 import React, {useState} from 'react';
 import {
-  UploadIconWrapper,
+  Icon,
   UploadImageWrapper,
   UploadPressableWrapper,
   UploadWrapper,
 } from './upload-avatar.style';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {useTheme} from 'styled-components';
 import {Control, useController} from 'react-hook-form';
 import ImagePicker from 'react-native-image-crop-picker';
 
-import {uploadImage} from '../../../../../services/storage';
+// import {uploadImage} from '../../../../../services/storage';
 import {Swing} from 'react-native-animated-spinkit';
-import {BASE_API_URL} from '../../../../../services/api';
+// import {BASE_API_URL} from '../../../../../services/api';
 
 type Props = {
   control: Control<any>;
@@ -42,10 +41,12 @@ const UploadAvatar = ({name, control, defaultValue}: Props) => {
     }).then(photo => {
       setLoading(true);
       setImageUrl(photo.path || '');
-      uploadImage(photo).then(data => {
-        onChange(`${BASE_API_URL}/files/image/${data}`);
-        setLoading(false);
-      });
+      onChange(photo.path || '');
+      // uploadImage(photo).then(data => {
+      //   onChange(`${BASE_API_URL}/files/image/${data}`);
+      //   setLoading(false);
+      // });
+      setLoading(false);
     });
   };
 
@@ -58,19 +59,13 @@ const UploadAvatar = ({name, control, defaultValue}: Props) => {
           <UploadWrapper
             // eslint-disable-next-line react-native/no-inline-styles
             imageStyle={{borderRadius: 50}}
-            defaultSource={require('../../../../../assets/images/pro-empty.png')}
+            defaultSource={require('../../../../../assets/images/user.png')}
             source={
               imageUrl
                 ? {uri: imageUrl}
-                : require('../../../../../assets/images/pro-empty.png')
+                : require('../../../../../assets/images/user.png')
             }>
-            <UploadIconWrapper>
-              <Icon
-                name="cloud-upload"
-                size={24}
-                color={theme.secondaryBackground}
-              />
-            </UploadIconWrapper>
+            <Icon source={require('../../../../../assets/icons/camera.png')} />
           </UploadWrapper>
         )}
       </UploadImageWrapper>
