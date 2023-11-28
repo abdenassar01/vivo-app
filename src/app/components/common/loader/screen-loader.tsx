@@ -8,7 +8,7 @@ const ScreenLoader = () => {
 
   return (
     <LoaderWrapper>
-      <Swing size={48} color={theme.primary} />
+      <Swing size={48} color={theme.background} />
     </LoaderWrapper>
   );
 };
