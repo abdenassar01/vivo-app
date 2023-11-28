@@ -18,8 +18,8 @@ export const UnAuthenticationStacks = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Signup" component={SignUp} />
-      <Stack.Screen name="ForgotPassword" component={ResetPassword} />
+      <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen name="ResetPassword" component={ResetPassword} />
     </Stack.Navigator>
   );
 };
