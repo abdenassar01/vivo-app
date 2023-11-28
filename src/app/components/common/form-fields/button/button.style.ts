@@ -19,7 +19,7 @@ export const ActionButton = styled.TouchableOpacity<{
       : btnTheme === 'warning'
       ? '#edca2d'
       : theme.primary};
-  border-width: 1px;
+  border-width: ${({btnTheme}) => (btnTheme === 'secondary' ? 0 : 1)}px;
   background-color: ${({theme, btnTheme}) =>
     btnTheme === 'primary'
       ? theme.primary
@@ -29,12 +29,13 @@ export const ActionButton = styled.TouchableOpacity<{
       ? '#f71b40'
       : '#edca2d'};
   width: ${({width}) => width || '100%'};
+  elevation: ${({btnTheme}) => (btnTheme === 'secondary' ? 5 : 0)};
 `;
 
 export const ButtonText = styled(SecondaryHeading)<{
   theme: ThemeType;
-  btnTheme: 'primary' | 'secondary';
+  btnTheme: 'primary' | 'secondary' | 'error' | 'warning';
 }>`
   color: ${({theme, btnTheme}) =>
-    btnTheme !== 'primary' ? theme.text : theme.background};
+    btnTheme !== 'primary' ? theme.secondaryBtnText : theme.background};
 `;
