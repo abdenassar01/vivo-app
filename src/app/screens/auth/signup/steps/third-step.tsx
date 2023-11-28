@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {ButtonsWrapper, FormWrapper, SignUpStep} from '../../auth.style';
 import Button from '../../../../components/common/form-fields/button/button';
-// import RoleSelector from '../../../../components/common/form-fields/tab-selector/role-selector';
 import {useForm} from 'react-hook-form';
 import TextInput from '../../../../components/common/form-fields/text-input/text-input';
 import UploadAvatar from '../../../../components/common/form-fields/upload-avatar/upload-avatar';
+import {t} from 'i18next';
 
 type Props = {
   setUser: (user: any) => void;
@@ -27,7 +27,7 @@ const ThirdStep = ({prev, user, setUser}: Props) => {
       ...user,
       role: data.role,
     });
-    console.log('Helloooow');
+    setTimeout(() => setLoading(false), 2000);
   };
 
   return (
@@ -36,16 +36,15 @@ const ThirdStep = ({prev, user, setUser}: Props) => {
         <UploadAvatar control={control} name="avatar" />
         <TextInput
           control={control}
-          label="Numéro de CNI"
+          label={t('cni-input-text')}
           name="cni"
-          placeholder="Numéro de CNI"
+          placeholder={t('cni-input-text')}
         />
         <TextInput
           control={control}
-          label="Confirm Mot de passe "
+          label={t('cni-file-upload-text')}
           name="repassword"
-          placeholder="Confirm Mot de passe"
-          type="password"
+          placeholder={t('cni-file-upload-text')}
         />
       </FormWrapper>
       <ButtonsWrapper>
@@ -53,14 +52,14 @@ const ThirdStep = ({prev, user, setUser}: Props) => {
           <Button
             btnTheme="secondary"
             width="44%"
-            text="Retour"
+            text={t('button-previous-text')}
             onPress={prev}
           />
         )}
         <Button
           loading={loading}
           width={loading ? '100%' : '54%'}
-          text="Soumettre"
+          text={t('button-submit-text')}
           onPress={handleSubmit(onSubmit)}
         />
       </ButtonsWrapper>

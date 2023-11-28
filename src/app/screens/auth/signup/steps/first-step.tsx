@@ -3,6 +3,7 @@ import {ButtonsWrapper, FormWrapper, SignUpStep} from '../../auth.style';
 import TextInput from '../../../../components/common/form-fields/text-input/text-input';
 import Button from '../../../../components/common/form-fields/button/button';
 import {useForm} from 'react-hook-form';
+import {t} from 'i18next';
 
 type Props = {
   handleButton: () => void;
@@ -30,31 +31,35 @@ const FirstStep = ({handleButton, setUser, user}: Props) => {
       <FormWrapper>
         <TextInput
           control={control}
-          label="Nom & Prénom"
+          label={t('fullname-input-text')}
           name="fullname"
-          placeholder="Nom et prénom"
+          placeholder={t('fullname-input-text')}
         />
         <TextInput
           control={control}
-          label="Email"
+          label={t('email-input-text')}
           name="mail"
-          placeholder="Email"
+          placeholder={t('email-input-text')}
         />
         <TextInput
           control={control}
-          label="Numéro de téléphone"
+          label={t('phone-input-text')}
           name="phone"
-          placeholder="Numéro de téléphone"
+          placeholder={t('phone-input-text')}
         />
       </FormWrapper>
       <ButtonsWrapper>
         <Button
-          text="Retour"
+          text={t('button-previous-text')}
           btnTheme="secondary"
           width="42%"
           onPress={() => console.log('redirect login')}
         />
-        <Button width="56%" text="Next" onPress={handleSubmit(onSubmit)} />
+        <Button
+          width="56%"
+          text={t('button-next-text')}
+          onPress={handleSubmit(onSubmit)}
+        />
       </ButtonsWrapper>
     </SignUpStep>
   );

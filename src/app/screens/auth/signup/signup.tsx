@@ -9,13 +9,11 @@ import {
 import FirstStep from './steps/first-step';
 import SecondStep from './steps/second-step';
 import ThirdStep from './steps/third-step';
-import {useNavigation} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
 import Header from '../../../components/core/header/header';
 import ProgressBar from '../../../components/common/progress-bar/progress-bar';
+import {t} from 'i18next';
 
 const SignUp = () => {
-  const {navigate} = useNavigation<StackNavigationProp<any>>();
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [user, setUser] = useState(null);
 
@@ -25,7 +23,7 @@ const SignUp = () => {
         <Header />
         <ContentWrapper>
           <HeroText>
-            <GreetingText>Créer votre compte </GreetingText>
+            <GreetingText>{t('signup-header-text')}</GreetingText>
           </HeroText>
           <ProgressBar step={currentStep} nbrSteps={3} />
         </ContentWrapper>

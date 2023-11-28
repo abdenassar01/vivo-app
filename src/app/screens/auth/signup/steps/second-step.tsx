@@ -2,8 +2,8 @@ import React from 'react';
 import {ButtonsWrapper, FormWrapper, SignUpStep} from '../../auth.style';
 import TextInput from '../../../../components/common/form-fields/text-input/text-input';
 import Button from '../../../../components/common/form-fields/button/button';
-import UploadAvatar from '../../../../components/common/form-fields/upload-avatar/upload-avatar';
 import {useForm} from 'react-hook-form';
+import {t} from 'i18next';
 
 type Props = {
   handleButton: () => void;
@@ -32,27 +32,31 @@ const SecondStep = ({handleButton, prev, user, setUser}: Props) => {
       <FormWrapper>
         <TextInput
           control={control}
-          label="Mot de passe"
+          label={t('password-input-text')}
           name="password"
-          placeholder="Mot de passe"
+          placeholder={t('password-input-text')}
           type="password"
         />
         <TextInput
           control={control}
-          label="Confirm Mot de passe "
+          label={t('confirm-password-input-text')}
           name="repassword"
-          placeholder="Confirm Mot de passe"
+          placeholder={t('confirm-password-input-text')}
           type="password"
         />
       </FormWrapper>
       <ButtonsWrapper>
         <Button
-          text="Retour"
+          text={t('button-previous-text')}
           btnTheme="secondary"
           width="42%"
           onPress={() => prev()}
         />
-        <Button width="56%" text="Next" onPress={handleSubmit(onSubmit)} />
+        <Button
+          width="56%"
+          text={t('button-next-text')}
+          onPress={handleSubmit(onSubmit)}
+        />
       </ButtonsWrapper>
     </SignUpStep>
   );
