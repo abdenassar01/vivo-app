@@ -23,7 +23,7 @@ const Router = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onBoarding]);
 
-  const login = false;
+  const login = true;
   return loading ? (
     <ScreenLoader />
   ) : !onBoarding ? (

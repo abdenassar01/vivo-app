@@ -12,6 +12,7 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import Router from './src/app/navigators/router';
 import './src/i18/i18n';
 import {useThemeStore} from './src/stores/theme';
+
 const queryClient = new QueryClient();
 
 function App(): JSX.Element {
