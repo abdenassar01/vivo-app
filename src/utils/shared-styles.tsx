@@ -3,7 +3,8 @@ import {ThemeType} from './theme';
 
 export const AppWrapper = styled.SafeAreaView<{theme: ThemeType}>`
   background-color: ${({theme}) => theme.background};
-  padding: 15px;
+  padding-left: 24px;
+  padding-right: 24px;
   flex: 1;
 `;
 
@@ -12,8 +13,8 @@ export const AppWrapperWithoutPadding = styled.SafeAreaView<{theme: ThemeType}>`
   flex: 1;
 `;
 
-export const BottomSpacer = styled.View`
-  height: 50px;
+export const BottomSpacer = styled.View<{size: number}>`
+  height: ${({size}) => size || 50}px;
 `;
 
 export const HorisontalSpacer = styled.View`
