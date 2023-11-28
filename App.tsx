@@ -10,7 +10,7 @@ import Toast from 'react-native-toast-message';
 import {NavigationContainer} from '@react-navigation/native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import Router from './src/app/navigators/router';
-
+import './src/i18/i18n';
 const queryClient = new QueryClient();
 
 function App(): JSX.Element {
