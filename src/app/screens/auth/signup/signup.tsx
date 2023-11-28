@@ -1,19 +1,10 @@
 import React, {useState} from 'react';
-import {
-  AppWrapper,
-  AppWrapperWithoutPadding,
-  BottomSpacer,
-} from '../../../../utils/shared-styles';
+import {AppWrapper, BottomSpacer} from '../../../../utils/shared-styles';
 import {
   ContentWrapper,
   GreetingText,
-  HelperText,
   HeroText,
   LoginScreenWrapper,
-  SwitchScreensLabel,
-  SwitchScreensLink,
-  SwitchScreensLinkText,
-  SwitchScreensWrapper,
 } from '../auth.style';
 import FirstStep from './steps/first-step';
 import SecondStep from './steps/second-step';
