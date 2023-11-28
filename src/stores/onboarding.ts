@@ -6,15 +6,15 @@ type State = {
 };
 
 type Action = {
-  setOnBoarding: () => any;
+  setOnBoarding: (value: boolean) => void;
 };
 
 export const useOnBoardingStore = create<State & Action>(set => ({
   onBoarding: false,
-  setOnBoarding: () =>
+  setOnBoarding: value =>
     set(state => {
-      storeOnBoarding(true);
-      state.onBoarding = true;
-      return {onBoarding: true};
+      storeOnBoarding(value);
+      state.onBoarding = value;
+      return {onBoarding: value};
     }),
 }));
