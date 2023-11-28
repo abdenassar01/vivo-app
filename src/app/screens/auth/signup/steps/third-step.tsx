@@ -6,6 +6,8 @@ import TextInput from '../../../../components/common/form-fields/text-input/text
 import UploadAvatar from '../../../../components/common/form-fields/upload-avatar/upload-avatar';
 import {t} from 'i18next';
 import FilePickerInput from '../../../../components/common/form-fields/file-picker/file-picker-input';
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
 
 type Props = {
   setUser: (user: any) => void;
@@ -15,7 +17,7 @@ type Props = {
 
 const ThirdStep = ({prev, user, setUser}: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
-  // const {navigate} = useNavigation<StackNavigationProp<any>>();
+  const {navigate} = useNavigation<StackNavigationProp<any>>();
 
   const {control, handleSubmit} = useForm<any>({
     mode: 'onChange',
@@ -28,7 +30,10 @@ const ThirdStep = ({prev, user, setUser}: Props) => {
       ...user,
       role: data.role,
     });
-    setTimeout(() => setLoading(false), 2000);
+    setTimeout(() => {
+      setLoading(false);
+      navigate('SignupSuccess');
+    }, 2000);
   };
 
   return (

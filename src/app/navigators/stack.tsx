@@ -5,6 +5,7 @@ import Onboarding from '../screens/onboarding/onboarding';
 import Login from '../screens/auth/login/login';
 import SignUp from '../screens/auth/signup/signup';
 import ResetPassword from '../screens/auth/reset/reset-password';
+import SignupSuccess from '../screens/auth/signup/success/signup-success';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ export const UnAuthenticationStacks = () => {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="ResetPassword" component={ResetPassword} />
+      <Stack.Screen name="SignupSuccess" component={SignupSuccess} />
     </Stack.Navigator>
   );
 };
