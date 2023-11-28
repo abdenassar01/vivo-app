@@ -5,6 +5,7 @@ import {useForm} from 'react-hook-form';
 import TextInput from '../../../../components/common/form-fields/text-input/text-input';
 import UploadAvatar from '../../../../components/common/form-fields/upload-avatar/upload-avatar';
 import {t} from 'i18next';
+import FilePickerInput from '../../../../components/common/form-fields/file-picker/file-picker-input';
 
 type Props = {
   setUser: (user: any) => void;
@@ -40,10 +41,10 @@ const ThirdStep = ({prev, user, setUser}: Props) => {
           name="cni"
           placeholder={t('cni-input-text')}
         />
-        <TextInput
+        <FilePickerInput
           control={control}
           label={t('cni-file-upload-text')}
-          name="repassword"
+          name="cniFile"
           placeholder={t('cni-file-upload-text')}
         />
       </FormWrapper>
