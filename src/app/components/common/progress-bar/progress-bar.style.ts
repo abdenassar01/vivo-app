@@ -8,7 +8,6 @@ export const ProgressBarWrapper = styled.View<{theme: ThemeType}>`
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  margin: 15px 0;
 `;
 
 export const ProgressItemWrapper = styled.View<{
