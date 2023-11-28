@@ -9,32 +9,34 @@ type Props = {
   text: string;
   width?: string | number;
   loading?: boolean;
+  disabled?: boolean;
   btnTheme?: 'primary' | 'secondary' | 'error' | 'warning';
 };
 
 const Button = ({
   onPress,
   text,
-  width,
+  width = '100%',
   loading,
   btnTheme = 'primary',
+  disabled,
 }: Props) => {
   const {primary, background} = useTheme();
 
-  return loading ? (
+  //  loading ?
+  return (
     <ActionButton
       btnTheme={btnTheme}
-      disabled={loading}
+      disabled={disabled || loading || false}
       width={width}
       onPress={onPress}>
-      <Swing
-        size={18}
-        color={btnTheme === 'secondary' ? primary : background}
-      />
-      <ButtonText btnTheme={btnTheme}>{text}</ButtonText>
-    </ActionButton>
-  ) : (
-    <ActionButton btnTheme={btnTheme} width={width} onPress={onPress}>
+      {loading && (
+        <Swing
+          size={18}
+          color={btnTheme === 'secondary' ? primary : background}
+        />
+      )}
+
       <ButtonText btnTheme={btnTheme}>{text}</ButtonText>
     </ActionButton>
   );

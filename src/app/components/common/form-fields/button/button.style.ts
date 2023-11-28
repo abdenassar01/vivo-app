@@ -5,6 +5,7 @@ import {ThemeType} from '../../../../../utils/theme';
 export const ActionButton = styled.TouchableOpacity<{
   theme: ThemeType;
   width: string | number;
+  disabled: boolean;
   btnTheme: 'primary' | 'secondary' | 'error' | 'warning';
 }>`
   border-radius: 12px;
@@ -13,15 +14,19 @@ export const ActionButton = styled.TouchableOpacity<{
   gap: 5px;
   justify-content: center;
   align-items: center;
-  border-color: ${({theme, btnTheme}) =>
-    btnTheme === 'error'
+  border-color: ${({theme, btnTheme, disabled}) =>
+    disabled
+      ? '#C1C1C1'
+      : btnTheme === 'error'
       ? '#f71b40'
       : btnTheme === 'warning'
       ? '#edca2d'
       : theme.primary};
   border-width: ${({btnTheme}) => (btnTheme === 'secondary' ? 0 : 1)}px;
-  background-color: ${({theme, btnTheme}) =>
-    btnTheme === 'primary'
+  background-color: ${({theme, btnTheme, disabled}) =>
+    disabled
+      ? '#C1C1C1'
+      : btnTheme === 'primary'
       ? theme.primary
       : btnTheme === 'secondary'
       ? theme.background
