@@ -25,6 +25,7 @@ import {useForm} from 'react-hook-form';
 // import {zodResolver} from '@hookform/resolvers/zod';
 import Toast from 'react-native-toast-message';
 import Header from '../../../components/core/header/header';
+import {t} from 'i18next';
 
 const Login = () => {
   const [validating, setValidating] = useState<boolean>(false);
@@ -57,25 +58,25 @@ const Login = () => {
 
           <FormWrapper>
             <HeroText>
-              <GreetingText>Se connecter</GreetingText>
+              <GreetingText>{t('login-header-text')}</GreetingText>
             </HeroText>
             <TextInput
               control={control}
-              label="Email"
-              name="email"
-              placeholder="yassine@exemple.com"
+              label={t('email-input-text')}
+              name="mail"
+              placeholder={t('email-input-placeholder')}
             />
             <PasswordWrapper>
               <TextInput
                 control={control}
-                label="Mot de passe"
+                label={t('password-input-text')}
                 name="password"
-                placeholder="Mot de passe"
+                placeholder={t('password-input-text')}
                 type="password"
               />
               <ForgotPasswordSection>
                 <LinkWrapper onPress={() => navigate('ResetPassword')}>
-                  <LinkText>Mot de passe oublié ?</LinkText>
+                  <LinkText>{t('reset-header-text1')}</LinkText>
                 </LinkWrapper>
               </ForgotPasswordSection>
             </PasswordWrapper>
@@ -83,20 +84,22 @@ const Login = () => {
               <Button
                 width="100%"
                 loading={validating}
-                text="Login"
+                text={t('login-action-button-text')}
                 onPress={handleSubmit(onSubmit)}
               />
               <SwitchScreensWrapper>
                 <SwitchScreensLabel>
-                  Vous n’avez pas un compte ?
+                  {t('dont-have-account')}
                 </SwitchScreensLabel>
                 <SwitchScreensLink onPress={() => navigate('SignUp')}>
-                  <SwitchScreensLinkText>S’inscrire</SwitchScreensLinkText>
+                  <SwitchScreensLinkText>
+                    {t('register-action-button-text')}
+                  </SwitchScreensLinkText>
                 </SwitchScreensLink>
               </SwitchScreensWrapper>
             </BottomScreenWrapper>
           </FormWrapper>
-          <BottomSpacer />
+          <BottomSpacer size={1} />
         </LoginScreenWrapper>
       </Scrollable>
     </AppWrapper>
