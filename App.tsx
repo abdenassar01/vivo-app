@@ -21,7 +21,10 @@ function App(): JSX.Element {
       <GestureHandlerRootView style={{flex: 1}}>
         <NavigationContainer>
           <QueryClientProvider client={queryClient}>
-            <StatusBar backgroundColor={light.primary} />
+            <StatusBar
+              barStyle="dark-content"
+              backgroundColor={light.background}
+            />
             <Router />
           </QueryClientProvider>
         </NavigationContainer>
