@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import Home from '../screens/home';
 import DrawerContent from '../components/core/drawer/drawer-content';
+import Home from '../screens/home/home';
 
 const Drawer = createDrawerNavigator();
 

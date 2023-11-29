@@ -1,6 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
 import {createStackNavigator} from '@react-navigation/stack';
-import Home from '../screens/home';
 import Onboarding from '../screens/onboarding/onboarding';
 import Login from '../screens/auth/login/login';
 import SignUp from '../screens/auth/signup/signup';
@@ -31,8 +30,8 @@ export const AuthenticatedStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Drawer" component={DrawerNavigation} />
-      <Stack.Screen name="Chat" component={Home} />
-      <Stack.Screen name="Payment" component={Home} />
+      {/* <Stack.Screen name="Chat" component={Home} />
+      <Stack.Screen name="Payment" component={Home} /> */}
     </Stack.Navigator>
   );
 };
