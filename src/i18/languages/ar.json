@@ -1,0 +1,67 @@
+{
+  "translation": {
+    "welcome-header": "مرحبًا",
+    "Welcome-text": "",
+    "button-validate-text": "تأكيد",
+    "button-submit-text": "ارسال",
+    "button-next-text": "التالي",
+    "button-previous-text": "العودة",
+    "button-reset-text": "إعادة تعيين كلمة المرور",
+    "phone-input-text": "رقم الهاتف",
+    "phone-input-placeholder": "06 00 00 00 00",
+    "password-input-text": "كلمة المرور",
+    "confirm-password-input-text": "تأكيد كلمة المرور",
+    "reset-new-password-header": "Entrez le nouveau mot de passe",
+    "dont-have-account": "ليس لديك حساب؟",
+    "register-action-button-text": "أنشئ حساب",
+    "otp-header-text": "أدخل الرمز الذي تم استلامه عبر الرسائل النصية",
+    "reset-header-text1": "هل نسيت كلمة المرور؟",
+    "reset-header-text2": "لا مشكلة! ",
+    "reset-main-text": "Pour réinitialiser votre mot de passe, veuillez entrer l'adresse e-mail associée à votre compte. Nous vous enverrons un lien de réinitialisation. ",
+    "login-header-text": "تسجيل الدخول",
+    "email-input-text": "البريد الإلكتروني",
+    "email-input-placeholder": "البريد الإلكتروني",
+    "forget-password-text": "هل نسيت كلمة المرور؟",
+    "login-action-button-text": "تسجيل الدخول",
+    "fullname-input-text": "الاسم واللقب",
+    "signup-header-text": "إنشاء حسابك",
+    "cni-input-text": "رقم بطاقة الهوية الوطنية",
+    "cni-file-upload-text": "قم بتحميل صورة مصوّرة لبطاقة الهوية الوطنية",
+    "awaiting-accepting": "حسابك في انتظار الموافقة!",
+    "home-nav-label": "الصفحة الرئيسية",
+    "quiz-nav-label": "اختبار",
+    "conversion-nav-label": "تحويل",
+    "evaluation-nav-label": "تقييمات",
+    "demands-nav-label": "الطلبات",
+    "profile-nav-label": "الملف الشخصي",
+    "logout-nav-label": "تسجيل الخروج",
+    "points-label": "نقطة",
+    "home-quiz-link": "اختبارات لكسب النقاط",
+    "home-conversion-link": "تحويل النقاط",
+    "home-demads-link": "عرض التقييمات",
+    "home-evaluation-link": "عرض التقييمات",
+    "recent-evaluations-header": "آخر التقييمات",
+    "points-unit-text": "نقطة",
+    "demand-date-label": "تاريخ الطلب",
+    "number-points-text": "عدد النقاط المطلوبة",
+    "amount-demand-label": "المبلغ المطلوب (بالدرهم المغربي)",
+    "demand-status-demand": "حالة الطلب",
+    "demand-status-inprogress": "قيد المعالجة",
+    "evaluation-unit": "تعليق",
+    "conversion-header-text": "تحويل النقاط إلى شيك",
+    "conversion-second-header-step1": "تحقق من رصيد نقاطك",
+    "conversion-second-header-step2": "قم بتأكيد التحويل",
+    "conversion-second-header-step3": "انتظر التأكيد",
+    "conversion-step-one-text": "قبل الشروع في التحويل، تأكد من التحقق من رصيد نقاطك الحالي. سيساعدك ذلك في معرفة المبلغ الذي يمكنك تحويله إلى شيك.",
+    "conversion-step-two-text": "انقر على زر التحويل. سيُطلب منك تأكيد هذا الإجراء. يرجى التحقق بعناية من التفاصيل قبل التأكيد.",
+    "conversion-step-three-text": "بعد التأكيد، سيقوم نظامنا بمعالجة طلبك. ستتلقى إشعارًا فور نجاح التحويل. عادةً، يستغرق هذا عدة أيام عمل.",
+    "number-points-conversion-text": "عدد النقاط للتحويل",
+    "quiz-header-text": "مرحبًا في الاختبارات",
+    "quiz-main-text": "لديك الفرصة لكسب نقاط إضافية عند الإجابة على الاختبارات.",
+    "quiz-button-text": "بدء الاختبار",
+    "congrats-text": "تهانينا 🎉",
+    "points-wining": "النقاط المُكتسبة :",
+    "update-password-label": "تغيير كلمة المرور",
+    "update-button-text": "تحديث"
+  }
+}
