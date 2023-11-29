@@ -12,9 +12,7 @@ const WithDrawerHeader = () => {
   return (
     <HeaderWrapper>
       <Clickable onPress={() => dispatch(DrawerActions.openDrawer())}>
-        <OpenDrawerIcon
-          source={require('../../../../assets/icons/logout.png')}
-        />
+        <OpenDrawerIcon source={require('../../../../assets/icons/menu.png')} />
       </Clickable>
       <CentredLogo source={require('../../../../assets/logo-inverted.png')} />
     </HeaderWrapper>
