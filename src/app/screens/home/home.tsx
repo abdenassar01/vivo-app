@@ -15,6 +15,8 @@ import {t} from 'i18next';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import TitleHeader from '../../components/core/title-header/title-header';
+import {MainText} from '../../components/common/text';
+import RatingTimeAgo from '../../components/core/rating-time-ago/rating-time-ago';
 
 const Home = () => {
   const {navigate} = useNavigation<StackNavigationProp<any>>();
@@ -51,7 +53,9 @@ const Home = () => {
         <RecentRatingsWrapper>
           <TitleHeader title={t('recent-evaluations-header')} />
           <RatingsList>
-            <TitleHeader title={t('recent-evaluations-header')} />
+            <MainText>
+              <RatingTimeAgo time={new Date()} />
+            </MainText>
           </RatingsList>
         </RecentRatingsWrapper>
       </HomeWrapper>
