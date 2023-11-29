@@ -24,7 +24,7 @@ const PointsProgressChart = ({progress}: Props) => {
         fill={progress}
         tintColor={theme.primary}
         backgroundColor="#F3F4F6"
-        delay={100}
+        delay={300}
         rotation={360}>
         {() => (
           <CircleInnerText>
