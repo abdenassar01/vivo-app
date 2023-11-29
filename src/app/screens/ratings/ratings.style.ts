@@ -12,9 +12,17 @@ export const CentredContent = styled.View`
 export const MainRatingWrapper = styled.View`
   margin-top: 11px;
   align-items: center;
+  padding-bottom: 24px;
 `;
 
 export const RatingHeader = styled(SecondaryHeading)`
   color: #ffb400;
   font-size: 32px;
 `;
+
+export const NbrRatingText = styled(SecondaryHeading)`
+  color: #c2c2c2;
+  font-size: 14px;
+`;
+
+export const RatingsList = styled.View``;

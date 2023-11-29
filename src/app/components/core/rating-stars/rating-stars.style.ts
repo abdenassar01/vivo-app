@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 
 export const StarsList = styled.View`
   flex-direction: row;
+  gap: 5px;
 `;
 
 export const StarImage = styled(FastImage)<{size?: number}>`
