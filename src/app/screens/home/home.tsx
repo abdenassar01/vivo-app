@@ -1,12 +1,20 @@
 import React from 'react';
 import Header from '../../components/core/header/header';
-import {MainText} from '../../components/common/text';
 import {AppWrapper} from '../../../utils/shared-styles';
-import {HomeWrapper, Tab, TabIcon, TabLabel, TabsWrapper} from './home.style';
+import {
+  HomeWrapper,
+  RatingsList,
+  RecentRatingsWrapper,
+  Tab,
+  TabIcon,
+  TabLabel,
+  TabsWrapper,
+} from './home.style';
 import PointsProgressChart from '../../components/core/chart/points-progress-chart';
 import {t} from 'i18next';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
+import TitleHeader from '../../components/core/title-header/title-header';
 
 const Home = () => {
   const {navigate} = useNavigation<StackNavigationProp<any>>();
@@ -40,7 +48,12 @@ const Home = () => {
             <TabLabel>{t('home-evaluation-link')}</TabLabel>
           </Tab>
         </TabsWrapper>
-        <MainText>home</MainText>
+        <RecentRatingsWrapper>
+          <TitleHeader title={t('recent-evaluations-header')} />
+          <RatingsList>
+            <TitleHeader title={t('recent-evaluations-header')} />
+          </RatingsList>
+        </RecentRatingsWrapper>
       </HomeWrapper>
     </AppWrapper>
   );

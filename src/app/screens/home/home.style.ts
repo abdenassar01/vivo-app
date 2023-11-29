@@ -34,3 +34,9 @@ export const TabLabel = styled(Heading)<{theme: ThemeType}>`
   text-align: center;
   color: ${({theme}) => theme.background};
 `;
+
+export const RecentRatingsWrapper = styled.View`
+  padding-top: 24px;
+`;
+
+export const RatingsList = styled.View``;
