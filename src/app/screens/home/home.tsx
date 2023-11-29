@@ -15,8 +15,35 @@ import {t} from 'i18next';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import TitleHeader from '../../components/core/title-header/title-header';
-import {MainText} from '../../components/common/text';
-import RatingTimeAgo from '../../components/core/rating-time-ago/rating-time-ago';
+import RatingItem from '../../components/core/rating-item/rating-item';
+
+const ratingItems = [
+  {
+    time: new Date(),
+    rating: 5,
+    points: 300,
+  },
+  {
+    time: '2023-11-28T06:24:44.124Z',
+    rating: 3.5,
+    points: 0,
+  },
+  {
+    time: '2023-06-28T06:24:44.124Z',
+    rating: 2,
+    points: 0,
+  },
+  {
+    time: '2023-11-29T10:55:44.124Z',
+    rating: 1,
+    points: 0,
+  },
+  {
+    time: '2023-10-28T06:24:44.124Z',
+    rating: 5,
+    points: 300,
+  },
+];
 
 const Home = () => {
   const {navigate} = useNavigation<StackNavigationProp<any>>();
@@ -53,9 +80,15 @@ const Home = () => {
         <RecentRatingsWrapper>
           <TitleHeader title={t('recent-evaluations-header')} />
           <RatingsList>
-            <MainText>
-              <RatingTimeAgo time={new Date()} />
-            </MainText>
+            {React.Children.toArray(
+              ratingItems.map(item => (
+                <RatingItem
+                  points={item.points}
+                  rating={item.rating}
+                  time={item.time}
+                />
+              )),
+            )}
           </RatingsList>
         </RecentRatingsWrapper>
       </HomeWrapper>
