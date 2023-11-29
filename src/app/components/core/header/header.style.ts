@@ -21,5 +21,5 @@ export const OpenDrawerIcon = styled(FastImage)`
 
 export const Clickable = styled.TouchableOpacity`
   position: absolute;
-  left: 24px;
+  left: 0;
 `;

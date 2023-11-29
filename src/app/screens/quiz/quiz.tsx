@@ -1,15 +1,15 @@
 import React from 'react';
-import Header from '../../components/core/header/header';
 import {MainText} from '../../components/common/text';
+import Header from '../../components/core/header/header';
 import {AppWrapper} from '../../../utils/shared-styles';
 
-const Home = () => {
+const Quiz = () => {
   return (
     <AppWrapper>
       <Header openDrower />
-      <MainText>home</MainText>
+      <MainText>quiz</MainText>
     </AppWrapper>
   );
 };
 
-export default Home;
+export default Quiz;

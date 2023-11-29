@@ -43,15 +43,15 @@ const DrawerContent = ({navigation}: DrawerContentComponentProps) => {
             <Icon source={require('../../../../assets/icons/home.png')} />
             <ItemText>{t('home-nav-label')}</ItemText>
           </Item>
-          <Item onPress={() => navigation.navigate('Home')}>
+          <Item onPress={() => navigation.navigate('Quiz')}>
             <Icon source={require('../../../../assets/icons/quiz.png')} />
             <ItemText>{t('quiz-nav-label')}</ItemText>
           </Item>
-          <Item onPress={() => navigation.navigate('Quiz')}>
+          <Item onPress={() => navigation.navigate('Conversion')}>
             <Icon source={require('../../../../assets/icons/conversion.png')} />
             <ItemText>{t('conversion-nav-label')}</ItemText>
           </Item>
-          <Item onPress={() => navigation.navigate('Evaluations')}>
+          <Item onPress={() => navigation.navigate('Ratings')}>
             <Icon source={require('../../../../assets/icons/rates.png')} />
             <ItemText>{t('evaluation-nav-label')}</ItemText>
           </Item>
