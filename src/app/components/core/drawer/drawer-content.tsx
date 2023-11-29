@@ -18,13 +18,12 @@ import {
 } from './drawer-content.style';
 import {t} from 'i18next';
 
-const DrawerContent = (props: DrawerContentComponentProps) => {
-  console.log(props);
+const DrawerContent = ({navigation}: DrawerContentComponentProps) => {
   return (
     <DrawerWrapper>
       <DrawerHeader>
         <Logo source={require('../../../../assets/logo-inverted.png')} />
-        <Clickable onPress={props.navigation.closeDrawer}>
+        <Clickable onPress={navigation.closeDrawer}>
           <Icon source={require('../../../../assets/icons/close.png')} />
         </Clickable>
       </DrawerHeader>
@@ -40,32 +39,32 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
           </ProfileInfo>
         </ProfileWrapper>
         <ItemsList>
-          <Item onPress={() => props.navigation.navigate('Home')}>
+          <Item onPress={() => navigation.navigate('Home')}>
             <Icon source={require('../../../../assets/icons/home.png')} />
             <ItemText>{t('home-nav-label')}</ItemText>
           </Item>
-          <Item onPress={() => props.navigation.navigate('Home')}>
+          <Item onPress={() => navigation.navigate('Home')}>
             <Icon source={require('../../../../assets/icons/quiz.png')} />
             <ItemText>{t('quiz-nav-label')}</ItemText>
           </Item>
-          <Item onPress={() => props.navigation.navigate('Quiz')}>
+          <Item onPress={() => navigation.navigate('Quiz')}>
             <Icon source={require('../../../../assets/icons/conversion.png')} />
             <ItemText>{t('conversion-nav-label')}</ItemText>
           </Item>
-          <Item onPress={() => props.navigation.navigate('Evaluations')}>
+          <Item onPress={() => navigation.navigate('Evaluations')}>
             <Icon source={require('../../../../assets/icons/rates.png')} />
             <ItemText>{t('evaluation-nav-label')}</ItemText>
           </Item>
-          <Item onPress={() => props.navigation.navigate('Orders')}>
+          <Item onPress={() => navigation.navigate('Orders')}>
             <Icon source={require('../../../../assets/icons/orders.png')} />
             <ItemText>{t('demands-nav-label')}</ItemText>
           </Item>
-          <Item onPress={() => props.navigation.navigate('Profile')}>
+          <Item onPress={() => navigation.navigate('Profile')}>
             <Icon source={require('../../../../assets/icons/profile.png')} />
             <ItemText>{t('profile-nav-label')}</ItemText>
           </Item>
         </ItemsList>
-        <Item onPress={() => props.navigation.navigate('Logout')}>
+        <Item onPress={() => navigation.navigate('Logout')}>
           <Icon source={require('../../../../assets/icons/logout.png')} />
           <ItemText>{t('logout-nav-label')}</ItemText>
         </Item>
