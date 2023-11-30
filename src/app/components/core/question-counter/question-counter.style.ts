@@ -1,10 +1,11 @@
 import styled from 'styled-components/native';
 import {Heading, SecondaryHeading} from '../../common/text';
 import {ThemeType} from '../../../../utils/theme';
+import i18next from 'i18next';
 
 export const QuestionCounterWrapper = styled.View`
   width: 100%;
-  flex-direction: row;
+  flex-direction: ${i18next.language === 'fr' ? 'row' : 'row-reverse'};
   justify-content: space-between;
   align-items: center;
 `;
