@@ -32,7 +32,7 @@
     "quiz-nav-label": "Quiz",
     "conversion-nav-label": "Conversion",
     "evaluation-nav-label": "Évaluations",
-    "demands-nav-label": "Demandes  ",
+    "demands-nav-label": "Demandes",
     "profile-nav-label": "Profile",
     "logout-nav-label": "Déconnexion",
     "points-label": "points",
@@ -62,6 +62,7 @@
     "congrats-text": "Félicitations pour avoir réussi les évaluations 🎉",
     "points-wining": "Points Gagnés :",
     "update-password-label": "Changer le mot de passe",
-    "update-button-text": "Mise à jour"
+    "update-button-text": "Mise à jour",
+    "order-label": "Demande"
   }
 }
