@@ -18,15 +18,10 @@ import CentredModal from '../../common/centred-modal/centred-modal';
 import TitleHeader from '../title-header/title-header';
 import {t} from 'i18next';
 import {formateDate} from '../../../../utils/helpers/formate-date';
+import {Order} from '../../../../../types/order';
 
 type Props = {
-  order: {
-    id: number;
-    price: number;
-    date: string;
-    status: 'success' | 'inprogress';
-    nbrPoints: number;
-  };
+  order: Order;
 };
 
 const OrderItem = ({order}: Props) => {

@@ -5,8 +5,9 @@ import {OrdersList, OrdersScreenWrapper} from './orders.style';
 import TitleHeader from '../../components/core/title-header/title-header';
 import {t} from 'i18next';
 import OrderItem from '../../components/core/order-item/order-item';
+import {Order} from '../../../../types/order';
 
-const orders = [
+const orders: Order[] = [
   {
     id: Math.ceil(Math.random() * 100000),
     price: 1200,
