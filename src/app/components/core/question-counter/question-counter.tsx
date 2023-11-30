@@ -27,8 +27,10 @@ const QuestionCounter = ({
   return (
     <QuestionCounterWrapper>
       <QuestionMainText>
-        {t('question-label')} {questionNbr} /{' '}
-        <QuestionSecondaryText>{numberOfQuestions}</QuestionSecondaryText>
+        {t('question-label')} {questionNbr.toString().padStart(2, '0')} /{' '}
+        <QuestionSecondaryText>
+          {numberOfQuestions.toString().padStart(2, '0')}
+        </QuestionSecondaryText>
       </QuestionMainText>
       <CountdownCircleTimer
         colors={[theme.primary, '#A30000']}

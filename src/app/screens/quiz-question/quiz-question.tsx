@@ -9,7 +9,11 @@ const QuizQuestion = () => {
     <AppWrapper>
       <Header openDrower />
       <QuestionScreenWrapper>
-        <QuestionCounter />
+        <QuestionCounter
+          numberOfQuestions={4}
+          questionNbr={1}
+          onComplete={() => console.log('update')}
+        />
       </QuestionScreenWrapper>
     </AppWrapper>
   );
