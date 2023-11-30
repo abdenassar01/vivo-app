@@ -6,6 +6,7 @@ import SignUp from '../screens/auth/signup/signup';
 import ResetPassword from '../screens/auth/reset/reset-password';
 import SignupSuccess from '../screens/auth/signup/success/signup-success';
 import DrawerNavigation from './drawer';
+import QuizQuestion from '../screens/quiz-question/quiz-question';
 
 const Stack = createStackNavigator();
 
@@ -30,8 +31,7 @@ export const AuthenticatedStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Drawer" component={DrawerNavigation} />
-      {/* <Stack.Screen name="Chat" component={Home} />
-      <Stack.Screen name="Payment" component={Home} /> */}
+      <Stack.Screen name="QuizQuestion" component={QuizQuestion} />
     </Stack.Navigator>
   );
 };
