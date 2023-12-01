@@ -1,4 +1,3 @@
-import {Text} from 'react-native';
 import React from 'react';
 import {AppWrapper, BottomSpacer} from '../../../utils/shared-styles';
 import Header from '../../components/core/header/header';
@@ -43,7 +42,6 @@ const UpdatePassword = () => {
           text={t('button-validate-text')}
         />
       </UpdatePasswordScreenWrapper>
-      <Text>UpdatePassword</Text>
     </AppWrapper>
   );
 };
