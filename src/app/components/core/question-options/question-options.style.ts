@@ -8,7 +8,7 @@ export const QuestionsOptionsWrapper = styled.View`
   padding-top: 28px;
 `;
 
-export const QuestionOptionItem = styled.View<{
+export const QuestionOptionItem = styled.TouchableOpacity<{
   theme: ThemeType;
   selected: boolean;
   correct: boolean;
