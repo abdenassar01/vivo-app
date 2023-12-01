@@ -7,6 +7,8 @@ import QuestionItem from '../../components/core/question-item/question-item';
 import Button from '../../components/common/form-fields/button/button';
 import {t} from 'i18next';
 import {useForm} from 'react-hook-form';
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
 
 const options = [
   {
@@ -31,6 +33,7 @@ const options = [
 
 const QuizQuestion = () => {
   const {control} = useForm<any>();
+  const {navigate} = useNavigation<StackNavigationProp<any>>();
 
   return (
     <AppWrapper>
@@ -62,7 +65,7 @@ const QuizQuestion = () => {
         <Button
           width="56%"
           text={t('button-next-text')}
-          onPress={() => console.log('next question')}
+          onPress={() => navigate('QuizSuccess')}
         />
       </ButtonsWrapper>
     </AppWrapper>
