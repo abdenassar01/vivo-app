@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import {Heading} from '../../common/text';
 import {ThemeType} from '../../../../utils/theme';
 
-export const QuestionItemWrapper = styled.ScrollView`
+export const QuestionItemWrapper = styled.View`
   padding-top: 7px;
 `;
 

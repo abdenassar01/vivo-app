@@ -4,6 +4,7 @@ import {
   QuestionItemWrapper,
   QuestionText,
 } from './question-item.style';
+import QuestionOptions from '../question-options/question-options';
 
 const QuestionItem = () => {
   return (
@@ -16,6 +17,7 @@ const QuestionItem = () => {
         defaultSource={require('../../../../assets/images/question-default.png')}
         source={require('../../../../assets/images/question-default.png')}
       />
+      <QuestionOptions />
     </QuestionItemWrapper>
   );
 };
