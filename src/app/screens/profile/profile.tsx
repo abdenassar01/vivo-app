@@ -16,9 +16,12 @@ import TextInput from '../../components/common/form-fields/text-input/text-input
 import {useForm} from 'react-hook-form';
 import {t} from 'i18next';
 import Button from '../../components/common/form-fields/button/button';
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
 
 const Profile = () => {
   const {control} = useForm<any>();
+  const {navigate} = useNavigation<StackNavigationProp<any>>();
 
   return (
     <AppWrapper>
@@ -53,7 +56,7 @@ const Profile = () => {
             label={t('phone-input-text')}
             defaultValue="+212 696788244"
           />
-          <UpdatePasswordLink>
+          <UpdatePasswordLink onPress={() => navigate('UpdatePassword')}>
             <UpdatePasswordText>
               {t('update-password-label')}
             </UpdatePasswordText>
