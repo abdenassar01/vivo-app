@@ -11,7 +11,6 @@ export const QuestionsOptionsWrapper = styled.View`
 export const QuestionOptionItem = styled.TouchableOpacity<{
   theme: ThemeType;
   selected: boolean;
-  correct: boolean;
 }>`
   width: 100%;
   padding: 15px;
@@ -22,8 +21,8 @@ export const QuestionOptionItem = styled.TouchableOpacity<{
   justify-content: center;
   align-items: center;
   border-radius: 17px;
-  background-color: ${({theme, selected, correct}) =>
-    selected ? (correct ? theme.primary : '#E92220') : theme.background};
+  background-color: ${({theme, selected}) =>
+    selected ? theme.primary : theme.background};
 `;
 
 export const OptionSelectedIcon = styled(FastImage)`

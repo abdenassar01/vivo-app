@@ -40,7 +40,6 @@ const QuestionOptions = ({options, control, name}: Props) => {
         options.map(option => (
           <QuestionOptionItem
             onPress={() => handleOptionPress(option)}
-            correct={option.correct}
             selected={
               value.filter((item: Option) => item.id === option.id).length > 0
             }>
@@ -53,11 +52,7 @@ const QuestionOptions = ({options, control, name}: Props) => {
             {value.filter((item: Option) => item.id === option.id).length >
               0 && (
               <OptionSelectedIcon
-                source={
-                  option.correct
-                    ? require('../../../../assets/icons/correct.png')
-                    : require('../../../../assets/icons/incorrect.png')
-                }
+                source={require('../../../../assets/icons/correct.png')}
               />
             )}
           </QuestionOptionItem>
