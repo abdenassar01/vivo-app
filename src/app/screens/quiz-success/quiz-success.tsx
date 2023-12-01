@@ -3,7 +3,6 @@ import {
   AppWrapperWithoutPadding,
   WithHorisontalPadding,
   WithPadding,
-  WithVerticalPadding,
 } from '../../../utils/shared-styles';
 import Header from '../../components/core/header/header';
 import {
@@ -26,9 +25,7 @@ const QuizSuccess = () => {
   return (
     <AppWrapperWithoutPadding>
       <WithHorisontalPadding>
-        <WithVerticalPadding>
-          <Header openDrower />
-        </WithVerticalPadding>
+        <Header openDrower />
       </WithHorisontalPadding>
       <QuizSuccessScreenWrapper
         // eslint-disable-next-line react-native/no-inline-styles
@@ -36,7 +33,9 @@ const QuizSuccess = () => {
           justifyContent: 'space-between',
           height: '100%',
         }}>
-        <CongratsText>{t('congrats-text')}</CongratsText>
+        <WithHorisontalPadding>
+          <CongratsText>{t('congrats-text')}</CongratsText>
+        </WithHorisontalPadding>
         <WinnerName>Mohamed BAHA</WinnerName>
         <CongratsImage
           resizeMode="stretch"
@@ -47,7 +46,11 @@ const QuizSuccess = () => {
           <NbrPoints>200 {t('points-label')}</NbrPoints>
         </TextWrapper>
         <WithPadding>
-          <Button onPress={() => navigate('Home')} text={t('home-nav-label')} />
+          <Button
+            width="100%"
+            onPress={() => navigate('Home')}
+            text={t('home-nav-label')}
+          />
         </WithPadding>
       </QuizSuccessScreenWrapper>
     </AppWrapperWithoutPadding>
