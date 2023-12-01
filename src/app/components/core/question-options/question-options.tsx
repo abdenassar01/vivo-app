@@ -7,6 +7,7 @@ import {
 } from './question-options.style';
 import {Control, useController} from 'react-hook-form';
 import {Option} from '../../../../../types/option';
+import i18next from 'i18next';
 
 interface Props {
   name: string;
@@ -47,7 +48,7 @@ const QuestionOptions = ({options, control, name}: Props) => {
               selected={
                 value.filter((item: Option) => item.id === option.id).length > 0
               }>
-              خدمة غسيل السيارات
+              {i18next.language === 'fr' ? option.text : option.textAr}{' '}
             </OptionText>
             {value.filter((item: Option) => item.id === option.id).length >
               0 && (
