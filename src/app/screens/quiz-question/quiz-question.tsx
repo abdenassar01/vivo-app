@@ -6,8 +6,32 @@ import QuestionCounter from '../../components/core/question-counter/question-cou
 import QuestionItem from '../../components/core/question-item/question-item';
 import Button from '../../components/common/form-fields/button/button';
 import {t} from 'i18next';
+import {useForm} from 'react-hook-form';
+
+const options = [
+  {
+    text: 'خدمة غسيل السيارات',
+    textAr: 'خدمة غسيل السيارات',
+    correct: true,
+    id: Math.random(),
+  },
+  {
+    text: 'Essence Sans Plomb 95',
+    textAr: 'تأجير السيارات',
+    correct: false,
+    id: Math.random(),
+  },
+  {
+    text: 'Service de lavage de voiture',
+    textAr: 'توصيل الوقود إلى المنزل',
+    correct: false,
+    id: Math.random(),
+  },
+];
 
 const QuizQuestion = () => {
+  const {control} = useForm<any>();
+
   return (
     <AppWrapper>
       <Header openDrower />
@@ -17,7 +41,16 @@ const QuizQuestion = () => {
           questionNbr={1}
           onComplete={() => console.log('update')}
         />
-        <QuestionItem />
+        <QuestionItem
+          conrol={control}
+          name="selectedOptions"
+          question={{
+            text: "Quel est le grade d'essence le plus élevé disponible à la station Shell?",
+            textAr: 'ما هي الخدمات الإضافية التي تقدمها محطة Shell للعملاء؟',
+            options: options,
+            image: 'https://i.imgur.com/KpwmFBA.png',
+          }}
+        />
       </QuestionScreenWrapper>
       <ButtonsWrapper>
         <Button
