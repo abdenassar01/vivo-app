@@ -7,7 +7,6 @@ import {
 import Header from '../../components/core/header/header';
 import {
   CentredContent,
-  ProfileAvatar,
   ProfileWrapper,
   UpdatePasswordLink,
   UpdatePasswordText,
@@ -18,6 +17,7 @@ import {t} from 'i18next';
 import Button from '../../components/common/form-fields/button/button';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
+import UploadAvatar from '../../components/common/form-fields/upload-avatar/upload-avatar';
 
 const Profile = () => {
   const {control} = useForm<any>();
@@ -34,9 +34,10 @@ const Profile = () => {
         }}>
         <BottomSpacer size={0} />
         <CentredContent>
-          <ProfileAvatar
-            defaultSource={require('../../../assets/images/user.png')}
-            source={{uri: 'https://i.imgur.com/Ag7fbTj.png'}}
+          <UploadAvatar
+            control={control}
+            name="avatar"
+            defaultValue="https://i.imgur.com/Ag7fbTj.png"
           />
           <TextInput
             control={control}

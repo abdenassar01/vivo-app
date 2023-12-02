@@ -1,4 +1,3 @@
-import FastImage from 'react-native-fast-image';
 import styled from 'styled-components/native';
 import {MainText} from '../../components/common/text';
 import {ThemeType} from '../../../utils/theme';
@@ -9,12 +8,6 @@ export const CentredContent = styled.KeyboardAvoidingView`
   justify-content: center;
   align-items: center;
   width: 100%;
-`;
-
-export const ProfileAvatar = styled(FastImage)`
-  width: 112px;
-  height: auto;
-  aspect-ratio: 1/1;
 `;
 
 export const UpdatePasswordLink = styled.TouchableOpacity`
