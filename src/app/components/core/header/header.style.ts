@@ -1,3 +1,4 @@
+import i18next from 'i18next';
 import FastImage from 'react-native-fast-image';
 import styled from 'styled-components/native';
 
@@ -21,5 +22,6 @@ export const OpenDrawerIcon = styled(FastImage)`
 
 export const Clickable = styled.TouchableOpacity`
   position: absolute;
-  left: 0;
+  left: ${i18next.language === 'ar' ? "'auto'" : 0};
+  right: ${i18next.language === 'ar' ? 0 : "'auto'"};
 `;
