@@ -26,11 +26,12 @@ import {useForm} from 'react-hook-form';
 import Toast from 'react-native-toast-message';
 import Header from '../../../components/core/header/header';
 import {t} from 'i18next';
+import {useAuthStore} from '../../../../stores/auth';
 
 const Login = () => {
   const [validating, setValidating] = useState<boolean>(false);
   const {navigate} = useNavigation<StackNavigationProp<any>>();
-
+  const {setIsAuthenticated} = useAuthStore();
   const {control, handleSubmit} = useForm<any>({
     mode: 'onChange',
     // resolver: zodResolver(loginSchema),
@@ -44,6 +45,7 @@ const Login = () => {
       text1: 'Login',
       text2: 'Login succcess',
     });
+    setIsAuthenticated(true);
     setValidating(false);
   };
 

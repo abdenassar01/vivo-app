@@ -39,9 +39,7 @@ export const storeIsAuthenticatd = async (value: boolean) => {
 export const getIsAuthenticatd = async () => {
   try {
     const value = await AsyncStorage.getItem('@is_authenticated');
-    if (value !== null) {
-      return value;
-    }
+    return value;
   } catch (e) {
     Alert.alert('Error reading isAuth value');
   }
