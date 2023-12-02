@@ -45,6 +45,8 @@
     "demand-date-label": "تاريخ الطلب",
     "number-points-text": "عدد النقاط المطلوبة",
     "amount-demand-label": "المبلغ المطلوب (بالدرهم المغربي)",
+    "amount-Conversion-label": "المبلغ المتوافق (بالدرهم المغربي)",
+    "currency-unit-text": "درهم",
     "demand-status-demand": "حالة الطلب",
     "demand-status-inprogress": "قيد المعالجة",
     "evaluation-unit": "تعليق",

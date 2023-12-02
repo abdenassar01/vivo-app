@@ -45,6 +45,8 @@
     "demand-date-label": "Date de la Demande",
     "number-points-text": "Nombre de Points Demandés",
     "amount-demand-label": "Montant Demandé (en MAD)",
+    "amount-Conversion-label": "Montant Correspondant (en MAD)",
+    "currency-unit-text": "MAD",
     "demand-status-demand": "État de la Demande ",
     "demand-status-inprogress": "En cours de traitement",
     "evaluation-unit": "d'avis",
