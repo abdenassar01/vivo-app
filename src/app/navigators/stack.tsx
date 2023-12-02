@@ -30,8 +30,6 @@ export const AuthenticatedStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Drawer" component={DrawerNavigation} />
-      {/* <Stack.Screen name="Chat" component={Home} />
-      <Stack.Screen name="Payment" component={Home} /> */}
     </Stack.Navigator>
   );
 };

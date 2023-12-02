@@ -68,7 +68,7 @@ const TextInput = ({
           onBlur={onBlur}
           secureTextEntry={isPassword}
           nativeID={name}
-          placeholder={placeholder || label}
+          placeholder={defaultValue || placeholder || label}
         />
       </InputWrapper>
       <ErrorMessage>{error?.message}</ErrorMessage>

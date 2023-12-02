@@ -12,9 +12,7 @@ export const storeOnBoarding = async (value: boolean) => {
 export const getOnBoarding = async () => {
   try {
     const value = await AsyncStorage.getItem('@onboarding');
-    if (value !== null) {
-      return value;
-    }
+    return value;
   } catch (e) {
     Alert.alert('Error reading OnBoarding value');
   }

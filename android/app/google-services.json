@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "239590168279",
+    "project_id": "vivo-app-c73f1",
+    "storage_bucket": "vivo-app-c73f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239590168279:android:f5efaefa03a26c12194292",
+        "android_client_info": {
+          "package_name": "com.vivo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHOwx8v6tb6wnv_aQdxYstEjc8Ejl2IPg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

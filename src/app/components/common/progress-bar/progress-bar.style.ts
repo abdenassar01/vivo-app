@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import {ThemeType} from '../../../../utils/theme';
-import {MainText} from '../text';
+import {MainText, SecondaryHeading} from '../text';
 import {Dimensions} from 'react-native';
 
 export const ProgressBarWrapper = styled.View<{theme: ThemeType}>`
@@ -8,6 +8,13 @@ export const ProgressBarWrapper = styled.View<{theme: ThemeType}>`
   justify-content: center;
   align-items: center;
   flex-direction: row;
+`;
+
+export const ProgressBarHeaderText = styled(SecondaryHeading)<{
+  theme: ThemeType;
+}>`
+  color: ${({theme}) => theme.primary};
+  font-size: 15px;
 `;
 
 export const ProgressItemWrapper = styled.View<{

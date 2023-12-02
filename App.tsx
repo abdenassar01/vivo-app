@@ -28,7 +28,7 @@ function App(): JSX.Element {
           <QueryClientProvider client={queryClient}>
             <StatusBar
               barStyle="dark-content"
-              backgroundColor={light.background}
+              backgroundColor={light.primary}
             />
             <Router />
           </QueryClientProvider>

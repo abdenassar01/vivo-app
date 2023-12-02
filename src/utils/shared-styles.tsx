@@ -13,6 +13,18 @@ export const AppWrapperWithoutPadding = styled.SafeAreaView<{theme: ThemeType}>`
   flex: 1;
 `;
 
+export const WithPadding = styled.View<{padding?: number}>`
+  padding: ${({padding}) => padding || 24}px;
+`;
+
+export const WithVerticalPadding = styled.View<{padding?: number}>`
+  padding: ${({padding}) => padding || 24}px 0;
+`;
+
+export const WithHorisontalPadding = styled.View<{padding?: number}>`
+  padding: 0 ${({padding}) => padding || 24}px;
+`;
+
 export const BottomSpacer = styled.View<{size: number}>`
   height: ${({size}) => size || 50}px;
 `;
