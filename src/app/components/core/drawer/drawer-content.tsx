@@ -16,9 +16,12 @@ import {
   ProfileName,
   ProfileWrapper,
 } from './drawer-content.style';
+import {useLangStore} from '../../../../stores/lang';
 import {t} from 'i18next';
 
 const DrawerContent = ({navigation}: DrawerContentComponentProps) => {
+  const {toggleLang} = useLangStore();
+
   return (
     <DrawerWrapper>
       <DrawerHeader>
@@ -64,10 +67,16 @@ const DrawerContent = ({navigation}: DrawerContentComponentProps) => {
             <ItemText>{t('profile-nav-label')}</ItemText>
           </Item>
         </ItemsList>
-        <Item onPress={() => navigation.navigate('Logout')}>
-          <Icon source={require('../../../../assets/icons/logout.png')} />
-          <ItemText>{t('logout-nav-label')}</ItemText>
-        </Item>
+        <ItemsList>
+          <Item onPress={() => navigation.navigate('Logout')}>
+            <Icon source={require('../../../../assets/icons/logout.png')} />
+            <ItemText>{t('logout-nav-label')}</ItemText>
+          </Item>
+          <Item onPress={toggleLang}>
+            <Icon source={require('../../../../assets/icons/logout.png')} />
+            <ItemText>Change Lang</ItemText>
+          </Item>
+        </ItemsList>
       </Content>
     </DrawerWrapper>
   );

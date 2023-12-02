@@ -7,10 +7,13 @@ import {
 import {useOnBoardingStore} from '../../stores/onboarding';
 import {getOnBoarding} from '../../stores/presisting-helpers/onboarding';
 import ScreenLoader from '../components/common/loader/screen-loader';
+import {useLangStore} from '../../stores/lang';
 
 const Router = () => {
   const {onBoarding, setOnBoarding} = useOnBoardingStore();
   const [loading, setLoading] = useState<boolean>(false);
+
+  const {currentLang} = useLangStore();
 
   useEffect(() => {
     setLoading(true);
@@ -21,7 +24,9 @@ const Router = () => {
       setLoading(false);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onBoarding]);
+  }, [onBoarding, currentLang]);
+
+  // useEffect;
 
   const login = true;
   return loading ? (
