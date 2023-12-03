@@ -38,14 +38,14 @@ const TextInput = ({
   } = useController({
     control: control,
     name: name,
-    defaultValue: defaultValue || '',
+    defaultValue: defaultValue,
   });
 
   return (
     <FieldWrapper>
       <Label>{label}</Label>
       <InputWrapper>
-        {type === 'password' && value !== '' && (
+        {type === 'password' && value !== '' && value !== undefined && (
           <PasswordIcon onPress={() => setIsPassword(prev => !prev)}>
             {isPassword ? (
               <EyeIcon
@@ -60,7 +60,6 @@ const TextInput = ({
         )}
         <FieldText
           keyboardType={keyboard}
-          // icon={icon}
           multiline={type === 'textarea'}
           numberOfLines={type === 'textarea' ? 4 : 1}
           value={value}

@@ -2,20 +2,22 @@ import styled from 'styled-components/native';
 import {ThemeType} from '../../../../utils/theme';
 import FastImage from 'react-native-fast-image';
 import {MainText, SecondaryHeading} from '../../common/text';
+import i18next from 'i18next';
 
 export const OrderItemWrapper = styled.TouchableOpacity<{theme: ThemeType}>`
   width: 100%;
   border-radius: 6px;
   border-width: 1px;
   border-color: ${({theme}) => theme.helperText};
-  border-left-width: 0;
-  flex-direction: row;
+  border-left-width: ${i18next.language === 'ar' ? '1px' : '0'};
+  border-right-width: ${i18next.language === 'ar' ? '0' : '1px'};
+  flex-direction: ${i18next.language === 'ar' ? 'row-reverse' : 'row'};
   position: relative;
 `;
 
 export const ContentWrapper = styled.View`
   padding: 8px 16px 8px 10px;
-  flex-direction: row;
+  flex-direction: ${i18next.language === 'ar' ? 'row-reverse' : 'row'};
   align-items: center;
   width: 100%;
   gap: 10px;
@@ -26,8 +28,10 @@ export const LeftIndicator = styled.View<{status: 'success' | 'inprogress'}>`
     status === 'success' ? '#80BD0A' : '#FFB400'};
   width: 10px;
   height: 102%;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
+  border-top-left-radius: ${i18next.language === 'ar' ? '0' : '6px'};
+  border-bottom-left-radius: ${i18next.language === 'ar' ? '0' : '6px'};
+  border-top-right-radius: ${i18next.language === 'ar' ? '6px' : '0'};
+  border-bottom-right-radius: ${i18next.language === 'ar' ? '6px' : '0'};
 `;
 
 export const ExchangeIcon = styled(FastImage)`
@@ -40,6 +44,7 @@ export const ArrowIcon = styled(FastImage)`
   height: 14px;
   position: absolute;
   right: 16px;
+  transform: scaleX(-1);
 `;
 
 export const TextWrapper = styled.View``;
@@ -68,6 +73,7 @@ export const Label = styled(DateText)`
 
 export const Value = styled(OrderIdText)`
   font-size: 12px;
+  text-align: ${i18next.language === 'ar' ? 'right' : 'left'};
 `;
 
 export const StatusValue = styled(Value)`

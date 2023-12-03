@@ -8,6 +8,9 @@ import {t} from 'i18next';
 import FilePickerInput from '../../../../components/common/form-fields/file-picker/file-picker-input';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {zodResolver} from '@hookform/resolvers/zod';
+import {signupStepThree} from '../../../../../../types/user';
+import {z} from 'zod';
 
 type Props = {
   setUser: (user: any) => void;
@@ -15,20 +18,24 @@ type Props = {
   prev: () => void;
 };
 
+type FormValues = z.infer<typeof signupStepThree>;
+
 const ThirdStep = ({prev, user, setUser}: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
   const {navigate} = useNavigation<StackNavigationProp<any>>();
 
-  const {control, handleSubmit} = useForm<any>({
+  const {control, handleSubmit} = useForm<FormValues>({
     mode: 'onChange',
-    // resolver: zodResolver(signupStepThree),
+    resolver: zodResolver(signupStepThree),
   });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: FormValues) => {
     setLoading(true);
     setUser({
       ...user,
-      role: data.role,
+      avatar: data.avatar,
+      cni: data.cni,
+      cniFile: data.cniFile,
     });
     setTimeout(() => {
       setLoading(false);

@@ -22,22 +22,29 @@ import Button from '../../../components/common/form-fields/button/button';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {useForm} from 'react-hook-form';
-// import {zodResolver} from '@hookform/resolvers/zod';
+import {zodResolver} from '@hookform/resolvers/zod';
 import Toast from 'react-native-toast-message';
 import Header from '../../../components/core/header/header';
 import {t} from 'i18next';
 import {useAuthStore} from '../../../../stores/auth';
+import {loginSchema} from '../../../../../types/user';
+import {z} from 'zod';
+import {StatusBar} from 'react-native';
+import {useTheme} from 'styled-components';
+
+type FormValues = z.infer<typeof loginSchema>;
 
 const Login = () => {
+  const {background} = useTheme();
   const [validating, setValidating] = useState<boolean>(false);
   const {navigate} = useNavigation<StackNavigationProp<any>>();
   const {setIsAuthenticated} = useAuthStore();
-  const {control, handleSubmit} = useForm<any>({
+  const {control, handleSubmit} = useForm<FormValues>({
     mode: 'onChange',
-    // resolver: zodResolver(loginSchema),
+    resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = (data: unknown) => {
+  const onSubmit = (data: FormValues) => {
     setValidating(true);
     console.log(data);
     Toast.show({
@@ -51,6 +58,7 @@ const Login = () => {
 
   return (
     <AppWrapper>
+      <StatusBar backgroundColor={background} />
       <Scrollable showsVerticalScrollIndicator={false}>
         <LoginScreenWrapper>
           <Header />
@@ -65,7 +73,7 @@ const Login = () => {
             <TextInput
               control={control}
               label={t('email-input-text')}
-              name="mail"
+              name="email"
               placeholder={t('email-input-placeholder')}
             />
             <PasswordWrapper>

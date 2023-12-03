@@ -12,13 +12,17 @@ import ThirdStep from './steps/third-step';
 import Header from '../../../components/core/header/header';
 import ProgressBar from '../../../components/common/progress-bar/progress-bar';
 import {t} from 'i18next';
+import {StatusBar} from 'react-native';
+import {useTheme} from 'styled-components';
 
 const SignUp = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [user, setUser] = useState(null);
+  const {background} = useTheme();
 
   return (
     <AppWrapper>
+      <StatusBar backgroundColor={background} />
       <LoginScreenWrapper>
         <Header />
         <ContentWrapper>

@@ -4,6 +4,9 @@ import TextInput from '../../../../components/common/form-fields/text-input/text
 import Button from '../../../../components/common/form-fields/button/button';
 import {useForm} from 'react-hook-form';
 import {t} from 'i18next';
+import {signupStepTwo} from '../../../../../../types/user';
+import {z} from 'zod';
+import {zodResolver} from '@hookform/resolvers/zod';
 
 type Props = {
   handleButton: () => void;
@@ -12,18 +15,18 @@ type Props = {
   user: any;
 };
 
+type FormValues = z.infer<typeof signupStepTwo>;
+
 const SecondStep = ({handleButton, prev, user, setUser}: Props) => {
-  const {control, handleSubmit} = useForm<any>({
+  const {control, handleSubmit} = useForm<FormValues>({
     mode: 'onChange',
-    // resolver: zodResolver(signupStepTwo),
+    resolver: zodResolver(signupStepTwo),
   });
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: FormValues) => {
     setUser({
       ...user,
-      firstname: data.firstname,
-      lastname: data.lastname,
-      avatar: data.avatar,
+      password: data.password,
     });
     handleButton();
   };
@@ -40,7 +43,7 @@ const SecondStep = ({handleButton, prev, user, setUser}: Props) => {
         <TextInput
           control={control}
           label={t('confirm-password-input-text')}
-          name="repassword"
+          name="passwordConfirm"
           placeholder={t('confirm-password-input-text')}
           type="password"
         />

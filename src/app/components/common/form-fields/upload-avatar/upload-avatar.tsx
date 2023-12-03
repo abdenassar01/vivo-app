@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {
+  ErrorMessage,
   Icon,
   UploadImageWrapper,
   UploadPressableWrapper,
@@ -26,6 +27,7 @@ const UploadAvatar = ({name, control, defaultValue}: Props) => {
 
   const {
     field: {onChange},
+    fieldState: {error},
   } = useController({
     control,
     name,
@@ -68,6 +70,7 @@ const UploadAvatar = ({name, control, defaultValue}: Props) => {
             <Icon source={require('../../../../../assets/icons/camera.png')} />
           </UploadWrapper>
         )}
+        <ErrorMessage>{error?.message}</ErrorMessage>
       </UploadImageWrapper>
     </UploadPressableWrapper>
   );

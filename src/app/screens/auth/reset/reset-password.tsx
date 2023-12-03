@@ -7,13 +7,17 @@ import ResetThirdStep from './steps/third-step';
 import Header from '../../../components/core/header/header';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {StatusBar} from 'react-native';
+import {useTheme} from 'styled-components';
 
 const ResetPassword = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
   const {navigate} = useNavigation<StackNavigationProp<any>>();
+  const {background} = useTheme();
 
   return (
     <AppWrapper>
+      <StatusBar backgroundColor={background} />
       <LoginScreenWrapper>
         <Header />
         {currentStep === 1 && (
