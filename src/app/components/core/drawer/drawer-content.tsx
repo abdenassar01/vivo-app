@@ -18,9 +18,11 @@ import {
 } from './drawer-content.style';
 import {useLangStore} from '../../../../stores/lang';
 import {t} from 'i18next';
+import {useAuthStore} from '../../../../stores/auth';
 
 const DrawerContent = ({navigation}: DrawerContentComponentProps) => {
   const {toggleLang} = useLangStore();
+  const {setIsAuthenticated} = useAuthStore();
 
   return (
     <DrawerWrapper>
@@ -68,7 +70,7 @@ const DrawerContent = ({navigation}: DrawerContentComponentProps) => {
           </Item>
         </ItemsList>
         <ItemsList>
-          <Item onPress={() => navigation.navigate('Logout')}>
+          <Item onPress={() => setIsAuthenticated(false)}>
             <Icon source={require('../../../../assets/icons/logout.png')} />
             <ItemText>{t('logout-nav-label')}</ItemText>
           </Item>
