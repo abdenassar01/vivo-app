@@ -4,6 +4,9 @@ import TextInput from '../../../../components/common/form-fields/text-input/text
 import Button from '../../../../components/common/form-fields/button/button';
 import {useForm} from 'react-hook-form';
 import {t} from 'i18next';
+import {signupStepOne} from '../../../../../../types/user';
+import {z} from 'zod';
+import {zodResolver} from '@hookform/resolvers/zod';
 
 type Props = {
   handleButton: () => void;
@@ -11,17 +14,20 @@ type Props = {
   user: any;
 };
 
+type FormValues = z.infer<typeof signupStepOne>;
+
 const FirstStep = ({handleButton, setUser, user}: Props) => {
-  const {control, handleSubmit} = useForm<any>({
+  const {control, handleSubmit} = useForm<FormValues>({
     mode: 'onChange',
-    // resolver: zodResolver(signupStepOne),
+    resolver: zodResolver(signupStepOne),
   });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: FormValues) => {
     setUser({
       ...user,
+      fullname: data.fullname,
       email: data.email,
-      password: data.password,
+      phone: data.phone,
     });
     handleButton();
   };
