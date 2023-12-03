@@ -31,7 +31,7 @@ const FilePickerInput = ({
   } = useController({
     control: control,
     name: name,
-    defaultValue: defaultValue || '',
+    defaultValue: defaultValue,
   });
 
   const handlePickDocument = () => {

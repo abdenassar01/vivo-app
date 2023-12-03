@@ -44,7 +44,7 @@ const FirstStep = ({handleButton, setUser, user}: Props) => {
         <TextInput
           control={control}
           label={t('email-input-text')}
-          name="mail"
+          name="email"
           placeholder={t('email-input-text')}
         />
         <TextInput

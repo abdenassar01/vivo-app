@@ -43,7 +43,7 @@ const SecondStep = ({handleButton, prev, user, setUser}: Props) => {
         <TextInput
           control={control}
           label={t('confirm-password-input-text')}
-          name="repassword"
+          name="passwordConfirm"
           placeholder={t('confirm-password-input-text')}
           type="password"
         />

@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import {ThemeType} from '../../../../../utils/theme';
+import {MainText} from '../../text';
 
 export const UploadPressableWrapper = styled.TouchableOpacity`
   align-items: center;
@@ -7,6 +8,8 @@ export const UploadPressableWrapper = styled.TouchableOpacity`
 
 export const UploadImageWrapper = styled.View<{theme: ThemeType}>`
   border-radius: 50px;
+  align-items: center;
+  gap: 5px;
 `;
 
 export const Icon = styled.Image`
@@ -22,4 +25,9 @@ export const UploadWrapper = styled.ImageBackground`
   height: 90px;
 
   position: relative;
+`;
+
+export const ErrorMessage = styled(MainText)`
+  color: #ff3333;
+  font-size: 10px;
 `;
