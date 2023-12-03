@@ -45,7 +45,7 @@ const TextInput = ({
     <FieldWrapper>
       <Label>{label}</Label>
       <InputWrapper>
-        {type === 'password' && value !== '' && (
+        {type === 'password' && value !== '' && value !== undefined && (
           <PasswordIcon onPress={() => setIsPassword(prev => !prev)}>
             {isPassword ? (
               <EyeIcon
