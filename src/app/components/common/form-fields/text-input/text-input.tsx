@@ -38,7 +38,7 @@ const TextInput = ({
   } = useController({
     control: control,
     name: name,
-    defaultValue: defaultValue || '',
+    defaultValue: defaultValue,
   });
 
   return (
@@ -60,7 +60,6 @@ const TextInput = ({
         )}
         <FieldText
           keyboardType={keyboard}
-          // icon={icon}
           multiline={type === 'textarea'}
           numberOfLines={type === 'textarea' ? 4 : 1}
           value={value}
