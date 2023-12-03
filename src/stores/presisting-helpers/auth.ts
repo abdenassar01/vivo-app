@@ -19,3 +19,11 @@ export const getLoggedIn = async () => {
     Alert.alert('Error reading isAuthenticated value');
   }
 };
+
+export const clearLogin = async () => {
+  try {
+    return await AsyncStorage.removeItem('@isAuthenticated');
+  } catch (e) {
+    Alert.alert('Error reading isAuthenticated value');
+  }
+};
