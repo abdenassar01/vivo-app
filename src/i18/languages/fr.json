@@ -67,7 +67,7 @@
     "password-min-lenght": "longueur minimale de 8 caractères.",
     "password-max-lenght": "longueur maximale de 32 caractères.",
     "email-required": "vous devez fournir un e-mail.",
-    "email-invalid": "email invalide.",
+    "email-invalid": "votre email invalide.",
     "fullname-required": "vous devez fournir votre Nom & Prénom.",
     "phone-required": "vous devez fournir votre Numéro de téléphone.",
     "cni-required": "vous devez fournir votre Numéro de CNI.",
