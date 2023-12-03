@@ -18,11 +18,11 @@ import {useTheme} from 'styled-components';
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigation = () => {
-  const {white} = useTheme();
+  const {background} = useTheme();
 
   return (
     <>
-      <StatusBar backgroundColor={white} />
+      <StatusBar backgroundColor={background} />
       <Drawer.Navigator
         drawerContent={props => <DrawerContent {...props} />}
         initialRouteName="Home"
