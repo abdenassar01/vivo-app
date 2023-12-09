@@ -4,14 +4,13 @@ import FastImage from 'react-native-fast-image';
 import styled from 'styled-components/native';
 import {MainText, SecondaryHeading} from '../../common/text';
 import {ThemeType} from '../../../../utils/theme';
-import i18next from 'i18next';
 
 export const DrawerWrapper = styled(DrawerContentScrollView)`
   padding: 24px;
 `;
 
-export const DrawerHeader = styled.View`
-  flex-direction: ${i18next.language === 'ar' ? 'row-reverse' : 'row'};
+export const DrawerHeader = styled.View<{lang: string}>`
+  flex-direction: ${({lang}) => (lang === 'ar' ? 'row-reverse' : 'row')};
   justify-content: space-between;
 `;
 
@@ -61,8 +60,8 @@ export const Clickable = styled.TouchableOpacity``;
 
 export const ItemsList = styled.View``;
 
-export const Item = styled.TouchableOpacity`
-  flex-direction: ${i18next.language === 'ar' ? 'row-reverse' : 'row'};
+export const Item = styled.TouchableOpacity<{lang: string}>`
+  flex-direction: ${({lang}) => (lang === 'ar' ? 'row-reverse' : 'row')};
   align-items: center;
   gap: 15px;
   padding: 10px 15px;
