@@ -109,7 +109,7 @@ const Login = () => {
               </SwitchScreensWrapper>
             </BottomScreenWrapper>
           </FormWrapper>
-          <BottomSpacer size={1} />
+          <BottomSpacer size={30} />
         </LoginScreenWrapper>
       </Scrollable>
     </AppWrapper>

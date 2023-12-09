@@ -39,10 +39,10 @@ export const LoginScreenWrapper = styled.View`
   gap: 40px;
 `;
 
-export const FormWrapper = styled.View<{theme: ThemeType}>`
+export const FormWrapper = styled.ScrollView<{theme: ThemeType}>`
   gap: 8px;
   width: 100%;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 `;
 
 export const BottomScreenWrapper = styled.View`
@@ -72,11 +72,12 @@ export const SwitchScreensWrapper = styled.View`
   gap: 5px;
 `;
 
-export const ButtonsWrapper = styled.View`
-  flex-direction: row;
+export const ButtonsWrapper = styled.View<{lang: string}>`
+  flex-direction: ${({lang}) => (lang === 'ar' ? 'row-reverse' : 'row')};
   justify-content: space-between;
   width: 100%;
   gap: 5px;
+  padding-top: 10px;
 `;
 
 export const ForgotPasswordSection = styled.View`

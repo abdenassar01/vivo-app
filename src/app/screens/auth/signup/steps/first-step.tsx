@@ -7,6 +7,8 @@ import {t} from 'i18next';
 import {signupStepOne} from '../../../../../../types/user';
 import {z} from 'zod';
 import {zodResolver} from '@hookform/resolvers/zod';
+import {BottomSpacer} from '../../../../../utils/shared-styles';
+import {useLangStore} from '../../../../../stores/lang';
 
 type Props = {
   handleButton: () => void;
@@ -17,6 +19,8 @@ type Props = {
 type FormValues = z.infer<typeof signupStepOne>;
 
 const FirstStep = ({handleButton, setUser, user}: Props) => {
+  const {currentLang} = useLangStore();
+
   const {control, handleSubmit} = useForm<FormValues>({
     mode: 'onChange',
     resolver: zodResolver(signupStepOne),
@@ -54,7 +58,7 @@ const FirstStep = ({handleButton, setUser, user}: Props) => {
           placeholder={t('phone-input-text')}
         />
       </FormWrapper>
-      <ButtonsWrapper>
+      <ButtonsWrapper lang={currentLang}>
         <Button
           text={t('button-previous-text')}
           btnTheme="secondary"
@@ -66,6 +70,7 @@ const FirstStep = ({handleButton, setUser, user}: Props) => {
           text={t('button-next-text')}
           onPress={handleSubmit(onSubmit)}
         />
+        <BottomSpacer size={10} />
       </ButtonsWrapper>
     </SignUpStep>
   );
