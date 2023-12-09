@@ -18,6 +18,7 @@ export const TimeText = styled(SecondaryHeading)<{
   font-size: 11px;
   color: #c2c2c2;
   width: 35%;
+  padding: 0 10px;
   text-align: ${({lang}) => (lang === 'ar' ? 'right' : 'left')};
 `;
 
