@@ -16,15 +16,15 @@ import ThirdStep from './steps/third-step';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 
-const stepHeaders = [
-  t('conversion-second-header-step1'),
-  t('conversion-second-header-step2'),
-  t('conversion-second-header-step3'),
-];
-
 const Conversion = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
   const {navigate, goBack} = useNavigation<StackNavigationProp<any>>();
+
+  const stepHeaders = [
+    t('conversion-second-header-step1'),
+    t('conversion-second-header-step2'),
+    t('conversion-second-header-step3'),
+  ];
 
   return (
     <AppWrapper>

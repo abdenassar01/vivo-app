@@ -3,11 +3,11 @@ import {ThemeType} from '../../../../utils/theme';
 import {MainText, SecondaryHeading} from '../text';
 import {Dimensions} from 'react-native';
 
-export const ProgressBarWrapper = styled.View<{theme: ThemeType}>`
+export const ProgressBarWrapper = styled.View<{theme: ThemeType; lang: string}>`
   width: 100%;
   justify-content: center;
   align-items: center;
-  flex-direction: row;
+  flex-direction: ${({lang}) => (lang === 'ar' ? 'row-reverse' : 'row')};
 `;
 
 export const ProgressBarHeaderText = styled(SecondaryHeading)<{

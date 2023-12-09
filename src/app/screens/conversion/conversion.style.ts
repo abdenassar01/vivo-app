@@ -24,7 +24,6 @@ export const ButtonsWrapper = styled.View`
 
 export const GreetingText = styled(SecondaryHeading)<{theme: ThemeType}>`
   font-size: 24px;
-  text-align: justify;
   color: ${({theme}) => theme.secondaryBtnText};
 `;
 
