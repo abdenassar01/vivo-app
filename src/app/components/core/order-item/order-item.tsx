@@ -19,6 +19,7 @@ import TitleHeader from '../title-header/title-header';
 import {t} from 'i18next';
 import {formateDate} from '../../../../utils/helpers/formate-date';
 import {Order} from '../../../../../types/order';
+import {useLangStore} from '../../../../stores/lang';
 
 type Props = {
   order: Order;
@@ -29,10 +30,12 @@ const OrderItem = ({order}: Props) => {
   const {day, month, year} = formateDate(order.date);
   const date = `${day}/${month}/${year}`;
 
+  const {currentLang} = useLangStore();
+
   return (
-    <OrderItemWrapper onPress={() => setVisible(true)}>
-      <LeftIndicator status={order.status} />
-      <ContentWrapper>
+    <OrderItemWrapper lang={currentLang} onPress={() => setVisible(true)}>
+      <LeftIndicator lang={currentLang} status={order.status} />
+      <ContentWrapper lang={currentLang}>
         <ExchangeIcon
           source={
             order.status === 'success'
@@ -46,28 +49,33 @@ const OrderItem = ({order}: Props) => {
           </OrderIdText>
           <DateText>{date}</DateText>
         </TextWrapper>
-        <ArrowIcon source={require('../../../../assets/icons/arrow.png')} />
+        <ArrowIcon
+          lang={currentLang}
+          source={require('../../../../assets/icons/arrow.png')}
+        />
       </ContentWrapper>
       <CentredModal visible={visible} setVisible={setVisible}>
         <TitleHeader title={`${t('order-label')} #${order.id}`} />
         <OrderPropritiesWrapper>
           <OrderProprity>
             <Label>{t('demand-date-label')}</Label>
-            <Value>{date}</Value>
+            <Value lang={currentLang}>{date}</Value>
           </OrderProprity>
           <OrderProprity>
             <Label>{t('number-points-text')}</Label>
-            <Value>
+            <Value lang={currentLang}>
               {order.nbrPoints} {t('points-label')}
             </Value>
           </OrderProprity>
           <OrderProprity>
             <Label>{t('amount-demand-label')}</Label>
-            <Value>{order.price} MAD</Value>
+            <Value lang={currentLang}>{order.price} MAD</Value>
           </OrderProprity>
           <OrderProprity>
             <Label>{t('demand-status-demand')}</Label>
-            <StatusValue>{t('demand-status-inprogress')}</StatusValue>
+            <StatusValue lang={currentLang}>
+              {t('demand-status-inprogress')}
+            </StatusValue>
           </OrderProprity>
         </OrderPropritiesWrapper>
       </CentredModal>
