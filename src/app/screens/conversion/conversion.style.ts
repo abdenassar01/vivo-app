@@ -14,8 +14,8 @@ export const ConversionHeader = styled.View`
   width: 100%;
 `;
 
-export const ButtonsWrapper = styled.View`
-  flex-direction: row;
+export const ButtonsWrapper = styled.View<{lang: string}>`
+  flex-direction: ${({lang}) => (lang === 'ar' ? 'row-reverse' : 'row')};
   justify-content: space-between;
   width: 100%;
   gap: 5px;

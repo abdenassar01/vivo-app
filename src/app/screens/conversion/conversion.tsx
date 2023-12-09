@@ -15,10 +15,12 @@ import SecondStep from './steps/second-step';
 import ThirdStep from './steps/third-step';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {useLangStore} from '../../../stores/lang';
 
 const Conversion = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
   const {navigate, goBack} = useNavigation<StackNavigationProp<any>>();
+  const {currentLang} = useLangStore();
 
   const stepHeaders = [
     t('conversion-second-header-step1'),
@@ -51,7 +53,7 @@ const Conversion = () => {
           <ThirdStep />
         )}
 
-        <ButtonsWrapper>
+        <ButtonsWrapper lang={currentLang}>
           {currentStep === 3 ? (
             <Button
               btnTheme="secondary"
