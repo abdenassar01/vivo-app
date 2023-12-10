@@ -58,21 +58,21 @@ const OrderItem = ({order}: Props) => {
         <TitleHeader title={`${t('order-label')} #${order.id}`} />
         <OrderPropritiesWrapper>
           <OrderProprity>
-            <Label>{t('demand-date-label')}</Label>
+            <Label lang={currentLang}>{t('demand-date-label')}</Label>
             <Value lang={currentLang}>{date}</Value>
           </OrderProprity>
           <OrderProprity>
-            <Label>{t('number-points-text')}</Label>
+            <Label lang={currentLang}>{t('number-points-text')}</Label>
             <Value lang={currentLang}>
               {order.nbrPoints} {t('points-label')}
             </Value>
           </OrderProprity>
           <OrderProprity>
-            <Label>{t('amount-demand-label')}</Label>
+            <Label lang={currentLang}>{t('amount-demand-label')}</Label>
             <Value lang={currentLang}>{order.price} MAD</Value>
           </OrderProprity>
           <OrderProprity>
-            <Label>{t('demand-status-demand')}</Label>
+            <Label lang={currentLang}>{t('demand-status-demand')}</Label>
             <StatusValue lang={currentLang}>
               {t('demand-status-inprogress')}
             </StatusValue>
