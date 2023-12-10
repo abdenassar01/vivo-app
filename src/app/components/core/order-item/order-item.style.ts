@@ -59,8 +59,9 @@ export const OrderIdText = styled(SecondaryHeading)`
   color: ${({theme}) => theme.secondaryBtnText};
 `;
 
-export const DateText = styled(MainText)`
+export const DateText = styled(MainText)<{lang: string}>`
   font-size: 10px;
+  text-align: ${({lang}) => (lang === 'ar' ? 'right' : 'left')};
   color: ${({theme}) => theme.secondaryBtnText};
 `;
 

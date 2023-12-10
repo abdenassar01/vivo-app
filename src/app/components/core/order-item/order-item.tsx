@@ -47,7 +47,7 @@ const OrderItem = ({order}: Props) => {
           <OrderIdText>
             #{order.id} - {order.price} MAD
           </OrderIdText>
-          <DateText>{date}</DateText>
+          <DateText lang={currentLang}>{date}</DateText>
         </TextWrapper>
         <ArrowIcon
           lang={currentLang}
