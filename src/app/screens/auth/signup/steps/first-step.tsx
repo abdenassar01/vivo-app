@@ -30,7 +30,6 @@ const FirstStep = ({handleButton, setUser, user}: Props) => {
     setUser({
       ...user,
       fullname: data.fullname,
-      email: data.email,
       phone: data.phone,
     });
     handleButton();
@@ -44,12 +43,6 @@ const FirstStep = ({handleButton, setUser, user}: Props) => {
           label={t('fullname-input-text')}
           name="fullname"
           placeholder={t('fullname-input-text')}
-        />
-        <TextInput
-          control={control}
-          label={t('email-input-text')}
-          name="email"
-          placeholder={t('email-input-text')}
         />
         <TextInput
           control={control}

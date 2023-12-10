@@ -26,13 +26,13 @@ export const userSchema = z.object({
 // });
 
 export const loginSchema = userSchema.pick({
-  email: true,
+  phone: true,
   password: true,
 });
 
 export const signupStepOne = userSchema.pick({
   fullname: true,
-  email: true,
+  // email: true,
   phone: true,
 });
 
