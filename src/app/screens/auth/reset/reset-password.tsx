@@ -27,7 +27,7 @@ const ResetPassword = () => {
           <ResetSecondStep handleButton={() => setCurrentStep(3)} />
         )}
         {currentStep === 3 && (
-          <ResetThirdStep handleButton={() => navigate('Home')} />
+          <ResetThirdStep handleButton={() => navigate('SignupSuccess')} />
         )}
 
         <BottomSpacer size={10} />

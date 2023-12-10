@@ -89,6 +89,7 @@ export const CentredView = styled.View`
   gap: 25px;
   align-items: center;
   justify-content: center;
+  padding-bottom: 20px;
 `;
 
 export const LinkWrapper = styled.TouchableOpacity`
