@@ -10,13 +10,11 @@ export const Illustration = styled.Image`
 
 export const HeroText = styled.View`
   padding: 0;
-  width: 100%;
-  justify-content: start;
+  width: ${Dimensions.get('screen').width - 48}px;
 `;
 
 export const GreetingText = styled(SecondaryHeading)<{theme: ThemeType}>`
   font-size: 24px;
-  text-align: justify;
   color: ${({theme}) => theme.secondaryBtnText};
 `;
 

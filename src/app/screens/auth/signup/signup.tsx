@@ -54,7 +54,7 @@ const SignUp = () => {
             setUser={setUser}
           />
         )}
-        <BottomSpacer size={30} />
+        <BottomSpacer size={10} />
       </LoginScreenWrapper>
     </AppWrapper>
   );
