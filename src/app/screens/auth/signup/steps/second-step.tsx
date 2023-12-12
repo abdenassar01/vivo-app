@@ -7,6 +7,7 @@ import {t} from 'i18next';
 import {signupStepTwo} from '../../../../../../types/user';
 import {z} from 'zod';
 import {zodResolver} from '@hookform/resolvers/zod';
+import {useLangStore} from '../../../../../stores/lang';
 
 type Props = {
   handleButton: () => void;
@@ -22,6 +23,8 @@ const SecondStep = ({handleButton, prev, user, setUser}: Props) => {
     mode: 'onChange',
     resolver: zodResolver(signupStepTwo),
   });
+
+  const {currentLang} = useLangStore();
 
   const onSubmit = async (data: FormValues) => {
     setUser({
@@ -48,7 +51,7 @@ const SecondStep = ({handleButton, prev, user, setUser}: Props) => {
           type="password"
         />
       </FormWrapper>
-      <ButtonsWrapper>
+      <ButtonsWrapper lang={currentLang}>
         <Button
           text={t('button-previous-text')}
           btnTheme="secondary"

@@ -45,6 +45,7 @@ export const FormWrapper = styled.ScrollView<{theme: ThemeType}>`
 
 export const BottomScreenWrapper = styled.View`
   gap: 15px;
+  margin-top: 20px;
 `;
 
 export const ResetStep = styled.View`
@@ -63,8 +64,8 @@ export const ContentWrapper = styled.View`
 
 export const PasswordWrapper = styled.View``;
 
-export const SwitchScreensWrapper = styled.View`
-  flex-direction: row;
+export const SwitchScreensWrapper = styled.View<{lang: string}>`
+  flex-direction: ${({lang}) => (lang === 'ar' ? 'row-reverse' : 'row')};
   align-items: center;
   justify-content: center;
   gap: 5px;
@@ -109,6 +110,5 @@ export const SwitchScreensLinkText = styled(MainText)<{
   theme: ThemeType;
 }>`
   font-size: 14px;
-  font-family: 'Poppins-SemiBold';
   color: ${({theme}) => theme.secondary};
 `;

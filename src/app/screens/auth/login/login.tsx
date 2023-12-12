@@ -31,11 +31,13 @@ import {loginSchema} from '../../../../../types/user';
 import {z} from 'zod';
 import {StatusBar} from 'react-native';
 import {useTheme} from 'styled-components';
+import {useLangStore} from '../../../../stores/lang';
 
 type FormValues = z.infer<typeof loginSchema>;
 
 const Login = () => {
   const {background} = useTheme();
+  const {currentLang} = useLangStore();
   const [validating, setValidating] = useState<boolean>(false);
   const {navigate} = useNavigation<StackNavigationProp<any>>();
   const {setIsAuthenticated} = useAuthStore();
@@ -97,7 +99,7 @@ const Login = () => {
                 text={t('login-action-button-text')}
                 onPress={handleSubmit(onSubmit)}
               />
-              <SwitchScreensWrapper>
+              <SwitchScreensWrapper lang={currentLang}>
                 <SwitchScreensLabel>
                   {t('dont-have-account')}
                 </SwitchScreensLabel>

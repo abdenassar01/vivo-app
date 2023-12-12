@@ -11,6 +11,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {signupStepThree} from '../../../../../../types/user';
 import {z} from 'zod';
+import {useLangStore} from '../../../../../stores/lang';
 
 type Props = {
   setUser: (user: any) => void;
@@ -23,7 +24,7 @@ type FormValues = z.infer<typeof signupStepThree>;
 const ThirdStep = ({prev, user, setUser}: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
   const {navigate} = useNavigation<StackNavigationProp<any>>();
-
+  const {currentLang} = useLangStore();
   const {control, handleSubmit} = useForm<FormValues>({
     mode: 'onChange',
     resolver: zodResolver(signupStepThree),
@@ -60,7 +61,7 @@ const ThirdStep = ({prev, user, setUser}: Props) => {
           placeholder={t('cni-file-upload-text')}
         />
       </FormWrapper>
-      <ButtonsWrapper>
+      <ButtonsWrapper lang={currentLang}>
         {!loading && (
           <Button
             btnTheme="secondary"

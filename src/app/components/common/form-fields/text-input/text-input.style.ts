@@ -45,6 +45,8 @@ export const FieldText = styled.TextInput.attrs(({theme}) => ({
 }))`
   width: 100%;
   color: ${({theme}) => theme.text};
+  font-family: '${({theme}) =>
+    theme.lang === 'ar' ? 'Cairo' : 'Poppins'}-Regular';
 `;
 
 export const EyeIcon = styled.Image`
