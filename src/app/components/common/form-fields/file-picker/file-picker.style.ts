@@ -14,6 +14,7 @@ export const Label = styled(MainText)<{theme: ThemeType}>`
 
 export const InputWrapper = styled.TouchableOpacity<{theme: ThemeType}>`
   flex-direction: row;
+  gap: 3px;
   width: 100%;
   align-items: center;
   padding: 15px 20px;
@@ -26,13 +27,12 @@ export const InputWrapper = styled.TouchableOpacity<{theme: ThemeType}>`
 
 export const ValueText = styled(MainText)<{theme: ThemeType}>`
   font-size: 14px;
-  width: 90%;
   border-radius: 50px;
   color: ${({theme}) => theme.helperText};
 `;
 
 export const Icon = styled(FastImage)`
-  width: 10%;
+  width: 24px;
   aspect-ratio: 1/1;
   height: auto;
 `;

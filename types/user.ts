@@ -18,7 +18,11 @@ export const userSchema = z.object({
   fullname: z.string({required_error: t('fullname-required')}),
   avatar: z.string({required_error: t('avatar-required')}),
   cni: z.string({required_error: t('cni-required')}),
-  cniFile: z.string({required_error: t('cni-file-required')}),
+  cniFile: z.object({
+    uri: z.string({required_error: t('cni-file-required')}),
+    name: z.string().optional(),
+    type: z.string().optional(),
+  }),
 });
 // .refine(data => data.password === data.passwordConfirm, {
 //   message: t('password-not-match'),

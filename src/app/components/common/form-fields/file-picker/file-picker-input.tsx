@@ -39,7 +39,6 @@ const FilePickerInput = ({
       allowMultiSelection: false,
       transitionStyle: 'partialCurl',
     }).then(file => {
-      console.log(file);
       onChange(file[0]);
     });
   };
