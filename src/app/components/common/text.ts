@@ -22,7 +22,7 @@ export const InputsLabel = styled(MainText)<{theme: ThemeType}>`
 
 export const SecondaryHeading = styled(Text)<{theme: ThemeType}>`
   font-family: '${({theme}) =>
-    theme.lang === 'ar' ? 'Cairo' : 'Poppins'}-SemiBold';
+    theme.lang === 'ar' ? 'Cairo-Medium' : 'Poppins-SemiBold'}';
   font-size: 16px;
   color: ${({theme}) => theme.text};
 `;
