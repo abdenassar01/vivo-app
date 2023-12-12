@@ -12,6 +12,7 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import Router from './src/app/navigators/router';
 import './src/i18/i18n';
 import {useThemeStore} from './src/stores/theme';
+import {useLangStore} from './src/stores/lang';
 
 const queryClient = new QueryClient();
 
@@ -20,9 +21,15 @@ function App(): JSX.Element {
     SplashScreen.hide();
   }, []);
   const {currentTheme} = useThemeStore();
+  const {currentLang} = useLangStore();
 
   return (
-    <ThemeProvider theme={currentTheme === 'light' ? light : dark}>
+    <ThemeProvider
+      theme={
+        currentTheme === 'light'
+          ? {...light, lang: currentLang}
+          : {...dark, lang: currentLang}
+      }>
       <GestureHandlerRootView style={{flex: 1}}>
         <NavigationContainer>
           <QueryClientProvider client={queryClient}>
