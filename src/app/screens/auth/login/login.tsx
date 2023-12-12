@@ -72,9 +72,9 @@ const Login = () => {
             </HeroText>
             <TextInput
               control={control}
-              label={t('email-input-text')}
-              name="email"
-              placeholder={t('email-input-placeholder')}
+              label={t('phone-input-text')}
+              name="phone"
+              placeholder={t('phone-input-text')}
             />
             <PasswordWrapper>
               <TextInput
@@ -109,7 +109,7 @@ const Login = () => {
               </SwitchScreensWrapper>
             </BottomScreenWrapper>
           </FormWrapper>
-          <BottomSpacer size={1} />
+          <BottomSpacer size={30} />
         </LoginScreenWrapper>
       </Scrollable>
     </AppWrapper>

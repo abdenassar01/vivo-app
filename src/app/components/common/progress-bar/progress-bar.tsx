@@ -5,6 +5,7 @@ import {
   ProgressBarWrapper,
 } from './progress-bar.style';
 import ProgressItem from './progress-item';
+import {useLangStore} from '../../../../stores/lang';
 
 type Props = {
   step: number;
@@ -13,12 +14,14 @@ type Props = {
 };
 
 const ProgressBar = ({step, nbrSteps = 3, headerText}: Props) => {
+  const {currentLang} = useLangStore();
+
   return (
     <>
       {headerText && (
         <ProgressBarHeaderText>{headerText}</ProgressBarHeaderText>
       )}
-      <ProgressBarWrapper>
+      <ProgressBarWrapper lang={currentLang}>
         {[...Array(nbrSteps)].map((currStep, index) => (
           <Fragment key={`step-index-${index}`}>
             <ProgressItem active={step >= index + 1} />

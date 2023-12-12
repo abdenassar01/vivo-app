@@ -1,4 +1,3 @@
-import i18next from 'i18next';
 import FastImage from 'react-native-fast-image';
 import styled from 'styled-components/native';
 
@@ -20,8 +19,8 @@ export const OpenDrawerIcon = styled(FastImage)`
   aspect-ratio: 1/1;
 `;
 
-export const Clickable = styled.TouchableOpacity`
+export const Clickable = styled.TouchableOpacity<{lang: string}>`
   position: absolute;
-  left: ${i18next.language === 'ar' ? "'auto'" : 0};
-  right: ${i18next.language === 'ar' ? 0 : "'auto'"};
+  left: ${({lang}) => (lang === 'ar' ? "'auto'" : 0)};
+  right: ${({lang}) => (lang === 'ar' ? 0 : "'auto'")};
 `;

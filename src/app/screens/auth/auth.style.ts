@@ -10,13 +10,11 @@ export const Illustration = styled.Image`
 
 export const HeroText = styled.View`
   padding: 0;
-  width: 100%;
-  justify-content: start;
+  width: ${Dimensions.get('screen').width - 48}px;
 `;
 
 export const GreetingText = styled(SecondaryHeading)<{theme: ThemeType}>`
   font-size: 24px;
-  text-align: justify;
   color: ${({theme}) => theme.secondaryBtnText};
 `;
 
@@ -39,10 +37,10 @@ export const LoginScreenWrapper = styled.View`
   gap: 40px;
 `;
 
-export const FormWrapper = styled.View<{theme: ThemeType}>`
+export const FormWrapper = styled.ScrollView<{theme: ThemeType}>`
   gap: 8px;
   width: 100%;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 `;
 
 export const BottomScreenWrapper = styled.View`
@@ -72,11 +70,12 @@ export const SwitchScreensWrapper = styled.View`
   gap: 5px;
 `;
 
-export const ButtonsWrapper = styled.View`
-  flex-direction: row;
+export const ButtonsWrapper = styled.View<{lang: string}>`
+  flex-direction: ${({lang}) => (lang === 'ar' ? 'row-reverse' : 'row')};
   justify-content: space-between;
   width: 100%;
   gap: 5px;
+  padding-top: 10px;
 `;
 
 export const ForgotPasswordSection = styled.View`
@@ -88,6 +87,7 @@ export const CentredView = styled.View`
   gap: 25px;
   align-items: center;
   justify-content: center;
+  padding-bottom: 20px;
 `;
 
 export const LinkWrapper = styled.TouchableOpacity`

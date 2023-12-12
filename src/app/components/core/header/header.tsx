@@ -6,6 +6,7 @@ import {
   OpenDrawerIcon,
 } from './header.style';
 import {DrawerActions, useNavigation} from '@react-navigation/native';
+import {useLangStore} from '../../../../stores/lang';
 
 type Props = {
   openDrower?: boolean;
@@ -13,11 +14,14 @@ type Props = {
 
 const Header = ({openDrower = false}: Props) => {
   const {dispatch} = useNavigation();
+  const {currentLang} = useLangStore();
 
   return (
     <HeaderWrapper>
       {openDrower && (
-        <Clickable onPress={() => dispatch(DrawerActions.openDrawer())}>
+        <Clickable
+          lang={currentLang}
+          onPress={() => dispatch(DrawerActions.openDrawer())}>
           <OpenDrawerIcon
             source={require('../../../../assets/icons/menu.png')}
           />
