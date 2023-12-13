@@ -21,7 +21,7 @@ import {t} from 'i18next';
 import {useAuthStore} from '../../../../stores/auth';
 
 const DrawerContent = ({navigation}: DrawerContentComponentProps) => {
-  const {toggleLang, currentLang} = useLangStore();
+  const {currentLang} = useLangStore();
   const {setIsAuthenticated} = useAuthStore();
 
   return (
@@ -81,10 +81,6 @@ const DrawerContent = ({navigation}: DrawerContentComponentProps) => {
           <Item lang={currentLang} onPress={() => setIsAuthenticated(false)}>
             <Icon source={require('../../../../assets/icons/logout.png')} />
             <ItemText>{t('logout-nav-label')}</ItemText>
-          </Item>
-          <Item lang={currentLang} onPress={toggleLang}>
-            <Icon source={require('../../../../assets/icons/logout.png')} />
-            <ItemText>Change Lang</ItemText>
           </Item>
         </ItemsList>
       </Content>

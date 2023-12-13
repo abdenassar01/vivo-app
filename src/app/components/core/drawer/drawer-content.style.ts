@@ -67,7 +67,7 @@ export const Item = styled.TouchableOpacity<{lang: string}>`
   padding: 10px 15px;
 `;
 
-export const ItemText = styled(ProfileName)`
+export const ItemText = styled(MainText)`
   font-size: 14px;
   text-transform: capitalize;
   margin-bottom: -5px;

@@ -10,6 +10,7 @@ export const ActionButton = styled.TouchableOpacity<{
 }>`
   border-radius: 12px;
   padding: 10px 32px;
+  box-sizing: border-box;
   flex-direction: row;
   gap: 5px;
   justify-content: center;
@@ -34,7 +35,7 @@ export const ActionButton = styled.TouchableOpacity<{
       ? '#f71b40'
       : '#edca2d'};
   width: ${({width}) => width || '100%'};
-  elevation: ${({btnTheme}) => (btnTheme === 'secondary' ? 5 : 0)};
+  elevation: ${({btnTheme}) => (btnTheme === 'secondary' ? 4 : 0)};
 `;
 
 export const ButtonText = styled(SecondaryHeading)<{

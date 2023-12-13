@@ -39,7 +39,8 @@ export const StepWrapper = styled.ScrollView.attrs({
 `;
 
 export const Label = styled(MainText)<{theme: ThemeType}>`
-  font-family: ${i18next.language === 'ar' ? 'Ciaro-Medium' : 'Poppins-Medium'};
+  font-family: '${({theme}) =>
+    theme.lang === 'ar' ? 'Cairo-Medium' : 'Poppins-Medium'}';
   color: ${({theme}) => theme.secondaryBtnText};
 `;
 
