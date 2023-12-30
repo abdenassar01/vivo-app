@@ -1,61 +1,249 @@
-import React, {useState} from 'react';
-import {AppWrapper, BottomSpacer} from '../../../../utils/shared-styles';
+import React, { useEffect, useState } from "react";
+import { AppWrapper, BottomSpacer } from "../../../../utils/shared-styles";
 import {
+  ButtonsWrapper,
   ContentWrapper,
   GreetingText,
   HeroText,
   LoginScreenWrapper,
-} from '../auth.style';
-import FirstStep from './steps/first-step';
-import SecondStep from './steps/second-step';
-import ThirdStep from './steps/third-step';
-import Header from '../../../components/core/header/header';
-import ProgressBar from '../../../components/common/progress-bar/progress-bar';
-import {t} from 'i18next';
-import {StatusBar} from 'react-native';
-import {useTheme} from 'styled-components';
+  SignUpStep,
+  HelperText,
+} from "../auth.style";
+import { Formik } from "formik";
+import * as Yup from "yup";
+import CustomInput from "../../../components/common/form-fields/custom-input/CustomInput";
+import SecondStep from "./steps/second-step";
+import ThirdStep from "./steps/third-step";
+import FourthStep from "./steps/fourth-step";
+import Header from "../../../components/core/header/header";
+import ProgressBar from "../../../components/common/progress-bar/progress-bar";
+import { t } from "i18next";
+import { StatusBar } from "react-native";
+import { useTheme } from "styled-components";
+import { UserAuth } from "../../../contexts/AuthContext";
+import { User } from "../../../../../types/user";
+import { Alert } from "react-native";
+import { useLangStore } from "../../../../stores/lang";
+import Button from "../../../components/common/form-fields/button/button";
+import { signup } from "../../../services/Auth";
+import auth from "@react-native-firebase/auth";
+import { NavigationProp } from "@react-navigation/native";
+import firestore from "@react-native-firebase/firestore";
 
-const SignUp = () => {
+interface RouterProps {
+  navigation: NavigationProp<any, any>;
+}
+
+const SignUp = ({ navigation }: RouterProps) => {
   const [currentStep, setCurrentStep] = useState<number>(1);
-  const [user, setUser] = useState(null);
-  const {background} = useTheme();
+  const { background } = useTheme();
+  const [avatar, setAvatar] = useState("");
+  const [cinPhoto, setCinPhoto] = useState("");
+  const [confirm, setConfirm] = useState<any>();
+  const [error, setError] = useState<any>();
+  const { user, setUser } = UserAuth();
+  const { currentLang } = useLangStore();
+
+  const getValidationSchemas = () => {
+    switch (currentStep) {
+      case 1:
+        return {
+          phone: Yup.string()
+            .matches(/^0[5-9]\d{8}$/, t("phone-invalid"))
+            .required(t("phone-required")),
+        };
+      case 2:
+        return {
+          otp: Yup.string()
+            .matches(/^\d{6}$/, t("otp-invalid"))
+            .required(t("otp-required")),
+        };
+      case 3:
+        return {
+          email: Yup.string().email(t("email-invalid")),
+          password: Yup.string()
+            .min(8, t("password-invalid"))
+            .required(t("password-required")),
+          pwdConfirm: Yup.string()
+            .oneOf([Yup.ref("password")], t("password-not-match"))
+            .required(t("repassword-required")),
+        };
+      case 4:
+        return {
+          fullname: Yup.string()
+            .matches(/^[a-zA-Z\u0600-\u06FF\s]+$/, t("fullname-required"))
+            .required(t("fullname-required")),
+          cin: Yup.string().required(t("cni-required")),
+        };
+    }
+  };
+
+  const goBack = () => {
+    switch (currentStep) {
+      case 1:
+        navigation.navigate("Login");
+        break;
+      case 2:
+        changeStep(1);
+        break;
+      case 3:
+        changeStep(2);
+        break;
+      case 4:
+        changeStep(3);
+        break;
+    }
+  };
+
+  const changeStep = (step: number) => {
+    setCurrentStep(step);
+  };
+
+  const requestOTP = async (phone: string) => {
+    console.log("request otp");
+    const nbr = `+212${phone.slice(1)}`;
+    console.log(nbr);
+
+    try {
+      const confirmation = await auth().signInWithPhoneNumber(nbr, true);
+      console.log(confirmation);
+      setConfirm(confirmation);
+      if (confirmation) changeStep(2);
+      else Alert.alert("An Error Occured!");
+    } catch (e: any) {
+      console.log(e?.message);
+      setError(e?.message);
+    }
+  };
+
+  const verifyOTP = async (code: string) => {
+    try {
+      await confirm.confirm(code);
+      console.log("code valide");
+      changeStep(3);
+    } catch (error) {
+      console.log("Invalid code.");
+      Alert.alert("Invalid code!");
+    }
+  };
+
+  const isUserRegistered = async (phone: string) => {
+    const snapshot = firestore()
+      .collection("pompistes")
+      .where("phone", "==", phone)
+      .get();
+
+    return !(await snapshot).empty;
+  };
+
+  const next = async (data: User) => {
+    switch (currentStep) {
+      case 1:
+        const isRegistred = await isUserRegistered(data.phone || "");
+
+        if (!isRegistred) {
+          await requestOTP(data.phone || "");
+        } else {
+          Alert.alert("User Already Registred!");
+        }
+
+        break;
+      case 2:
+        await verifyOTP(data.otp || "");
+        break;
+      case 3:
+        changeStep(4);
+        break;
+      case 4:
+        const res3 = await signup({
+          ...data,
+          avatar,
+          cinPhoto,
+        });
+        if (res3.success) {
+          setUser(res3.data);
+          console.log("User Added Succesfully!");
+          changeStep(1);
+        } else Alert.alert(res3.error);
+        break;
+    }
+  };
 
   return (
     <AppWrapper>
       <StatusBar backgroundColor={background} />
-      <LoginScreenWrapper>
-        <Header />
-        <ContentWrapper>
-          <HeroText>
-            <GreetingText>{t('signup-header-text')}</GreetingText>
-          </HeroText>
-          <ProgressBar step={currentStep} nbrSteps={3} />
-        </ContentWrapper>
+      <Formik
+        initialValues={{
+          fullname: "",
+          phone: "",
+          otp: "",
+          email: "",
+          password: "",
+          pwdConfirm: "",
+          cin: "",
+        }}
+        validationSchema={Yup.object(getValidationSchemas() as any)}
+        onSubmit={async (data, { setSubmitting }) => {
+          console.log(data);
+          setSubmitting(true);
+          await next(data);
+          setSubmitting(false);
+        }}
+      >
+        {({ handleSubmit, isSubmitting }) => (
+          <LoginScreenWrapper>
+            <Header />
+            <ContentWrapper>
+              <HeroText>
+                <GreetingText>{t("signup-header-text")}</GreetingText>
+              </HeroText>
+              <ProgressBar step={currentStep} nbrSteps={4} />
+            </ContentWrapper>
+            <SignUpStep>
+              {currentStep === 1 ? (
+                <>
+                  <CustomInput
+                    id="phone"
+                    label={t("phone-input-text")}
+                    placeholder={t("phone-input-text")}
+                  />
+                  <HelperText>{error || "nothing"}</HelperText>
+                </>
+              ) : currentStep === 2 ? (
+                <SecondStep />
+              ) : currentStep === 3 ? (
+                <ThirdStep />
+              ) : (
+                <FourthStep
+                  avatar={avatar}
+                  cinPhoto={cinPhoto}
+                  setAvatar={setAvatar}
+                  setCinPhoto={setCinPhoto}
+                />
+              )}
+              <ButtonsWrapper lang={currentLang}>
+                {currentStep < 3 ? (
+                  <Button
+                    text={t("button-previous-text")}
+                    btnTheme="secondary"
+                    width="42%"
+                    onPress={() => goBack()}
+                  />
+                ) : null}
+                <Button
+                  width="56%"
+                  text={t("button-next-text")}
+                  disabled={isSubmitting}
+                  onPress={handleSubmit}
+                />
+                <BottomSpacer size={10} />
+              </ButtonsWrapper>
+            </SignUpStep>
 
-        {currentStep === 1 && (
-          <FirstStep
-            user={user}
-            setUser={setUser}
-            handleButton={() => setCurrentStep(2)}
-          />
+            <BottomSpacer size={10} />
+          </LoginScreenWrapper>
         )}
-        {currentStep === 2 && (
-          <SecondStep
-            user={user}
-            setUser={setUser}
-            prev={() => setCurrentStep(1)}
-            handleButton={() => setCurrentStep(3)}
-          />
-        )}
-        {currentStep === 3 && (
-          <ThirdStep
-            prev={() => setCurrentStep(2)}
-            user={user}
-            setUser={setUser}
-          />
-        )}
-        <BottomSpacer size={10} />
-      </LoginScreenWrapper>
+      </Formik>
     </AppWrapper>
   );
 };
