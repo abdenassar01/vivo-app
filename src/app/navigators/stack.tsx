@@ -18,8 +18,15 @@ import DrawerContent from "../components/core/drawer/drawer-content";
 import i18next from "i18next";
 import { StatusBar } from "react-native";
 import { useTheme } from "styled-components";
+import ScreenLoader from "../components/common/loader/screen-loader";
 
 const Stack = createStackNavigator();
+
+export const LoaderSack = () => (
+  <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Screen name="ScreenLoader" component={ScreenLoader} />
+  </Stack.Navigator>
+);
 
 export const OnboardingStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -43,7 +50,6 @@ const Drawer = createDrawerNavigator();
 export const AuthenticatedStack = () => {
   const { background } = useTheme();
   console.log("Auth stack");
-
   return (
     <>
       <StatusBar backgroundColor={background} />

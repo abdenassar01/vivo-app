@@ -3,6 +3,7 @@ import {
   AuthenticatedStack,
   OnboardingStack,
   UnAuthenticationStacks,
+  LoaderSack,
 } from "./stack";
 import { useOnBoardingStore } from "../../stores/onboarding";
 import { getOnBoarding } from "../../stores/presisting-helpers/onboarding";
@@ -12,6 +13,8 @@ import { UserAuth } from "../contexts/AuthContext";
 import firestore from "@react-native-firebase/firestore";
 import auth from "@react-native-firebase/auth";
 import { User } from "../../../types/user";
+import { firebaseConfig } from "../../utils/firebase";
+import firebase from "@react-native-firebase/app";
 
 const Router = () => {
   const { onBoarding, setOnBoarding } = useOnBoardingStore();
@@ -22,7 +25,6 @@ const Router = () => {
 
   const fetchCurrentUser = async (id: any) => {
     const docSnap = await firestore().collection("pompistes").doc(id).get();
-
     if (docSnap.exists) {
       const currentUser = docSnap.data();
       if (isMounted) setUser({ ...currentUser, id } as User);
@@ -41,9 +43,18 @@ const Router = () => {
     setLoading(false);
   };
 
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+  const init = async () => {
+    if (firebase.apps.length === 0) {
+      await firebase.initializeApp(firebaseConfig, {
+        name: "[DEFAULT]",
+      });
+    } else console.log("firebase app:", firebase.apps[0].name);
+  };
 
+  useEffect(() => {
+    init();
+
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber;
   }, []);
 
@@ -55,9 +66,9 @@ const Router = () => {
     });
   }, [onBoarding, currentLang]);
 
-  console.log(user);
+  console.log("user", user);
 
-  if (loading && !user) return <ScreenLoader />;
+  if (loading && !user) return <LoaderSack />;
   else if (!onBoarding) return <OnboardingStack />;
   else if (!user) return <UnAuthenticationStacks />;
   else return <AuthenticatedStack />;
