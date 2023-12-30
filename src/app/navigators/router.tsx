@@ -7,14 +7,11 @@ import {
 } from "./stack";
 import { useOnBoardingStore } from "../../stores/onboarding";
 import { getOnBoarding } from "../../stores/presisting-helpers/onboarding";
-import ScreenLoader from "../components/common/loader/screen-loader";
 import { useLangStore } from "../../stores/lang";
 import { UserAuth } from "../contexts/AuthContext";
 import firestore from "@react-native-firebase/firestore";
 import auth from "@react-native-firebase/auth";
 import { User } from "../../../types/user";
-import { firebaseConfig } from "../../utils/firebase";
-import firebase from "@react-native-firebase/app";
 
 const Router = () => {
   const { onBoarding, setOnBoarding } = useOnBoardingStore();
@@ -43,17 +40,7 @@ const Router = () => {
     setLoading(false);
   };
 
-  const init = async () => {
-    if (firebase.apps.length === 0) {
-      await firebase.initializeApp(firebaseConfig, {
-        name: "[DEFAULT]",
-      });
-    } else console.log("firebase app:", firebase.apps[0].name);
-  };
-
   useEffect(() => {
-    init();
-
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber;
   }, []);

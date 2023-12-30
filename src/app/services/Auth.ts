@@ -65,6 +65,7 @@ export const signIn = (
         resolve({ success: true, data: cred.user });
       })
       .catch((err) => {
+        console.log(err.message);
         resolve({ success: false, error: err.message });
       });
   });
@@ -95,6 +96,7 @@ export const resetPassword = async (
 export const updateUserData = async (data: User): Promise<ResponseType> => {
   console.log(data);
   const email = data.phone + process.env.NEXT_PUBLIC_EMAIL_SUFFIX!;
+
   return new Promise<ResponseType>(async (resolve) => {
     const id = data.id || "";
     const obj = {
