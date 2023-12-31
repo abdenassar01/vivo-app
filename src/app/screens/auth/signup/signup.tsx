@@ -28,7 +28,7 @@ import Button from "../../../components/common/form-fields/button/button";
 import { signup } from "../../../services/Auth";
 import auth from "@react-native-firebase/auth";
 import { NavigationProp } from "@react-navigation/native";
-import firestore from "@react-native-firebase/firestore";
+import { isUserRegistered } from "../../../services/Auth";
 
 interface RouterProps {
   navigation: NavigationProp<any, any>;
@@ -40,7 +40,6 @@ const SignUp = ({ navigation }: RouterProps) => {
   const [avatar, setAvatar] = useState("");
   const [cinPhoto, setCinPhoto] = useState("");
   const [confirm, setConfirm] = useState<any>();
-  const [error, setError] = useState<any>();
   const { user, setUser } = UserAuth();
   const { currentLang } = useLangStore();
 
@@ -102,7 +101,6 @@ const SignUp = ({ navigation }: RouterProps) => {
   const requestOTP = async (phone: string) => {
     console.log("request otp");
     const nbr = `+212${phone.slice(1)}`;
-    console.log(nbr);
 
     try {
       const confirmation = await auth().signInWithPhoneNumber(nbr, true);
@@ -112,7 +110,7 @@ const SignUp = ({ navigation }: RouterProps) => {
       else Alert.alert("An Error Occured!");
     } catch (e: any) {
       console.log(e?.message);
-      setError(e?.message);
+      Alert.alert("An Error Occured!");
     }
   };
 
@@ -125,15 +123,6 @@ const SignUp = ({ navigation }: RouterProps) => {
       console.log("Invalid code.");
       Alert.alert("Invalid code!");
     }
-  };
-
-  const isUserRegistered = async (phone: string) => {
-    const snapshot = firestore()
-      .collection("pompistes")
-      .where("phone", "==", phone)
-      .get();
-
-    return !(await snapshot).empty;
   };
 
   const next = async (data: User) => {
@@ -201,14 +190,11 @@ const SignUp = ({ navigation }: RouterProps) => {
             </ContentWrapper>
             <SignUpStep>
               {currentStep === 1 ? (
-                <>
-                  <CustomInput
-                    id="phone"
-                    label={t("phone-input-text")}
-                    placeholder={t("phone-input-text")}
-                  />
-                  <HelperText>{error || "nothing"}</HelperText>
-                </>
+                <CustomInput
+                  id="phone"
+                  label={t("phone-input-text")}
+                  placeholder={t("phone-input-text")}
+                />
               ) : currentStep === 2 ? (
                 <SecondStep />
               ) : currentStep === 3 ? (

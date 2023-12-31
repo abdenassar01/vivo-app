@@ -1,19 +1,6 @@
-"use client";
-
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  getDoc,
-  doc,
-  query,
-  where,
-  writeBatch,
-  serverTimestamp,
-  addDoc,
-  FirestoreError,
-} from "firebase/firestore/lite";
-import { app } from "../../utils/firebase";
+import firestore, {
+  FirebaseFirestoreTypes,
+} from "@react-native-firebase/firestore";
 
 export type QuestionType = {
   arAnswers: string[];
@@ -31,60 +18,32 @@ export type QuizType = {
   questions: string[] | QuestionType[];
 };
 
-const db = getFirestore(app);
-
 export const getQuizzes = async (pompisteId: string) => {
-  const col = collection(db, "quizzes");
-  const colTaken = collection(db, "takenQuizzes");
-  const q = query(colTaken, where("pompisteId", "==", pompisteId));
-
-  const querySnapshot = await getDocs(q);
-  const takenQuizzes = querySnapshot.docs.map((doc) => doc.data().quizId);
-
   try {
-    const snapshot = await getDocs(col);
-    const quizzes = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
+    let quizzes: any = [];
+    let takenQuizzes: any = [];
+    console.log("getQuizzes");
+
+    await firestore()
+      .collection("quizzes")
+      .get()
+      .then((querySnapshot) => {
+        quizzes = querySnapshot.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+      });
+
+    await firestore()
+      .collection("takenQuizzes")
+      .where("pompisteId", "==", pompisteId)
+      .get()
+      .then((querySnapshot) => {
+        takenQuizzes = querySnapshot.docs.map((doc) => doc.data().quizId);
+      });
 
     const availableQuizzes = quizzes.filter(
-      (q) => !takenQuizzes.includes(q.id)
-    );
-
-    return availableQuizzes;
-  } catch (error) {
-    throw error;
-  }
-};
-
-export const getQuizzesWithDetails = async (pompisteId: string) => {
-  const col = collection(db, "quizzes");
-  const colTaken = collection(db, "takenQuizzes");
-  const q = query(colTaken, where("pompisteId", "==", pompisteId));
-
-  const querySnapshot = await getDocs(q);
-  const takenQuizzes = querySnapshot.docs.map((doc) => doc.data().quizId);
-
-  try {
-    const snapshot = await getDocs(col);
-    const quizzes = await Promise.all(
-      snapshot.docs.map(async (quizDoc) => {
-        const item: QuizType = quizDoc.data() as QuizType;
-
-        const questionsDetails = await Promise.all(
-          item.questions.map(async (question) => {
-            const ref = doc(db, "questions", question as string);
-            const questionDoc = await getDoc(ref);
-            const data = questionDoc.data() as QuestionType;
-            return { ...data };
-          })
-        );
-        return { ...item, id: quizDoc.id, questions: questionsDetails };
-      })
-    );
-    const availableQuizzes = quizzes.filter(
-      (q) => !takenQuizzes.includes(q.id)
+      (q: any) => !takenQuizzes.includes(q.id)
     );
 
     return availableQuizzes;
@@ -94,22 +53,29 @@ export const getQuizzesWithDetails = async (pompisteId: string) => {
 };
 
 export const getQuiz = async (id: string) => {
-  const quizRef = doc(db, "quizzes", id);
+  let questions: any[] = [];
+  let quiz: any;
 
   try {
-    const quizDoc = await getDoc(quizRef);
-    const quiz = quizDoc.data() as QuizType;
+    await firestore()
+      .collection("quizzes")
+      .doc(id)
+      .get()
+      .then(async (snapshot) => {
+        quiz = snapshot.data() as QuizType;
 
-    const questionsDetails = await Promise.all(
-      quiz.questions.map(async (question) => {
-        const ref = doc(db, "questions", question as string);
-        const questionDoc = await getDoc(ref);
-        const data = questionDoc.data() as QuestionType;
-        return { ...data };
-      })
-    );
+        await Promise.all(
+          await snapshot.data()?.questions.map(async (question: string) => {
+            const questionDoc = await firestore()
+              .collection("questions")
+              .doc(question)
+              .get();
+            questions.push(questionDoc.data());
+          })
+        );
+      });
 
-    return { ...quiz, id: quizDoc.id, questions: questionsDetails };
+    return { ...quiz, id, questions };
   } catch (error) {
     throw error;
   }
@@ -120,23 +86,22 @@ export const addQuiz = async (
   quizId: string,
   points: number
 ) => {
-  const ref = collection(db, "takenQuizzes");
-  const userRef = doc(db, "pompistes", pompisteId);
-  const batch = writeBatch(db);
-
   const data = {
     pompisteId: pompisteId,
     quizId: quizId,
-    date: serverTimestamp(),
+    date: firestore.FieldValue.serverTimestamp(),
   };
 
   try {
-    const transferDocRef = await addDoc(ref, data);
-    batch.update(userRef, { points: points });
-    await batch.commit();
+    const batch = firestore().batch();
+    const quiz = await firestore().collection("takenQuizzes").add(data);
 
-    return transferDocRef;
+    const userRef = firestore().collection("pompistes").doc(pompisteId);
+    batch.update(userRef, { points: points });
+
+    await batch.commit();
+    return quiz;
   } catch (error: any) {
-    throw (error as FirestoreError).message;
+    throw error.message;
   }
 };

@@ -19,14 +19,11 @@ import {
 import { useLangStore } from "../../../../stores/lang";
 import { t } from "i18next";
 import { logout } from "../../../services/Auth";
-import { useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
 import { UserAuth } from "../../../contexts/AuthContext";
 
 const DrawerContent = ({ navigation }: DrawerContentComponentProps) => {
   const { currentLang } = useLangStore();
   const { setUser, user } = UserAuth();
-  const { navigate } = useNavigation<StackNavigationProp<any>>();
 
   return (
     <DrawerWrapper>

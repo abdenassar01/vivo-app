@@ -16,7 +16,7 @@ const Home = () => {
   const { user } = UserAuth();
 
   const { data, isLoading, isError } = useQuery<any>(
-    ["reviews", user?.id],
+    ["recentReviews", user?.id],
     () => getReviews(user?.id || "", 5)
   );
 

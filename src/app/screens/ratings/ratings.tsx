@@ -33,7 +33,7 @@ const Ratings = () => {
       nbr += item.review;
     });
 
-    setTotal(nbr / data?.length);
+    if (data?.length) setTotal(nbr / data?.length);
   }, [data]);
 
   return (

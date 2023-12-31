@@ -49,7 +49,6 @@ const Drawer = createDrawerNavigator();
 
 export const AuthenticatedStack = () => {
   const { background } = useTheme();
-  console.log("Auth stack");
   return (
     <>
       <StatusBar backgroundColor={background} />
@@ -70,6 +69,7 @@ export const AuthenticatedStack = () => {
         <Drawer.Screen name="QuizSuccess" component={QuizSuccess} />
         <Drawer.Screen name="UpdatePassword" component={UpdatePassword} />
         <Drawer.Screen name="QuizQuestion" component={QuizQuestion} />
+        <Stack.Screen name="ResetPassword" component={ResetPassword} />
       </Drawer.Navigator>
     </>
   );

@@ -12,6 +12,10 @@ import { UserAuth } from "../contexts/AuthContext";
 import firestore from "@react-native-firebase/firestore";
 import auth from "@react-native-firebase/auth";
 import { User } from "../../../types/user";
+import { useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Router = () => {
   const { onBoarding, setOnBoarding } = useOnBoardingStore();
@@ -19,6 +23,7 @@ const Router = () => {
   const [loading, setLoading] = useState<boolean>(true);
   let isMounted = true;
   const { currentLang } = useLangStore();
+  const { navigate, getState } = useNavigation<StackNavigationProp<any>>();
 
   const fetchCurrentUser = async (id: any) => {
     const docSnap = await firestore().collection("pompistes").doc(id).get();
@@ -31,13 +36,17 @@ const Router = () => {
   const onAuthStateChanged = async (_user: any) => {
     const currentUsr = auth().currentUser;
 
+    console.log("onAuthStateChanged");
     if (!_user) {
       setLoading(false);
       return;
     }
 
-    await fetchCurrentUser(currentUsr?.uid);
-    setLoading(false);
+    const isResiting = await AsyncStorage.getItem("isResiting");
+    if (!isResiting) {
+      await fetchCurrentUser(currentUsr?.uid);
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -53,7 +62,7 @@ const Router = () => {
     });
   }, [onBoarding, currentLang]);
 
-  console.log("user", user);
+  console.log("user:", user);
 
   if (loading && !user) return <LoaderSack />;
   else if (!onBoarding) return <OnboardingStack />;

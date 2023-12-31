@@ -1,11 +1,10 @@
 import FilePickerInput from "../../../../components/common/form-fields/file-picker/file-picker-input";
 import UploadAvatar from "../../../../components/common/form-fields/upload-avatar/upload-avatar";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useState } from "react";
-// import { storage } from "../../../../../utils/firebase";
-import { SignUpStep } from "../../auth.style";
 import { t } from "i18next";
 import CustomInput from "../../../../components/common/form-fields/custom-input/CustomInput";
+import storage from "@react-native-firebase/storage";
+import { UploadImage } from "../../../../services/Auth";
 
 type Props = {
   avatar: string;
@@ -21,25 +20,21 @@ function FourthStep({ avatar, setAvatar, cinPhoto, setCinPhoto }: Props) {
   const uploadAvatar = async (file: any) => {
     if (!file) return;
 
-    // setAvatarUploading(true);
-    // const storageRef = ref(storage, `avatars/${file.name}`);
-    // await uploadBytes(storageRef, file);
-    // const avatarUrl = await getDownloadURL(storageRef);
-    // console.log("File uploaded successfully", avatarUrl);
-    // setAvatar(avatarUrl);
-    // setAvatarUploading(false);
+    setAvatarUploading(true);
+    const avatarUrl = await UploadImage(file, "avatars");
+    console.log(avatarUrl);
+    setAvatar(avatarUrl);
+    setAvatarUploading(false);
   };
 
   const uploadCinPhoto = async (file: any) => {
     if (!file) return;
 
-    // setCinUploading(true);
-    // const storageRef = ref(storage, `cin/${file.name}`);
-    // await uploadBytes(storageRef, file);
-    // const avatarUrl = await getDownloadURL(storageRef);
-    // console.log("File uploaded successfully", avatarUrl);
-    // setCinPhoto(avatarUrl);
-    // setCinUploading(false);
+    setCinUploading(true);
+    const cinUrl = await UploadImage(file, "cin");
+    console.log(cinUrl);
+    setCinPhoto(cinUrl);
+    setCinUploading(false);
   };
 
   return (
