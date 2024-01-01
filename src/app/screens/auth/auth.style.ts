@@ -40,7 +40,8 @@ export const LoginScreenWrapper = styled.View`
 export const FormWrapper = styled.ScrollView<{ theme: ThemeType }>`
   gap: 8px;
   width: 100%;
-  /* justify-content: space-between; */
+  min-height: 250px;
+  padding-bottom: 10px;
 `;
 
 export const BottomScreenWrapper = styled.View`
@@ -48,12 +49,12 @@ export const BottomScreenWrapper = styled.View`
   margin-top: 20px;
 `;
 
-export const ResetStep = styled.View`
+export const ResetStep = styled.KeyboardAvoidingView`
   height: ${Dimensions.get("screen").height - 170}px;
   justify-content: space-between;
 `;
 
-export const SignUpStep = styled.View`
+export const SignUpStep = styled.SafeAreaView`
   height: ${Dimensions.get("screen").height - 340}px;
   justify-content: space-between;
 `;

@@ -34,7 +34,7 @@ const ResetSecondStep = ({ otp, setOtp }: Props) => {
         ) : (
           <OTPInputView
             style={{
-              width: "80%",
+              width: "100%",
               height: 70,
             }}
             pinCount={6}
@@ -43,11 +43,11 @@ const ResetSecondStep = ({ otp, setOtp }: Props) => {
             codeInputFieldStyle={{
               borderColor: theme.border,
               color: theme.secondaryBtnText,
-              fontSize: 30,
+              fontSize: 25,
               fontFamily: "Poppins-Bold",
               borderWidth: 0.6,
-              width: 57.82,
-              height: 74.5,
+              width: 45,
+              height: 60,
               borderRadius: 12,
             }}
             codeInputHighlightStyle={{
