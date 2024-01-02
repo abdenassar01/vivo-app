@@ -93,10 +93,12 @@ const Quiz = () => {
         <QuizIcon
           source={require("../../../assets/images/quiz-illustration.png")}
         />
-        <Button
-          text={t("quiz-button-text")}
-          onPress={() => navigate("QuizQuestion")}
-        />
+        {data && (
+          <Button
+            text={t("quiz-button-text")}
+            onPress={() => navigate("QuizQuestion", { id: data[0].id })}
+          />
+        )}
       </OrdersScreenWrapper>
     </AppWrapper>
   );
