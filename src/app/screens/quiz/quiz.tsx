@@ -71,7 +71,7 @@ const Quiz = () => {
             ) : (
               React.Children.toArray(
                 data?.map((item) => (
-                  <QuizItem>
+                  <QuizItem lang={currentLang}>
                     <QuizTitle>
                       {currentLang === "ar" ? item.ar : item.fr}
                     </QuizTitle>
@@ -88,7 +88,6 @@ const Quiz = () => {
               )
             )}
           </QuizesWrapper>
-          {/* quizes */}
         </TopSection>
         <QuizIcon
           source={require("../../../assets/images/quiz-illustration.png")}

@@ -1,8 +1,16 @@
-import {Option} from './option';
+export type Question = {
+  arAnswers: string[];
+  fr: string;
+  correctAnswer: number;
+  frAnswers: string[];
+  ar: string;
+};
 
-export interface Question {
-  text: string;
-  textAr: string;
-  image?: string;
-  options: Option[];
-}
+export type Quiz = {
+  points: number;
+  fr: string;
+  questions: Question[];
+  ar: string;
+  id: string;
+  thumbnail?: string;
+};

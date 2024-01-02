@@ -30,10 +30,13 @@ export const QuizesWrapper = styled.View`
   align-items: center;
 `;
 
-export const QuizItem = styled.TouchableOpacity<{ theme: ThemeType }>`
+export const QuizItem = styled.TouchableOpacity<{
+  theme: ThemeType;
+  lang: string;
+}>`
   justify-content: space-between;
   align-items: center;
-  flex-direction: row;
+  flex-direction: ${({ lang }) => (lang === "ar" ? "row-reverse" : "row")};
   padding: 5px;
   border-radius: 7px;
   background-color: ${({ theme }) => theme.border};
