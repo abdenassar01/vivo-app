@@ -1,38 +1,44 @@
-import React from 'react';
+import React from "react";
 import {
   QuestionImage,
   QuestionItemWrapper,
   QuestionText,
-} from './question-item.style';
-import QuestionOptions from '../question-options/question-options';
-import {Question} from '../../../../../types/question';
-import {Control} from 'react-hook-form';
-import i18next from 'i18next';
+} from "./question-item.style";
+import QuestionOptions from "../question-options/question-options";
+import { Question } from "../../../../../types/question";
+import { Control } from "react-hook-form";
+import { useLangStore } from "../../../../stores/lang";
 
 type Props = {
   question: Question;
   conrol: Control<any>;
   name: string;
+  image?: string;
 };
 
 const QuestionItem = ({
-  question: {options, text, image, textAr},
+  question: { ar, fr, arAnswers, frAnswers },
   conrol,
   name,
+  image,
 }: Props) => {
+  const { currentLang } = useLangStore();
+
   return (
     <QuestionItemWrapper>
-      <QuestionText>{i18next.language === 'fr' ? text : textAr}</QuestionText>
+      <QuestionText>{currentLang === "fr" ? fr : ar}</QuestionText>
       <QuestionImage
         resizeMode="stretch"
-        defaultSource={require('../../../../assets/images/question-default.png')}
+        defaultSource={require("../../../../assets/images/question-default.png")}
         source={
-          image
-            ? {uri: image}
-            : require('../../../../assets/images/question-default.png')
+          image || require("../../../../assets/images/question-default.png")
         }
       />
-      <QuestionOptions control={conrol} options={options} name={name} />
+      <QuestionOptions
+        control={conrol}
+        options={currentLang === "fr" ? frAnswers : arAnswers}
+        name={name}
+      />
     </QuestionItemWrapper>
   );
 };
