@@ -66,7 +66,7 @@ const Login = () => {
               phone: Yup.string()
                 .matches(/^0[5-9]\d{8}$/, t("phone-invalid"))
                 .required(t("phone-required")),
-              password: Yup.string().required(t("phone-required")),
+              password: Yup.string().required(t("password-required")),
             })}
             onSubmit={handleLogin}
           >

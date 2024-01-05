@@ -18,7 +18,7 @@ export const IconWrapper = styled.View`
   align-items: center;
 `;
 
-export const PasswordIcon = styled.TouchableOpacity`
+export const PasswordIcon = styled.TouchableOpacity<{ theme: ThemeType }>`
   width: 50px;
   justify-content: center;
   align-items: center;
@@ -26,7 +26,7 @@ export const PasswordIcon = styled.TouchableOpacity`
   position: absolute;
   z-index: 2;
   top: 5px;
-  right: 5px;
+  ${({ theme }) => (theme.lang === "ar" ? "left: 5px" : "right: 5px")};
 `;
 
 export const InputWrapper = styled.View<{ theme: ThemeType }>`
@@ -45,6 +45,7 @@ export const FieldText = styled.TextInput.attrs(({ theme }) => ({
 }))`
   width: 100%;
   color: ${({ theme }) => theme.text};
+  text-align: ${({ theme }) => (theme.lang === "ar" ? "right" : "left")};
   font-family: "${({ theme }) =>
     theme.lang === "ar" ? "Cairo" : "Poppins"}-Regular";
 `;
