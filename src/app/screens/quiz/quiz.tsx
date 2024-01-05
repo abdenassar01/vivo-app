@@ -92,7 +92,7 @@ const Quiz = () => {
         <QuizIcon
           source={require("../../../assets/images/quiz-illustration.png")}
         />
-        {data && (
+        {data && data?.length > 0 && (
           <Button
             text={t("quiz-button-text")}
             onPress={() => navigate("QuizQuestion", { id: data[0].id })}
