@@ -21,8 +21,6 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { QuizType, getQuizzes } from "../../services/Quiz";
 import { UserAuth } from "../../contexts/AuthContext";
-import { Swing } from "react-native-animated-spinkit";
-import { useTheme } from "styled-components";
 import { useLangStore } from "../../../stores/lang";
 import { useQuery } from "react-query";
 import ScreenLoader from "../../components/common/loader/screen-loader";
@@ -30,7 +28,6 @@ import ScreenLoader from "../../components/common/loader/screen-loader";
 const Quiz = () => {
   const { navigate } = useNavigation<StackNavigationProp<any>>();
   const { user } = UserAuth();
-  const { primary } = useTheme();
   const { currentLang } = useLangStore();
 
   const { data, isLoading } = useQuery<QuizType[]>(
