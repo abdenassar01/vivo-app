@@ -23,7 +23,10 @@ import ScreenLoader from "../components/common/loader/screen-loader";
 const Stack = createStackNavigator();
 
 export const LoaderSack = () => (
-  <Stack.Navigator screenOptions={{ headerShown: false }}>
+  <Stack.Navigator
+    initialRouteName="ScreenLoader"
+    screenOptions={{ headerShown: false }}
+  >
     <Stack.Screen name="ScreenLoader" component={ScreenLoader} />
   </Stack.Navigator>
 );

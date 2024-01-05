@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import {
   AuthenticatedStack,
+  LoaderSack,
   OnboardingStack,
   UnAuthenticationStacks,
-  LoaderSack,
 } from "./stack";
 import { useOnBoardingStore } from "../../stores/onboarding";
 import { getOnBoarding } from "../../stores/presisting-helpers/onboarding";
@@ -12,10 +12,8 @@ import { UserAuth } from "../contexts/AuthContext";
 import firestore from "@react-native-firebase/firestore";
 import auth from "@react-native-firebase/auth";
 import { User } from "../../../types/user";
-import { useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Text } from "react-native";
+import { MainText } from "../components/common/text";
 
 const Router = () => {
   const { onBoarding, setOnBoarding } = useOnBoardingStore();
@@ -23,7 +21,6 @@ const Router = () => {
   const [loading, setLoading] = useState<boolean>(true);
   let isMounted = true;
   const { currentLang } = useLangStore();
-  const { navigate, getState } = useNavigation<StackNavigationProp<any>>();
 
   const fetchCurrentUser = async (id: any) => {
     const docSnap = await firestore().collection("pompistes").doc(id).get();
@@ -34,6 +31,7 @@ const Router = () => {
   };
 
   const onAuthStateChanged = async (_user: any) => {
+    setLoading(true);
     const currentUsr = auth().currentUser;
 
     console.log("onAuthStateChanged");
@@ -47,12 +45,8 @@ const Router = () => {
       await fetchCurrentUser(currentUsr?.uid);
       setLoading(false);
     }
+    setLoading(false);
   };
-
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber;
-  }, []);
 
   useEffect(() => {
     getOnBoarding().then((value) => {
@@ -60,15 +54,15 @@ const Router = () => {
         setOnBoarding(true);
       }
     });
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber;
   }, [onBoarding, currentLang]);
 
-  console.log("user:", user);
-
-  if (loading && !user) return <LoaderSack />;
+  if (loading) return <LoaderSack />;
   else if (!onBoarding) return <OnboardingStack />;
   else if (!user) return <UnAuthenticationStacks />;
   else if (user?.email && !user?.status)
-    return <Text>Votre compte est en attente d'approbation !</Text>;
+    return <MainText>Votre compte est en attente d'approbation !</MainText>;
   else return <AuthenticatedStack />;
 };
 
