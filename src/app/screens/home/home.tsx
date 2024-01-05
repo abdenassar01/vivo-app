@@ -10,6 +10,8 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import RecentRatings from "./recent-ratings";
 import { getReviews } from "../../services/Review";
 import { UserAuth } from "../../contexts/AuthContext";
+import ScreenLoader from "../../components/common/loader/screen-loader";
+import { MainText } from "../../components/common/text";
 
 const Home = () => {
   const { navigate } = useNavigation<StackNavigationProp<any>>();
@@ -19,6 +21,9 @@ const Home = () => {
     ["recentReviews", user?.id],
     () => getReviews(user?.id || "", 5)
   );
+
+  if (isLoading) return <ScreenLoader />;
+  if (isError) return <MainText>error</MainText>;
 
   return (
     <AppWrapper>
