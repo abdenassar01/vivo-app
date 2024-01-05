@@ -76,8 +76,10 @@ const OrderItem = ({ transfer }: Props) => {
           </OrderProprity>
           <OrderProprity>
             <Label lang={currentLang}>{t("demand-status-demand")}</Label>
-            <StatusValue lang={currentLang}>
-              {t("demand-status-inprogress")}
+            <StatusValue finished={!transfer.isPending} lang={currentLang}>
+              {transfer.isPending
+                ? t("demand-status-inprogress")
+                : t("demand-status-valid")}
             </StatusValue>
           </OrderProprity>
         </OrderPropritiesWrapper>

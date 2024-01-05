@@ -1,5 +1,5 @@
 import React from "react";
-import { AppWrapper } from "../../../utils/shared-styles";
+import { AppWrapper, BottomSpacer } from "../../../utils/shared-styles";
 import Header from "../../components/core/header/header";
 import { OrdersList, OrdersScreenWrapper } from "./orders.style";
 import TitleHeader from "../../components/core/title-header/title-header";
@@ -8,6 +8,7 @@ import OrderItem from "../../components/core/order-item/order-item";
 import { Transfer, getTransfers } from "../../services/Transfers";
 import { UserAuth } from "../../contexts/AuthContext";
 import { useQuery } from "react-query";
+import ScreenLoader from "../../components/common/loader/screen-loader";
 
 const Orders = () => {
   const { user } = UserAuth();
@@ -16,12 +17,14 @@ const Orders = () => {
     () => getTransfers(user?.id || "")
   );
 
-  console.log(data);
+  if (isLoading) return <ScreenLoader />;
+
   return (
     <AppWrapper>
       <Header openDrower />
-      <OrdersScreenWrapper>
-        <TitleHeader title={t("demands-nav-label")} />
+      <TitleHeader title={t("demands-nav-label")} />
+      <OrdersScreenWrapper showsVerticalScrollIndicator={false}>
+        <BottomSpacer size={10} />
         <OrdersList>
           {data.map((item: Transfer, index: number) => (
             <OrderItem transfer={item} key={index} />
