@@ -22,7 +22,6 @@ export const getQuizzes = async (pompisteId: string) => {
   try {
     let quizzes: any = [];
     let takenQuizzes: any = [];
-    console.log("getQuizzes");
 
     await firestore()
       .collection("quizzes")

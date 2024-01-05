@@ -61,7 +61,11 @@ export const AuthenticatedStack = () => {
         }}
       >
         <Drawer.Screen name="Home" component={Home} />
-        <Drawer.Screen name="Quiz" component={Quiz} />
+        <Drawer.Screen
+          name="Quiz"
+          options={{ unmountOnBlur: true }}
+          component={Quiz}
+        />
         <Drawer.Screen name="Conversion" component={Conversion} />
         <Drawer.Screen name="Ratings" component={Ratings} />
         <Drawer.Screen name="Orders" component={Orders} />

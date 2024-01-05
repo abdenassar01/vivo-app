@@ -25,11 +25,11 @@ import { Swing } from "react-native-animated-spinkit";
 import { useTheme } from "styled-components";
 import { useLangStore } from "../../../stores/lang";
 import { useQuery } from "react-query";
+import ScreenLoader from "../../components/common/loader/screen-loader";
 
 const Quiz = () => {
   const { navigate } = useNavigation<StackNavigationProp<any>>();
   const { user } = UserAuth();
-  const isMounted = useRef(true);
   const { primary } = useTheme();
   const { currentLang } = useLangStore();
 
@@ -37,6 +37,8 @@ const Quiz = () => {
     ["getting user quizes", user?.id],
     async () => getQuizzes(user?.id || "")
   );
+
+  if (isLoading) return <ScreenLoader />;
 
   return (
     <AppWrapper>
@@ -52,26 +54,22 @@ const Quiz = () => {
           <TitleHeader title={t("quiz-header-text")} />
           <HelperText>{t("quiz-main-text")}</HelperText>
           <QuizesWrapper>
-            {isLoading ? (
-              <Swing size={40} color={primary} />
-            ) : (
-              React.Children.toArray(
-                data?.map((item) => (
-                  <QuizItem lang={currentLang}>
-                    <QuizTitle>
-                      {currentLang === "ar" ? item.ar : item.fr}
-                    </QuizTitle>
-                    <QuizPoint>
-                      +{item.points} {t("points-label")}
-                    </QuizPoint>
-                    <StartQuizButton
-                      onPress={() => navigate("QuizQuestion", { id: item.id })}
-                    >
-                      <StartButtonText>{t("quiz-button-text")}</StartButtonText>
-                    </StartQuizButton>
-                  </QuizItem>
-                ))
-              )
+            {React.Children.toArray(
+              data?.map((item) => (
+                <QuizItem lang={currentLang}>
+                  <QuizTitle>
+                    {currentLang === "ar" ? item.ar : item.fr}
+                  </QuizTitle>
+                  <QuizPoint>
+                    +{item.points} {t("points-label")}
+                  </QuizPoint>
+                  <StartQuizButton
+                    onPress={() => navigate("QuizQuestion", { id: item.id })}
+                  >
+                    <StartButtonText>{t("quiz-button-text")}</StartButtonText>
+                  </StartQuizButton>
+                </QuizItem>
+              ))
             )}
           </QuizesWrapper>
         </TopSection>
