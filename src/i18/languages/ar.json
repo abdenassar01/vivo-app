@@ -50,6 +50,7 @@
     "currency-unit-text": "درهم",
     "demand-status-demand": "حالة الطلب",
     "demand-status-inprogress": "قيد المعالجة",
+    "demand-status-valid": "تم اكتمال الطلب",
     "evaluation-unit": "تعليق",
     "conversion-header-text": "تحويل النقاط إلى شيك",
     "conversion-second-header-step1": "تحقق من رصيد نقاطك",

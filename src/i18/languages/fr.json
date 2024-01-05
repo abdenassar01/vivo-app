@@ -50,6 +50,7 @@
     "currency-unit-text": "MAD",
     "demand-status-demand": "État de la Demande ",
     "demand-status-inprogress": "En cours de traitement",
+    "demand-status-valid": "commande terminée",
     "evaluation-unit": "d'avis",
     "conversion-header-text": "Conversion des Points en Chèque",
     "conversion-second-header-step1": "Vérifiez votre Solde de Points",
