@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { useEffect, useRef, useState } from "react";
 import Header from "../../components/core/header/header";
-import { AppWrapper } from "../../../utils/shared-styles";
+import { AppWrapper, BottomSpacer } from "../../../utils/shared-styles";
 import {
   HelperText,
   OrdersScreenWrapper,
@@ -73,11 +73,13 @@ const Quiz = () => {
         <QuizIcon
           source={require("../../../assets/images/quiz-illustration.png")}
         />
-        {data && data?.length > 0 && (
+        {data && data?.length > 0 ? (
           <Button
             text={t("quiz-button-text")}
             onPress={() => navigate("QuizQuestion", { id: data[0].id })}
           />
+        ) : (
+          <BottomSpacer size={50} />
         )}
       </OrdersScreenWrapper>
     </AppWrapper>
