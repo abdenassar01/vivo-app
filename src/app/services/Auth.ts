@@ -31,7 +31,7 @@ export const signup = async (data: User): Promise<ResponseType> => {
           cin: data.cin,
           avatar: data.avatar,
           cinPhoto: data.cinPhoto,
-          isApproved: false,
+          status: false,
           points: 0,
           userEmail: data?.email || "",
           qrId: generateId(data.phone || ""),

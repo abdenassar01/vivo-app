@@ -29,6 +29,7 @@ import { signup } from "../../../services/Auth";
 import auth from "@react-native-firebase/auth";
 import { NavigationProp } from "@react-navigation/native";
 import { isUserRegistered } from "../../../services/Auth";
+import { ErrorMessage } from "../../../components/common/form-fields/custom-input/CustomInput.style";
 
 interface RouterProps {
   navigation: NavigationProp<any, any>;
@@ -40,6 +41,7 @@ const SignUp = ({ navigation }: RouterProps) => {
   const [avatar, setAvatar] = useState("");
   const [cinPhoto, setCinPhoto] = useState("");
   const [confirm, setConfirm] = useState<any>();
+  const [error, setError] = useState<any>();
   const { user, setUser } = UserAuth();
   const { currentLang } = useLangStore();
 
@@ -110,6 +112,7 @@ const SignUp = ({ navigation }: RouterProps) => {
       else Alert.alert("An Error Occured!");
     } catch (e: any) {
       console.log(e?.message);
+      error(e?.message);
       Alert.alert("An Error Occured!");
     }
   };
@@ -190,11 +193,14 @@ const SignUp = ({ navigation }: RouterProps) => {
             </ContentWrapper>
             <SignUpStep>
               {currentStep === 1 ? (
-                <CustomInput
-                  id="phone"
-                  label={t("phone-input-text")}
-                  placeholder={t("phone-input-text")}
-                />
+                <>
+                  <CustomInput
+                    id="phone"
+                    label={t("phone-input-text")}
+                    placeholder={t("phone-input-text")}
+                  />
+                  <ErrorMessage>{error}</ErrorMessage>
+                </>
               ) : currentStep === 2 ? (
                 <SecondStep />
               ) : currentStep === 3 ? (

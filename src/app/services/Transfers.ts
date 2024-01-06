@@ -8,7 +8,7 @@ export type Transfer = {
   date: FirebaseFirestoreTypes.Timestamp;
   points: number;
   total: number;
-  isPending: boolean;
+  status: boolean;
 };
 
 export const getTransfers = async (pompisteId: string, lim?: number) => {
@@ -47,7 +47,7 @@ export const addTransfer = async (
     pompisteId: pompisteId,
     points: points,
     total: total,
-    isPending: true,
+    status: true,
     date: firestore.FieldValue.serverTimestamp(),
   };
 

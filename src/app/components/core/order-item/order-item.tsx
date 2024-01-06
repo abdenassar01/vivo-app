@@ -36,12 +36,12 @@ const OrderItem = ({ transfer }: Props) => {
     <OrderItemWrapper lang={currentLang} onPress={() => setVisible(true)}>
       <LeftIndicator
         lang={currentLang}
-        status={!transfer.isPending ? "success" : "inprogress"}
+        status={!transfer.status ? "success" : "inprogress"}
       />
       <ContentWrapper lang={currentLang}>
         <ExchangeIcon
           source={
-            !transfer.isPending
+            !transfer.status
               ? require("../../../../assets/icons/exchange-green.png")
               : require("../../../../assets/icons/exchange-orange.png")
           }

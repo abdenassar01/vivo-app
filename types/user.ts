@@ -6,7 +6,7 @@ export type User = {
   email?: string;
   userEmail?: string;
   password?: string;
-  isApproved?: boolean;
+  status?: boolean;
   cin?: string;
   avatar?: string;
   cinPhoto?: string;

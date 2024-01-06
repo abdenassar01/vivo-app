@@ -12,10 +12,10 @@ import { UserAuth } from "../contexts/AuthContext";
 import firestore from "@react-native-firebase/firestore";
 import auth from "@react-native-firebase/auth";
 import { User } from "../../../types/user";
-import { useRoute } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Text } from "react-native";
 
 const Router = () => {
   const { onBoarding, setOnBoarding } = useOnBoardingStore();
@@ -67,6 +67,8 @@ const Router = () => {
   if (loading && !user) return <LoaderSack />;
   else if (!onBoarding) return <OnboardingStack />;
   else if (!user) return <UnAuthenticationStacks />;
+  else if (user?.email && !user?.status)
+    return <Text>Votre compte est en attente d'approbation !</Text>;
   else return <AuthenticatedStack />;
 };
 
