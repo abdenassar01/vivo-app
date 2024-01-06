@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   OptionSelectedIcon,
   OptionText,
@@ -11,15 +11,24 @@ interface Props {
   name: string;
   control: Control<any>;
   options: string[];
+  disabled: boolean;
+  setDisabled: React.Dispatch<React.SetStateAction<boolean>>;
+  correctAnswer?: number;
 }
 
-const QuestionOptions = ({ options, control, name }: Props) => {
+const QuestionOptions = ({
+  options,
+  control,
+  name,
+  setDisabled,
+  disabled,
+  correctAnswer = 0,
+}: Props) => {
   const {
     field: { onChange, value },
   } = useController({
     name,
     control,
-    defaultValue: options[0],
   });
 
   return (
@@ -27,8 +36,14 @@ const QuestionOptions = ({ options, control, name }: Props) => {
       {React.Children.toArray(
         options.map((option) => (
           <QuestionOptionItem
-            onPress={() => onChange(option)}
+            onPress={() => {
+              if (!disabled) {
+                onChange(option);
+                setDisabled(true);
+              }
+            }}
             selected={value === option}
+            correct={option === options[correctAnswer]}
           >
             <OptionText selected={value === option}>{option}</OptionText>
             {value === option && (

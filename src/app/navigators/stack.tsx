@@ -15,9 +15,9 @@ import UpdatePassword from "../screens/update-password/update-password";
 import QuizQuestion from "../screens/quiz-question/quiz-question";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerContent from "../components/core/drawer/drawer-content";
-import i18next from "i18next";
 import { StatusBar } from "react-native";
 import { useTheme } from "styled-components";
+import { useLangStore } from "../../stores/lang";
 import ScreenLoader from "../components/common/loader/screen-loader";
 
 const Stack = createStackNavigator();
@@ -52,15 +52,17 @@ const Drawer = createDrawerNavigator();
 
 export const AuthenticatedStack = () => {
   const { background } = useTheme();
+  const { currentLang } = useLangStore();
   return (
     <>
       <StatusBar backgroundColor={background} />
       <Drawer.Navigator
         drawerContent={(props) => <DrawerContent {...props} />}
         initialRouteName="Home"
+        detachInactiveScreens
         screenOptions={{
           headerShown: false,
-          drawerPosition: i18next.language === "ar" ? "right" : "left",
+          drawerPosition: currentLang === "ar" ? "right" : "left",
         }}
       >
         <Drawer.Screen name="Home" component={Home} />

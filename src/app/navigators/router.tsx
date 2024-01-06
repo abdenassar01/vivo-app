@@ -31,7 +31,6 @@ const Router = () => {
   };
 
   const onAuthStateChanged = async (_user: any) => {
-    setLoading(true);
     const currentUsr = auth().currentUser;
 
     console.log("onAuthStateChanged");
@@ -49,13 +48,17 @@ const Router = () => {
   };
 
   useEffect(() => {
+    setLoading(true);
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber;
+  }, [currentLang]);
+
+  useEffect(() => {
     getOnBoarding().then((value) => {
       if (value === `${true}`) {
         setOnBoarding(true);
       }
     });
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber;
   }, [onBoarding, currentLang]);
 
   if (loading) return <LoaderSack />;

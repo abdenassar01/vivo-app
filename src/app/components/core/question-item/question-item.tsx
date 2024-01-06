@@ -14,13 +14,17 @@ type Props = {
   conrol: Control<any>;
   name: string;
   image?: string;
+  setDisabled: React.Dispatch<React.SetStateAction<boolean>>;
+  disabled: boolean;
 };
 
 const QuestionItem = ({
-  question: { ar, fr, arAnswers, frAnswers },
+  question: { ar, fr, arAnswers, frAnswers, correctAnswer },
   conrol,
   name,
   image,
+  setDisabled,
+  disabled,
 }: Props) => {
   const { currentLang } = useLangStore();
 
@@ -35,6 +39,9 @@ const QuestionItem = ({
         }
       />
       <QuestionOptions
+        disabled={disabled}
+        setDisabled={setDisabled}
+        correctAnswer={correctAnswer}
         control={conrol}
         options={currentLang === "fr" ? frAnswers : arAnswers}
         name={name}

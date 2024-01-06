@@ -22,10 +22,10 @@ type FormValues = { selectedOption: string };
 const QuizQuestion = () => {
   const [answers, setAnswers] = useState<number>(0);
   const [index, setIndex] = useState<number>(0);
-  const [isFinished, setIsFinished] = useState<boolean>(false);
   const { control, handleSubmit } = useForm<any>();
   const { navigate } = useNavigation<StackNavigationProp<any>>();
   const { user } = UserAuth();
+  const [disabled, setDisabled] = useState<boolean>(false);
   const { currentLang } = useLangStore();
   const {
     params: { id },
@@ -54,16 +54,17 @@ const QuizQuestion = () => {
       if (isCorrect) setAnswers(answers + 1);
       if (index < data.questions.length - 1) {
         setIndex(index + 1);
+        setDisabled(false);
       } else {
-        setIsFinished(true);
-        addQuiz(user?.id || "", id || "", user?.points + data?.points);
+        const points =
+          parseInt(user?.points?.toString() || "0") +
+          parseInt(data?.points.toString() || "0");
+        addQuiz(user?.id || "", id || "", points);
+        navigate("QuizSuccess", { points: points });
       }
     }
   };
 
-  if (isFinished) {
-    navigate("QuizSuccess");
-  }
   if (isLoading) return <ScreenLoader />;
   if (isError) return <MainText>error</MainText>;
 
@@ -72,11 +73,13 @@ const QuizQuestion = () => {
       <Header openDrower />
       <QuestionScreenWrapper>
         <QuestionCounter
-          numberOfQuestions={4}
-          questionNbr={1}
+          numberOfQuestions={data?.questions.length || 0}
+          questionNbr={index + 1}
           onComplete={handleSubmit(onSubmit)}
         />
         <QuestionItem
+          disabled={disabled}
+          setDisabled={setDisabled}
           conrol={control}
           name="selectedOption"
           image={data?.thumbnail}

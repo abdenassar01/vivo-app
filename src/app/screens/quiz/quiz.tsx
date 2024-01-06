@@ -24,18 +24,20 @@ import { UserAuth } from "../../contexts/AuthContext";
 import { useLangStore } from "../../../stores/lang";
 import { useQuery } from "react-query";
 import ScreenLoader from "../../components/common/loader/screen-loader";
+import { MainText } from "../../components/common/text";
 
 const Quiz = () => {
   const { navigate } = useNavigation<StackNavigationProp<any>>();
   const { user } = UserAuth();
   const { currentLang } = useLangStore();
 
-  const { data, isLoading } = useQuery<QuizType[]>(
+  const { data, isLoading, isError } = useQuery<QuizType[]>(
     ["getting user quizes", user?.id],
     async () => getQuizzes(user?.id || "")
   );
 
   if (isLoading) return <ScreenLoader />;
+  if (isError) return <MainText>error</MainText>;
 
   return (
     <AppWrapper>
