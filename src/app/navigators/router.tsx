@@ -14,6 +14,8 @@ import auth from "@react-native-firebase/auth";
 import { User } from "../../../types/user";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { MainText } from "../components/common/text";
+import { AppWrapperWithoutPadding } from "../../utils/shared-styles";
+import ScreenLoader from "../components/common/loader/screen-loader";
 
 const Router = () => {
   const { onBoarding, setOnBoarding } = useOnBoardingStore();
@@ -61,7 +63,12 @@ const Router = () => {
     });
   }, [onBoarding, currentLang]);
 
-  if (loading) return <LoaderSack />;
+  if (loading)
+    return (
+      <AppWrapperWithoutPadding>
+        <ScreenLoader />
+      </AppWrapperWithoutPadding>
+    );
   else if (!onBoarding) return <OnboardingStack />;
   else if (!user) return <UnAuthenticationStacks />;
   else if (user?.email && !user?.status)
