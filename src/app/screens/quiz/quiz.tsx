@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import Header from "../../components/core/header/header";
 import { AppWrapper, BottomSpacer } from "../../../utils/shared-styles";
 import {

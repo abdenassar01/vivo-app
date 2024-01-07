@@ -31,6 +31,7 @@ const OrderItem = ({ transfer }: Props) => {
   const { day, month, year } = formateDate(transfer.date.toDate());
   const date = `${day}/${month}/${year}`;
   const { currentLang } = useLangStore();
+  console.log("order id : " + transfer.id + " , ", transfer.status);
 
   return (
     <OrderItemWrapper lang={currentLang} onPress={() => setVisible(true)}>

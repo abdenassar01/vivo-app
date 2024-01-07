@@ -12,9 +12,8 @@ import ScreenLoader from "../../components/common/loader/screen-loader";
 
 const Orders = () => {
   const { user } = UserAuth();
-  const { data, isLoading, isError } = useQuery<any>(
-    ["transfers", user?.id],
-    () => getTransfers(user?.id || "")
+  const { data, isLoading } = useQuery<any>(["transfers", user?.id], () =>
+    getTransfers(user?.id || "")
   );
 
   if (isLoading) return <ScreenLoader />;
