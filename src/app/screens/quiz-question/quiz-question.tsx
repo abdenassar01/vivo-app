@@ -24,7 +24,7 @@ const QuizQuestion = () => {
   const [index, setIndex] = useState<number>(0);
   const { control, handleSubmit } = useForm<any>();
   const { navigate } = useNavigation<StackNavigationProp<any>>();
-  const { user } = UserAuth();
+  const { user, setUser } = UserAuth();
   const [disabled, setDisabled] = useState<boolean>(false);
   const { currentLang } = useLangStore();
   const {
@@ -60,7 +60,8 @@ const QuizQuestion = () => {
           parseInt(user?.points?.toString() || "0") +
           parseInt(data?.points.toString() || "0");
         addQuiz(user?.id || "", id || "", points);
-        navigate("QuizSuccess", { points: points });
+        setUser({ ...user, points: points });
+        navigate("QuizSuccess", { points: data?.points });
       }
     }
   };

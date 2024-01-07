@@ -18,7 +18,6 @@ import CentredModal from "../../common/centred-modal/centred-modal";
 import TitleHeader from "../title-header/title-header";
 import { t } from "i18next";
 import { formateDate } from "../../../../utils/helpers/formate-date";
-import { Order } from "../../../../../types/order";
 import { useLangStore } from "../../../../stores/lang";
 import { Transfer } from "src/app/services/Transfers";
 
