@@ -18,9 +18,9 @@ const Home = () => {
   const { user } = UserAuth();
   const { params } = useRoute<any>();
 
-  const { data, isLoading, isError, refetch } = useQuery<any>(
+  const { data, isLoading, isError } = useQuery<any>(
     ["recentReviews", user?.id, params],
-    { queryFn: () => getReviews(user?.id || "", 5) }
+    { queryFn: () => getReviews(user?.id || "", 5), enabled: !!user?.id }
   );
 
   if (isLoading) return <ScreenLoader />;
