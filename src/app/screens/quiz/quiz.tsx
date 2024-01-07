@@ -4,6 +4,7 @@ import Header from "../../components/core/header/header";
 import { AppWrapper, BottomSpacer } from "../../../utils/shared-styles";
 import {
   HelperText,
+  NoQuizesLabel,
   OrdersScreenWrapper,
   QuizIcon,
   QuizItem,
@@ -81,7 +82,7 @@ const Quiz = () => {
             onPress={() => navigate("QuizQuestion", { id: data[0].id })}
           />
         ) : (
-          <BottomSpacer size={50} />
+          <NoQuizesLabel>{t("no-quizes")}</NoQuizesLabel>
         )}
       </OrdersScreenWrapper>
     </AppWrapper>
