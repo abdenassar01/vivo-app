@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../../components/core/header/header";
 import { AppWrapper } from "../../../utils/shared-styles";
 import { HomeWrapper, Tab, TabIcon, TabLabel, TabsWrapper } from "./home.style";
@@ -18,7 +18,7 @@ const Home = () => {
   const { user } = UserAuth();
   const { params } = useRoute<any>();
 
-  const { data, isLoading, isError } = useQuery<any>(
+  const { data, isLoading, isError, refetch } = useQuery<any>(
     ["recentReviews", user?.id, params],
     { queryFn: () => getReviews(user?.id || "", 5) }
   );

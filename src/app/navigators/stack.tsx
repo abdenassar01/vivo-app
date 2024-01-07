@@ -51,15 +51,12 @@ export const AuthenticatedStack = () => {
         initialRouteName="Home"
         screenOptions={{
           headerShown: false,
+          unmountOnBlur: true,
           drawerPosition: currentLang === "ar" ? "right" : "left",
         }}
       >
         <Drawer.Screen name="Home" component={Home} />
-        <Drawer.Screen
-          name="Quiz"
-          options={{ unmountOnBlur: true }}
-          component={Quiz}
-        />
+        <Drawer.Screen name="Quiz" component={Quiz} />
         <Drawer.Screen name="Conversion" component={Conversion} />
         <Drawer.Screen name="Ratings" component={Ratings} />
         <Drawer.Screen name="Orders" component={Orders} />
