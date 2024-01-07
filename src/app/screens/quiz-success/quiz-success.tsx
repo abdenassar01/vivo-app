@@ -57,7 +57,7 @@ const QuizSuccess = () => {
         <WithPadding>
           <Button
             width="100%"
-            onPress={() => navigate("Home")}
+            onPress={() => navigate("Home", { revalidate: true })}
             text={t("home-nav-label")}
           />
         </WithPadding>

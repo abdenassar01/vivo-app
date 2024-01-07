@@ -5,7 +5,7 @@ import { HomeWrapper, Tab, TabIcon, TabLabel, TabsWrapper } from "./home.style";
 import PointsProgressChart from "../../components/core/chart/points-progress-chart";
 import { t } from "i18next";
 import { useQuery } from "react-query";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import RecentRatings from "./recent-ratings";
 import { getReviews } from "../../services/Review";
@@ -16,10 +16,11 @@ import { MainText } from "../../components/common/text";
 const Home = () => {
   const { navigate } = useNavigation<StackNavigationProp<any>>();
   const { user } = UserAuth();
+  const { params } = useRoute<any>();
 
   const { data, isLoading, isError } = useQuery<any>(
-    ["recentReviews", user?.id],
-    () => getReviews(user?.id || "", 5)
+    ["recentReviews", user?.id, params],
+    { queryFn: () => getReviews(user?.id || "", 5) }
   );
 
   if (isLoading) return <ScreenLoader />;

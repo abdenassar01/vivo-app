@@ -13,6 +13,7 @@ import { useThemeStore } from "./src/stores/theme";
 import { useLangStore } from "./src/stores/lang";
 import ReactQueryProvider from "./src/app/contexts/ReactQueryProvider";
 import { AuthContextProvider } from "./src/app/contexts/AuthContext";
+import { createStackNavigator } from "@react-navigation/stack";
 
 function App(): JSX.Element {
   useEffect(() => {
@@ -20,6 +21,8 @@ function App(): JSX.Element {
   }, []);
   const { currentTheme } = useThemeStore();
   const { currentLang } = useLangStore();
+
+  const Stack = createStackNavigator();
 
   return (
     <ThemeProvider
@@ -37,7 +40,9 @@ function App(): JSX.Element {
                 barStyle="dark-content"
                 backgroundColor={light.primary}
               />
-              <Router />
+              <Stack.Navigator screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="Main" component={Router} />
+              </Stack.Navigator>
             </ReactQueryProvider>
           </AuthContextProvider>
         </NavigationContainer>

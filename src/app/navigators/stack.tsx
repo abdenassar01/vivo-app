@@ -18,18 +18,8 @@ import DrawerContent from "../components/core/drawer/drawer-content";
 import { StatusBar } from "react-native";
 import { useTheme } from "styled-components";
 import { useLangStore } from "../../stores/lang";
-import ScreenLoader from "../components/common/loader/screen-loader";
 
 const Stack = createStackNavigator();
-
-export const LoaderSack = () => (
-  <Stack.Navigator
-    initialRouteName="ScreenLoader"
-    screenOptions={{ headerShown: false }}
-  >
-    <Stack.Screen name="ScreenLoader" component={ScreenLoader} />
-  </Stack.Navigator>
-);
 
 export const OnboardingStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -59,7 +49,6 @@ export const AuthenticatedStack = () => {
       <Drawer.Navigator
         drawerContent={(props) => <DrawerContent {...props} />}
         initialRouteName="Home"
-        detachInactiveScreens
         screenOptions={{
           headerShown: false,
           drawerPosition: currentLang === "ar" ? "right" : "left",
