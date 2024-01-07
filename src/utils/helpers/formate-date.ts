@@ -1,4 +1,4 @@
-export function formateDate(date: string) {
+export function formateDate(date: Date | string) {
   const year = new Date(date).getFullYear();
   const month = new Date(date).getMonth();
   const day = new Date(date).getDay();
@@ -6,12 +6,12 @@ export function formateDate(date: string) {
   const minuts = new Date(date).getMinutes();
   const seconds = new Date(date).getSeconds();
 
-  return {year, month, day, hours, minuts, seconds};
+  return { year, month, day, hours, minuts, seconds };
 }
 
 export function dateToTime(date: string) {
-  const {hours, minuts} = formateDate(date);
-  return `${hours.toString().padStart(2, '0')}:${minuts
+  const { hours, minuts } = formateDate(date);
+  return `${hours.toString().padStart(2, "0")}:${minuts
     .toString()
-    .padStart(2, '0')}`;
+    .padStart(2, "0")}`;
 }

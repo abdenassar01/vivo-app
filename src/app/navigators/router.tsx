@@ -1,48 +1,72 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from "react";
 import {
   AuthenticatedStack,
   OnboardingStack,
   UnAuthenticationStacks,
-} from './stack';
-import {useOnBoardingStore} from '../../stores/onboarding';
-import {getOnBoarding} from '../../stores/presisting-helpers/onboarding';
-import ScreenLoader from '../components/common/loader/screen-loader';
-import {useLangStore} from '../../stores/lang';
-import {useAuthStore} from '../../stores/auth';
-import {getIsAuthenticatd} from '../../utils/token';
+} from "./stack";
+import { useOnBoardingStore } from "../../stores/onboarding";
+import { getOnBoarding } from "../../stores/presisting-helpers/onboarding";
+import { useLangStore } from "../../stores/lang";
+import { UserAuth } from "../contexts/AuthContext";
+import firestore from "@react-native-firebase/firestore";
+import auth from "@react-native-firebase/auth";
+import { User } from "../../../types/user";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { MainText } from "../components/common/text";
+import ScreenLoader from "../components/common/loader/screen-loader";
 
 const Router = () => {
-  const {onBoarding, setOnBoarding} = useOnBoardingStore();
-  const {isAuthenticated, setIsAuthenticated} = useAuthStore();
-  const [loading, setLoading] = useState<boolean>(false);
+  const { onBoarding, setOnBoarding } = useOnBoardingStore();
+  const { user, setUser } = UserAuth();
+  const [loading, setLoading] = useState<boolean>(true);
+  let isMounted = true;
+  const { currentLang } = useLangStore();
 
-  const {currentLang} = useLangStore();
+  const fetchCurrentUser = async (id: any) => {
+    const docSnap = await firestore().collection("pompistes").doc(id).get();
+    if (docSnap.exists) {
+      const currentUser = docSnap.data();
+      if (isMounted) setUser({ ...currentUser, id } as User);
+    }
+  };
+
+  const onAuthStateChanged = async (_user: any) => {
+    const currentUsr = auth().currentUser;
+
+    console.log("onAuthStateChanged");
+    if (!_user) {
+      setLoading(false);
+      return;
+    }
+
+    const isResiting = await AsyncStorage.getItem("isResiting");
+    if (!isResiting) {
+      await fetchCurrentUser(currentUsr?.uid);
+      setLoading(false);
+    }
+    setLoading(false);
+  };
 
   useEffect(() => {
     setLoading(true);
-    getOnBoarding().then(value => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber;
+  }, [currentLang]);
+
+  useEffect(() => {
+    getOnBoarding().then((value) => {
       if (value === `${true}`) {
         setOnBoarding(true);
       }
-      getIsAuthenticatd().then(auth => {
-        if (auth === `${true}`) {
-          setIsAuthenticated(true);
-        }
-        setLoading(false);
-      });
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onBoarding, currentLang, isAuthenticated]);
+  }, [onBoarding, currentLang]);
 
-  return loading ? (
-    <ScreenLoader />
-  ) : !onBoarding ? (
-    <OnboardingStack />
-  ) : isAuthenticated ? (
-    <AuthenticatedStack />
-  ) : (
-    <UnAuthenticationStacks />
-  );
+  if (loading) return <ScreenLoader />;
+  else if (!onBoarding) return <OnboardingStack />;
+  else if (!user) return <UnAuthenticationStacks />;
+  else if (user?.email && !user?.status)
+    return <MainText>Votre compte est en attente d'approbation !</MainText>;
+  else return <AuthenticatedStack />;
 };
 
 export default Router;

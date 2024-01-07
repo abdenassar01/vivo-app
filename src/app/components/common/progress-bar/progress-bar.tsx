@@ -1,11 +1,11 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from "react";
 import {
   LineSeparator,
   ProgressBarHeaderText,
   ProgressBarWrapper,
-} from './progress-bar.style';
-import ProgressItem from './progress-item';
-import {useLangStore} from '../../../../stores/lang';
+} from "./progress-bar.style";
+import ProgressItem from "./progress-item";
+import { useLangStore } from "../../../../stores/lang";
 
 type Props = {
   step: number;
@@ -13,8 +13,8 @@ type Props = {
   headerText?: string;
 };
 
-const ProgressBar = ({step, nbrSteps = 3, headerText}: Props) => {
-  const {currentLang} = useLangStore();
+const ProgressBar = ({ step, nbrSteps = 3, headerText }: Props) => {
+  const { currentLang } = useLangStore();
 
   return (
     <>
@@ -26,7 +26,7 @@ const ProgressBar = ({step, nbrSteps = 3, headerText}: Props) => {
           <Fragment key={`step-index-${index}`}>
             <ProgressItem active={step >= index + 1} />
             {index + 1 !== nbrSteps && (
-              <LineSeparator active={step > index + 1} />
+              <LineSeparator nbrSteps={nbrSteps} active={step > index + 1} />
             )}
           </Fragment>
         ))}

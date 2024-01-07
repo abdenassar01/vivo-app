@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "239590168279",
-    "project_id": "vivo-app-c73f1",
-    "storage_bucket": "vivo-app-c73f1.appspot.com"
+    "project_number": "809137496426",
+    "project_id": "vivoenergy-83246",
+    "storage_bucket": "vivoenergy-83246.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:239590168279:android:f5efaefa03a26c12194292",
+        "mobilesdk_app_id": "1:809137496426:android:73c591ccba5f19c3cfc513",
         "android_client_info": {
           "package_name": "com.vivo"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBHOwx8v6tb6wnv_aQdxYstEjc8Ejl2IPg"
+          "current_key": "AIzaSyAlwCIqfdtnRUnusj0e5hCvCIyN_mclX3A"
         }
       ],
       "services": {

@@ -1,62 +1,58 @@
-import React from 'react';
+import React, { useState } from "react";
 import {
   OptionSelectedIcon,
   OptionText,
   QuestionOptionItem,
   QuestionsOptionsWrapper,
-} from './question-options.style';
-import {Control, useController} from 'react-hook-form';
-import {Option} from '../../../../../types/option';
-import i18next from 'i18next';
+} from "./question-options.style";
+import { Control, useController } from "react-hook-form";
 
 interface Props {
   name: string;
   control: Control<any>;
-  options: Option[];
+  options: string[];
+  disabled: boolean;
+  setDisabled: React.Dispatch<React.SetStateAction<boolean>>;
+  correctAnswer?: number;
 }
 
-const QuestionOptions = ({options, control, name}: Props) => {
+const QuestionOptions = ({
+  options,
+  control,
+  name,
+  setDisabled,
+  disabled,
+  correctAnswer = 0,
+}: Props) => {
   const {
-    field: {onChange, value},
+    field: { onChange, value },
   } = useController({
     name,
     control,
-    defaultValue: [],
   });
-
-  const handleOptionPress = (option: Option) => {
-    const isExist =
-      value.filter((item: Option) => item.id === option.id).length > 0;
-    if (isExist) {
-      onChange(value.filter((item: Option) => item.id !== option.id));
-    } else {
-      onChange([...value, option]);
-    }
-  };
 
   return (
     <QuestionsOptionsWrapper>
       {React.Children.toArray(
-        options.map(option => (
+        options.map((option) => (
           <QuestionOptionItem
-            onPress={() => handleOptionPress(option)}
-            selected={
-              value.filter((item: Option) => item.id === option.id).length > 0
-            }>
-            <OptionText
-              selected={
-                value.filter((item: Option) => item.id === option.id).length > 0
-              }>
-              {i18next.language === 'fr' ? option.text : option.textAr}{' '}
-            </OptionText>
-            {value.filter((item: Option) => item.id === option.id).length >
-              0 && (
+            onPress={() => {
+              if (!disabled) {
+                onChange(option);
+                setDisabled(true);
+              }
+            }}
+            selected={value === option}
+            correct={option === options[correctAnswer]}
+          >
+            <OptionText selected={value === option}>{option}</OptionText>
+            {value === option && (
               <OptionSelectedIcon
-                source={require('../../../../assets/icons/correct.png')}
+                source={require("../../../../assets/icons/correct.png")}
               />
             )}
           </QuestionOptionItem>
-        )),
+        ))
       )}
     </QuestionsOptionsWrapper>
   );

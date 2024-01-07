@@ -1,7 +1,7 @@
-import styled from 'styled-components/native';
-import {ThemeType} from '../../../utils/theme';
-import {MainText, SecondaryHeading} from '../../components/common/text';
-import {Dimensions} from 'react-native';
+import styled from "styled-components/native";
+import { ThemeType } from "../../../utils/theme";
+import { MainText, SecondaryHeading } from "../../components/common/text";
+import { Dimensions } from "react-native";
 
 export const Illustration = styled.Image`
   width: 221px;
@@ -10,21 +10,21 @@ export const Illustration = styled.Image`
 
 export const HeroText = styled.View`
   padding: 0;
-  width: ${Dimensions.get('screen').width - 48}px;
+  width: ${Dimensions.get("screen").width - 48}px;
 `;
 
-export const GreetingText = styled(SecondaryHeading)<{theme: ThemeType}>`
+export const GreetingText = styled(SecondaryHeading)<{ theme: ThemeType }>`
   font-size: 24px;
-  color: ${({theme}) => theme.secondaryBtnText};
+  color: ${({ theme }) => theme.secondaryBtnText};
 `;
 
-export const HelperText = styled(MainText)<{theme: ThemeType}>`
-  color: ${({theme}) => theme.text};
+export const HelperText = styled(MainText)<{ theme: ThemeType }>`
+  color: ${({ theme }) => theme.text};
   text-align: justify;
 `;
 
-export const HighlightText = styled(MainText)<{theme: ThemeType}>`
-  color: ${({theme}) => theme.tertiary};
+export const HighlightText = styled(MainText)<{ theme: ThemeType }>`
+  color: ${({ theme }) => theme.tertiary};
   text-align: center;
 `;
 
@@ -37,10 +37,11 @@ export const LoginScreenWrapper = styled.View`
   gap: 40px;
 `;
 
-export const FormWrapper = styled.ScrollView<{theme: ThemeType}>`
+export const FormWrapper = styled.ScrollView<{ theme: ThemeType }>`
   gap: 8px;
   width: 100%;
-  /* justify-content: space-between; */
+  min-height: 250px;
+  padding-bottom: 10px;
 `;
 
 export const BottomScreenWrapper = styled.View`
@@ -48,13 +49,13 @@ export const BottomScreenWrapper = styled.View`
   margin-top: 20px;
 `;
 
-export const ResetStep = styled.View`
-  height: ${Dimensions.get('screen').height - 170}px;
+export const ResetStep = styled.KeyboardAvoidingView`
+  height: ${Dimensions.get("screen").height - 170}px;
   justify-content: space-between;
 `;
 
-export const SignUpStep = styled.View`
-  height: ${Dimensions.get('screen').height - 290}px;
+export const SignUpStep = styled.SafeAreaView`
+  height: ${Dimensions.get("screen").height - 340}px;
   justify-content: space-between;
 `;
 
@@ -64,15 +65,15 @@ export const ContentWrapper = styled.View`
 
 export const PasswordWrapper = styled.View``;
 
-export const SwitchScreensWrapper = styled.View<{lang: string}>`
-  flex-direction: ${({lang}) => (lang === 'ar' ? 'row-reverse' : 'row')};
+export const SwitchScreensWrapper = styled.View<{ lang: string }>`
+  flex-direction: ${({ lang }) => (lang === "ar" ? "row-reverse" : "row")};
   align-items: center;
   justify-content: center;
   gap: 5px;
 `;
 
-export const ButtonsWrapper = styled.View<{lang: string}>`
-  flex-direction: ${({lang}) => (lang === 'ar' ? 'row-reverse' : 'row')};
+export const ButtonsWrapper = styled.View<{ lang: string }>`
+  flex-direction: ${({ lang }) => (lang === "ar" ? "row-reverse" : "row")};
   justify-content: space-between;
   width: 100%;
   gap: 5px;
@@ -84,7 +85,7 @@ export const ForgotPasswordSection = styled.View`
 `;
 
 export const CentredView = styled.View`
-  width: ${Dimensions.get('screen').width - 48}px;
+  width: ${Dimensions.get("screen").width - 48}px;
   gap: 25px;
   align-items: center;
   justify-content: center;
@@ -95,13 +96,13 @@ export const LinkWrapper = styled.TouchableOpacity`
   width: fit-content;
 `;
 
-export const LinkText = styled(MainText)<{theme: ThemeType}>`
-  color: ${({theme}) => theme.secondary};
+export const LinkText = styled(MainText)<{ theme: ThemeType }>`
+  color: ${({ theme }) => theme.secondary};
 `;
 
-export const SwitchScreensLabel = styled(MainText)<{theme: ThemeType}>`
+export const SwitchScreensLabel = styled(MainText)<{ theme: ThemeType }>`
   font-size: 14px;
-  color: ${({theme}) => theme.secondaryText};
+  color: ${({ theme }) => theme.secondaryText};
 `;
 
 export const SwitchScreensLink = styled.TouchableOpacity``;
@@ -110,5 +111,5 @@ export const SwitchScreensLinkText = styled(MainText)<{
   theme: ThemeType;
 }>`
   font-size: 14px;
-  color: ${({theme}) => theme.secondary};
+  color: ${({ theme }) => theme.secondary};
 `;

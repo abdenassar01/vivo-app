@@ -1,27 +1,31 @@
-import React from 'react';
+import React from "react";
 import {
   BorderedWrapper,
   Label,
   StepMainText,
   StepWrapper,
   ValueText,
-} from '../conversion.style';
-import {t} from 'i18next';
+} from "../conversion.style";
+import { t } from "i18next";
 
-const SecondStep = () => {
+function SecondStep({ points, total }: { points: number; total: number }) {
   return (
     <StepWrapper showsVerticalScrollIndicator={false}>
-      <StepMainText>{t('conversion-step-two-text')}</StepMainText>
+      <StepMainText>{t("conversion-step-two-text")}</StepMainText>
       <BorderedWrapper>
-        <Label>{t('number-points-conversion-text')}</Label>
-        <ValueText>26881 {t('points-unit-text')}</ValueText>
+        <Label>{t("number-points-conversion-text")}</Label>
+        <ValueText>
+          {points} {t("points-unit-text")}
+        </ValueText>
       </BorderedWrapper>
       <BorderedWrapper>
-        <Label>{t('amount-Conversion-label')}</Label>
-        <ValueText>1200 {t('currency-unit-text')}</ValueText>
+        <Label>{t("amount-Conversion-label")}</Label>
+        <ValueText>
+          {total} {t("currency-unit-text")}
+        </ValueText>
       </BorderedWrapper>
     </StepWrapper>
   );
-};
+}
 
 export default SecondStep;

@@ -50,6 +50,7 @@
     "currency-unit-text": "MAD",
     "demand-status-demand": "État de la Demande ",
     "demand-status-inprogress": "En cours de traitement",
+    "demand-status-valid": "commande terminée",
     "evaluation-unit": "d'avis",
     "conversion-header-text": "Conversion des Points en Chèque",
     "conversion-second-header-step1": "Vérifiez votre Solde de Points",
@@ -78,6 +79,10 @@
     "points-wining": "Points Gagnés :",
     "update-password-label": "Changer le mot de passe",
     "update-button-text": "Mise à jour",
-    "order-label": "Demande"
+    "order-label": "Demande",
+    "otp-label": "Code d'activation",
+    "otp-placeholder": "Le code d'activation qui vous a été envoyé par SMS",
+    "quiz-none": "Il n'y a pas de test actuellement",
+    "uploading": "Chargement..."
   }
 }

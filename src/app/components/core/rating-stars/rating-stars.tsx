@@ -1,26 +1,26 @@
-import React from 'react';
-import {StarImage, StarsList} from './rating-stars.style';
+import React from "react";
+import { StarImage, StarsList } from "./rating-stars.style";
 
 type Props = {
   rating: number;
   starSize?: number;
 };
 
-const RatingStars = ({rating, starSize}: Props) => {
+const RatingStars = ({ rating, starSize }: Props) => {
   return (
     <StarsList>
-      {[...Array(Math.floor(rating))].map((item, index) => (
+      {Array.from({ length: rating || 0 }).map((item, index) => (
         <StarImage
           size={starSize}
           key={`${item}-start-${index}`}
-          source={require('../../../../assets/icons/star.png')}
+          source={require("../../../../assets/icons/star.png")}
         />
       ))}
-      {[...Array(5 - Math.floor(rating))].map((item, index) => (
+      {Array.from({ length: rating ? 5 - rating : 0 }).map((item, index) => (
         <StarImage
           size={starSize}
           key={`${item}-start-${index}`}
-          source={require('../../../../assets/icons/star-empty.png')}
+          source={require("../../../../assets/icons/star-empty.png")}
         />
       ))}
     </StarsList>

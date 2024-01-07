@@ -50,6 +50,7 @@
     "currency-unit-text": "درهم",
     "demand-status-demand": "حالة الطلب",
     "demand-status-inprogress": "قيد المعالجة",
+    "demand-status-valid": "تم اكتمال الطلب",
     "evaluation-unit": "تعليق",
     "conversion-header-text": "تحويل النقاط إلى شيك",
     "conversion-second-header-step1": "تحقق من رصيد نقاطك",
@@ -76,6 +77,10 @@
     "points-wining": "النقاط المُكتسبة :",
     "update-password-label": "تغيير كلمة المرور",
     "update-button-text": "تحديث",
-    "order-label": "طلب"
+    "order-label": "طلب",
+    "otp-label": "رمز التفعيل",
+    "otp-placeholder": "رمز التفعيل المرسل اليك عبر رسالة نصية",
+    "quiz-none": "لا يوجد اي اختبار حاليا",
+    "uploading": "جارٍ التحميل..."
   }
 }
