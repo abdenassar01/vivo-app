@@ -1,4 +1,4 @@
-import { MainText, SecondaryHeading } from "../../components/common/text";
+import { SecondaryHeading } from "../../components/common/text";
 import { ThemeType } from "../../../utils/theme";
 import styled from "styled-components/native";
 import { Dimensions } from "react-native";

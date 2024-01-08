@@ -86,7 +86,13 @@
     "uploading": "Chargement...",
     "no-quizes": "Aucun quiz disponible",
     "reset-password-success-message": "mot de passe réinitialisé avec succès",
+    "register-success-message": "utilisateur enregistré avec succès",
+    "login-success-message": "connectez-vous avec succès",
+    "user-alredy-registred-error": "Compte déjà enregistré",
     "success-header": "mission réussie",
-    "error-header": "mission échouée"
+    "error-header": "mission échouée",
+    "invalid-otp": "Code invalide!",
+    "bad-credentials": "Le téléphone ou le mot de passe sont incorrects !",
+    "general-error": "Une erreur s'est produite!"
   }
 }

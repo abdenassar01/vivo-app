@@ -84,7 +84,13 @@
     "uploading": "جارٍ التحميل...",
     "no-quizes": "لا توجد اختبارات متاحة",
     "reset-password-success-message": "تم إعادة تعيين كلمة المرور بنجاح",
+    "register-success-message": "تم تسجيل المستخدم بنجاح",
+    "login-success-message": "تسجيل الدخول بنجاح",
+    "user-alredy-registred-error": "الحساب مسجل بالفعل",
     "success-header": "المهمه نجحت",
-    "error-header": "فشلت العملية"
+    "error-header": "فشلت العملية",
+    "invalid-otp": "الرمز غير صحيح!",
+    "bad-credentials": "الهاتف أو كلمة المرور غير صحيحة!",
+    "general-error": "حدث خطأ!"
   }
 }
