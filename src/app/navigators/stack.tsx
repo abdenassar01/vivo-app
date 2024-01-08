@@ -18,6 +18,7 @@ import DrawerContent from "../components/core/drawer/drawer-content";
 import { StatusBar } from "react-native";
 import { useTheme } from "styled-components";
 import { useLangStore } from "../../stores/lang";
+import NewPassword from "../screens/new-password/new-password";
 
 const Stack = createStackNavigator();
 
@@ -64,7 +65,7 @@ export const AuthenticatedStack = () => {
         <Drawer.Screen name="QuizSuccess" component={QuizSuccess} />
         <Drawer.Screen name="UpdatePassword" component={UpdatePassword} />
         <Drawer.Screen name="QuizQuestion" component={QuizQuestion} />
-        <Stack.Screen name="ResetPassword" component={ResetPassword} />
+        <Drawer.Screen name="NewPassword" component={NewPassword} />
       </Drawer.Navigator>
     </>
   );

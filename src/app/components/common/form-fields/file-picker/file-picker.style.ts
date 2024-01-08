@@ -5,6 +5,7 @@ import FastImage from "react-native-fast-image";
 
 export const FieldWrapper = styled.View`
   gap: 1px;
+  max-width: 100%;
   min-width: 100%;
 `;
 
@@ -14,8 +15,9 @@ export const Label = styled(MainText)<{ theme: ThemeType }>`
 
 export const InputWrapper = styled.TouchableOpacity<{ theme: ThemeType }>`
   flex-direction: row;
+  justify-content: space-between;
   gap: 3px;
-  min-width: 100%;
+  max-width: 100%;
   align-items: center;
   padding: 15px 20px;
   border-radius: 12px;

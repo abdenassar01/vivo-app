@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  FormWrapper,
-  GreetingText,
-  HeroText,
-  ResetStep,
-} from "../../auth.style";
+import { FormWrapper, GreetingText, HeroText } from "../../auth.style";
 import { t } from "i18next";
 import CustomInput from "../../../../components/common/form-fields/custom-input/CustomInput";
 

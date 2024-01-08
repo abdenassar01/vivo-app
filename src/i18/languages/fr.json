@@ -84,6 +84,9 @@
     "otp-placeholder": "Le code d'activation qui vous a été envoyé par SMS",
     "quiz-none": "Il n'y a pas de test actuellement",
     "uploading": "Chargement...",
-    "no-quizes": "Aucun quiz disponible"
+    "no-quizes": "Aucun quiz disponible",
+    "reset-password-success-message": "mot de passe réinitialisé avec succès",
+    "success-header": "mission réussie",
+    "error-header": "mission échouée"
   }
 }

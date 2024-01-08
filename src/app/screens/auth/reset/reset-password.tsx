@@ -24,7 +24,7 @@ import auth from "@react-native-firebase/auth";
 import { User } from "../../../../../types/user";
 import Button from "../../../components/common/form-fields/button/button";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { UserAuth } from "../../../contexts/AuthContext";
+import { useLangStore } from "../../../../stores/lang";
 
 const ResetPassword = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
@@ -32,8 +32,7 @@ const ResetPassword = () => {
   const { background } = useTheme();
   const [otp, setOtp] = useState<string>("");
   const [confirm, setConfirm] = useState<any>();
-  const [error, setError] = useState<any>();
-  const { user } = UserAuth();
+  const { currentLang } = useLangStore();
 
   const getValidationSchemas = () => {
     switch (currentStep) {
@@ -48,7 +47,7 @@ const ResetPassword = () => {
       case 3:
         return {
           password: Yup.string()
-            .min(8, t("phone-invalid"))
+            .min(8, t("password-invalid"))
             .required(t("password-required")),
           pwdConfirm: Yup.string()
             .oneOf([Yup.ref("password")], t("password-invalid"))
@@ -137,7 +136,7 @@ const ResetPassword = () => {
                   onPress={handleSubmit}
                   disabled={isSubmitting}
                 />
-                <SwitchScreensWrapper>
+                <SwitchScreensWrapper lang={currentLang}>
                   <SwitchScreensLabel>
                     {t("dont-have-account")}
                   </SwitchScreensLabel>

@@ -82,6 +82,9 @@
     "otp-placeholder": "رمز التفعيل المرسل اليك عبر رسالة نصية",
     "quiz-none": "لا يوجد اي اختبار حاليا",
     "uploading": "جارٍ التحميل...",
-    "no-quizes": "لا توجد اختبارات متاحة"
+    "no-quizes": "لا توجد اختبارات متاحة",
+    "reset-password-success-message": "تم إعادة تعيين كلمة المرور بنجاح",
+    "success-header": "المهمه نجحت",
+    "error-header": "فشلت العملية"
   }
 }
