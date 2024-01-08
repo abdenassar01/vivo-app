@@ -214,16 +214,16 @@ const SignUp = ({ navigation }: RouterProps) => {
                 />
               )}
               <ButtonsWrapper lang={currentLang}>
-                {currentStep < 3 ? (
+                {currentStep !== 4 && (
                   <Button
                     text={t("button-previous-text")}
                     btnTheme="secondary"
                     width="42%"
                     onPress={() => goBack()}
                   />
-                ) : null}
+                )}
                 <Button
-                  width="56%"
+                  width={currentStep === 4 ? "100%" : "56%"}
                   text={t("button-next-text")}
                   disabled={isSubmitting}
                   onPress={handleSubmit}

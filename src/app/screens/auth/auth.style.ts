@@ -35,7 +35,6 @@ export const LoginScreenWrapper = styled.View`
   align-items: center;
   justify-content: space-between;
   gap: 40px;
-  overflow-x: hidden;
 `;
 
 export const FormWrapper = styled.ScrollView<{ theme: ThemeType }>`
@@ -76,10 +75,11 @@ export const SwitchScreensWrapper = styled.View<{ lang: string }>`
 
 export const ButtonsWrapper = styled.View<{ lang: string }>`
   flex-direction: ${({ lang }) => (lang === "ar" ? "row-reverse" : "row")};
-  justify-content: space-between;
-  width: 100%;
+  justify-content: center;
+  /* width: 100%; */
   gap: 5px;
   padding-top: 10px;
+  /* align-items: center; */
 `;
 
 export const ForgotPasswordSection = styled.View`
