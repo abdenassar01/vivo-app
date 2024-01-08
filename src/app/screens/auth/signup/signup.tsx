@@ -231,7 +231,6 @@ const SignUp = ({ navigation }: RouterProps) => {
                 <BottomSpacer size={10} />
               </ButtonsWrapper>
             </SignUpStep>
-
             <BottomSpacer size={10} />
           </LoginScreenWrapper>
         )}
