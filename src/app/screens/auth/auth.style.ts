@@ -35,6 +35,7 @@ export const LoginScreenWrapper = styled.View`
   align-items: center;
   justify-content: space-between;
   gap: 40px;
+  overflow-x: hidden;
 `;
 
 export const FormWrapper = styled.ScrollView<{ theme: ThemeType }>`
@@ -57,6 +58,7 @@ export const ResetStep = styled.KeyboardAvoidingView`
 export const SignUpStep = styled.SafeAreaView`
   height: ${Dimensions.get("screen").height - 340}px;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const ContentWrapper = styled.View`
