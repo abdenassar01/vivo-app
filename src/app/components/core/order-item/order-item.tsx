@@ -27,11 +27,7 @@ type Props = {
 
 const OrderItem = ({ transfer }: Props) => {
   const [visible, setVisible] = useState<boolean>(false);
-  const { day, month, year } = formateDate(transfer.date.toDate());
-  const date = `${day + 1}/${month + 1}/${year}`;
   const { currentLang } = useLangStore();
-
-  // console.log("order id : " + transfer.id + " , ", transfer.status);
 
   return (
     <OrderItemWrapper lang={currentLang} onPress={() => setVisible(true)}>
@@ -51,7 +47,9 @@ const OrderItem = ({ transfer }: Props) => {
           <OrderIdText>
             #{transfer.id} - {transfer.total} MAD
           </OrderIdText>
-          <DateText lang={currentLang}>{date}</DateText>
+          <DateText lang={currentLang}>
+            {transfer.date.toDate().toLocaleDateString("fr-FR")}
+          </DateText>
         </TextWrapper>
         <ArrowIcon
           lang={currentLang}
@@ -63,7 +61,9 @@ const OrderItem = ({ transfer }: Props) => {
         <OrderPropritiesWrapper>
           <OrderProprity>
             <Label lang={currentLang}>{t("demand-date-label")}</Label>
-            <Value lang={currentLang}>{date}</Value>
+            <Value lang={currentLang}>
+              {transfer.date.toDate().toLocaleDateString("fr-FR")}
+            </Value>
           </OrderProprity>
           <OrderProprity>
             <Label lang={currentLang}>{t("number-points-text")}</Label>
