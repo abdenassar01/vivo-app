@@ -28,9 +28,10 @@ type Props = {
 const OrderItem = ({ transfer }: Props) => {
   const [visible, setVisible] = useState<boolean>(false);
   const { day, month, year } = formateDate(transfer.date.toDate());
-  const date = `${day}/${month}/${year}`;
+  const date = `${day + 1}/${month + 1}/${year}`;
   const { currentLang } = useLangStore();
-  console.log("order id : " + transfer.id + " , ", transfer.status);
+
+  // console.log("order id : " + transfer.id + " , ", transfer.status);
 
   return (
     <OrderItemWrapper lang={currentLang} onPress={() => setVisible(true)}>
