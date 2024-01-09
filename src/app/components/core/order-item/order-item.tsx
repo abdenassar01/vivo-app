@@ -18,7 +18,6 @@ import CentredModal from "../../common/centred-modal/centred-modal";
 import TitleHeader from "../title-header/title-header";
 import { t } from "i18next";
 import { formateDate } from "../../../../utils/helpers/formate-date";
-import { Order } from "../../../../../types/order";
 import { useLangStore } from "../../../../stores/lang";
 import { Transfer } from "src/app/services/Transfers";
 
@@ -28,8 +27,6 @@ type Props = {
 
 const OrderItem = ({ transfer }: Props) => {
   const [visible, setVisible] = useState<boolean>(false);
-  const { day, month, year } = formateDate(transfer.date.toDate());
-  const date = `${day}/${month}/${year}`;
   const { currentLang } = useLangStore();
 
   return (
@@ -50,7 +47,9 @@ const OrderItem = ({ transfer }: Props) => {
           <OrderIdText>
             #{transfer.id} - {transfer.total} MAD
           </OrderIdText>
-          <DateText lang={currentLang}>{date}</DateText>
+          <DateText lang={currentLang}>
+            {transfer.date.toDate().toLocaleDateString("fr-FR")}
+          </DateText>
         </TextWrapper>
         <ArrowIcon
           lang={currentLang}
@@ -62,7 +61,9 @@ const OrderItem = ({ transfer }: Props) => {
         <OrderPropritiesWrapper>
           <OrderProprity>
             <Label lang={currentLang}>{t("demand-date-label")}</Label>
-            <Value lang={currentLang}>{date}</Value>
+            <Value lang={currentLang}>
+              {transfer.date.toDate().toLocaleDateString("fr-FR")}
+            </Value>
           </OrderProprity>
           <OrderProprity>
             <Label lang={currentLang}>{t("number-points-text")}</Label>
@@ -76,8 +77,8 @@ const OrderItem = ({ transfer }: Props) => {
           </OrderProprity>
           <OrderProprity>
             <Label lang={currentLang}>{t("demand-status-demand")}</Label>
-            <StatusValue finished={!transfer.isPending} lang={currentLang}>
-              {transfer.isPending
+            <StatusValue finished={!transfer.status} lang={currentLang}>
+              {transfer.status
                 ? t("demand-status-inprogress")
                 : t("demand-status-valid")}
             </StatusValue>

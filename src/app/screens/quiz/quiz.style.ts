@@ -68,3 +68,12 @@ export const StartButtonText = styled(Heading)<{ theme: ThemeType }>`
   font-size: 10px;
   color: ${({ theme }) => theme.secondaryBackground};
 `;
+
+export const NoQuizesLabel = styled(MainText)<{ theme: ThemeType }>`
+  color: ${({ theme }) => theme.text};
+  background-color: ${({ theme }) => theme.helperText};
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  border-radius: 12px;
+`;

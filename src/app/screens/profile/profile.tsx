@@ -252,7 +252,7 @@ const Profile = () => {
                 </>
               )}
               <UpdatePasswordLink
-                onPress={() => navigation.navigate("ResetPassword")}
+                onPress={() => navigation.navigate("NewPassword")}
               >
                 <UpdatePasswordText>
                   {t("update-password-label")}

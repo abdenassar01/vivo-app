@@ -9,20 +9,22 @@ type Props = {
 const RatingStars = ({ rating, starSize }: Props) => {
   return (
     <StarsList>
-      {Array.from({ length: rating || 0 }).map((item, index) => (
+      {Array.from({ length: Math.floor(rating) || 0 }).map((item, index) => (
         <StarImage
           size={starSize}
           key={`${item}-start-${index}`}
           source={require("../../../../assets/icons/star.png")}
         />
       ))}
-      {Array.from({ length: rating ? 5 - rating : 0 }).map((item, index) => (
-        <StarImage
-          size={starSize}
-          key={`${item}-start-${index}`}
-          source={require("../../../../assets/icons/star-empty.png")}
-        />
-      ))}
+      {Array.from({ length: rating ? 5 - Math.floor(rating) : 0 }).map(
+        (item, index) => (
+          <StarImage
+            size={starSize}
+            key={`${item}-start-${index}`}
+            source={require("../../../../assets/icons/star-empty.png")}
+          />
+        )
+      )}
     </StarsList>
   );
 };

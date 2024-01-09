@@ -18,7 +18,7 @@
     "reset-header-text1": "Mot de Passe Oublié?",
     "reset-header-text2": "Pas de Problème! ",
     "reset-new-password-header": "Entrez le nouveau mot de passe",
-    "reset-main-text": "Pour réinitialiser votre mot de passe, veuillez entrer l'adresse e-mail associée à votre compte. Nous vous enverrons un lien de réinitialisation. ",
+    "reset-main-text": "Pour réinitialiser votre mot de passe, veuillez entrer le numéro de téléphone associée à votre compte. Nous vous enverrons un lien de réinitialisation. ",
     "login-header-text": "Se connecter",
     "email-input-text": "Email",
     "email-input-placeholder": "yassine@exemple.com",
@@ -83,6 +83,16 @@
     "otp-label": "Code d'activation",
     "otp-placeholder": "Le code d'activation qui vous a été envoyé par SMS",
     "quiz-none": "Il n'y a pas de test actuellement",
-    "uploading": "Chargement..."
+    "uploading": "Chargement...",
+    "no-quizes": "Aucun quiz disponible",
+    "reset-password-success-message": "mot de passe réinitialisé avec succès",
+    "register-success-message": "utilisateur enregistré avec succès",
+    "login-success-message": "connectez-vous avec succès",
+    "user-alredy-registred-error": "Compte déjà enregistré",
+    "success-header": "mission réussie",
+    "error-header": "mission échouée",
+    "invalid-otp": "Code invalide!",
+    "bad-credentials": "Le téléphone ou le mot de passe sont incorrects !",
+    "general-error": "Une erreur s'est produite!"
   }
 }

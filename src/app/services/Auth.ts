@@ -37,10 +37,7 @@ export const signup = async (data: User): Promise<ResponseType> => {
           qrId: generateId(data.phone || ""),
         };
 
-        await firestore()
-          .collection("pompistes")
-          .doc(cred.user.uid)
-          .set({ obj });
+        await firestore().collection("pompistes").doc(cred.user.uid).set(obj);
 
         resolve({ success: true, data: { ...obj, id: cred.user.uid } });
       })

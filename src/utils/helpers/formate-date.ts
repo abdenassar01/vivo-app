@@ -5,8 +5,7 @@ export function formateDate(date: Date | string) {
   const hours = new Date(date).getHours();
   const minuts = new Date(date).getMinutes();
   const seconds = new Date(date).getSeconds();
-
-  return { year, month, day, hours, minuts, seconds };
+  return { year, month: month + 1, day: day + 1, hours, minuts, seconds };
 }
 
 export function dateToTime(date: string) {

@@ -30,6 +30,7 @@ import auth from "@react-native-firebase/auth";
 import { NavigationProp } from "@react-navigation/native";
 import { isUserRegistered } from "../../../services/Auth";
 import { ErrorMessage } from "../../../components/common/form-fields/custom-input/CustomInput.style";
+import Toast from "react-native-toast-message";
 
 interface RouterProps {
   navigation: NavigationProp<any, any>;
@@ -109,11 +110,20 @@ const SignUp = ({ navigation }: RouterProps) => {
       console.log(confirmation);
       setConfirm(confirmation);
       if (confirmation) changeStep(2);
-      else Alert.alert("An Error Occured!");
+      else
+        Toast.show({
+          type: "error",
+          text1: t("error-header"),
+          text2: t("general-error"),
+        });
     } catch (e: any) {
       console.log(e?.message);
       error(e?.message);
-      Alert.alert("An Error Occured!");
+      Toast.show({
+        type: "error",
+        text1: t("error-header"),
+        text2: t("general-error"),
+      });
     }
   };
 
@@ -124,7 +134,11 @@ const SignUp = ({ navigation }: RouterProps) => {
       changeStep(3);
     } catch (error) {
       console.log("Invalid code.");
-      Alert.alert("Invalid code!");
+      Toast.show({
+        type: "error",
+        text1: t("error-header"),
+        text2: t("invalid-otp"),
+      });
     }
   };
 
@@ -136,7 +150,11 @@ const SignUp = ({ navigation }: RouterProps) => {
         if (!isRegistred) {
           await requestOTP(data.phone || "");
         } else {
-          Alert.alert("User Already Registred!");
+          Toast.show({
+            type: "error",
+            text1: t("error-header"),
+            text2: t("user-alredy-registred-error"),
+          });
         }
 
         break;
@@ -154,9 +172,19 @@ const SignUp = ({ navigation }: RouterProps) => {
         });
         if (res3.success) {
           setUser(res3.data);
-          console.log("User Added Succesfully!");
+          Toast.show({
+            type: "success",
+            text1: t("success-header"),
+            text2: t("register-success-message"),
+          });
           changeStep(1);
-        } else Alert.alert(res3.error);
+        } else {
+          Toast.show({
+            type: "error",
+            text1: t("error-header"),
+            text2: res3.error,
+          });
+        }
         break;
     }
   };
@@ -176,7 +204,6 @@ const SignUp = ({ navigation }: RouterProps) => {
         }}
         validationSchema={Yup.object(getValidationSchemas() as any)}
         onSubmit={async (data, { setSubmitting }) => {
-          console.log(data);
           setSubmitting(true);
           await next(data);
           setSubmitting(false);
@@ -214,16 +241,16 @@ const SignUp = ({ navigation }: RouterProps) => {
                 />
               )}
               <ButtonsWrapper lang={currentLang}>
-                {currentStep < 3 ? (
+                {currentStep !== 4 && (
                   <Button
                     text={t("button-previous-text")}
                     btnTheme="secondary"
                     width="42%"
                     onPress={() => goBack()}
                   />
-                ) : null}
+                )}
                 <Button
-                  width="56%"
+                  width={currentStep === 4 ? "100%" : "56%"}
                   text={t("button-next-text")}
                   disabled={isSubmitting}
                   onPress={handleSubmit}
@@ -231,7 +258,6 @@ const SignUp = ({ navigation }: RouterProps) => {
                 <BottomSpacer size={10} />
               </ButtonsWrapper>
             </SignUpStep>
-
             <BottomSpacer size={10} />
           </LoginScreenWrapper>
         )}

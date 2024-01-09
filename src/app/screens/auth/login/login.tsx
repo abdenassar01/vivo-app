@@ -30,6 +30,7 @@ import { StatusBar } from "react-native";
 import { useTheme } from "styled-components";
 import { useLangStore } from "../../../../stores/lang";
 import { signIn } from "../../../services/Auth";
+import Toast from "react-native-toast-message";
 
 const Login = () => {
   const { background } = useTheme();
@@ -43,8 +44,18 @@ const Login = () => {
 
     if (res.success) {
       console.log("Logged on Successfully!");
-    } else Alert.alert("Phone or Passwords Are Incorrect!");
-
+      Toast.show({
+        type: "success",
+        text1: t("success-header"),
+        text2: t("login-success-message"),
+      });
+    } else {
+      Toast.show({
+        type: "error",
+        text1: t("error-header"),
+        text2: t("bad-credentials"),
+      });
+    }
     setSubmitting(false);
   };
 
